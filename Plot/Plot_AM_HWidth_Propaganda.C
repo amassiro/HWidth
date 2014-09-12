@@ -7,6 +7,7 @@
 #include "PlotVHqqHggH.C"
 
 
+
 //---- Filter bins ----
 TH1F* FilterBins(std::vector<int> binsToSelect, TH1F* inputTH) {
  int numbin = binsToSelect.size();
@@ -127,7 +128,7 @@ void Plot_AM_HWidth_Propaganda() {
  
 //  int NMAXX = 30;  //---- variable bin
  int NMAXX = 16;  //---- variable bin
- int NMAXY = 1;  
+ int NMAXY = 6;  
  
  int minNY = 0;
  int minNX = 0;
@@ -154,14 +155,11 @@ void Plot_AM_HWidth_Propaganda() {
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-   name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back ("H m_{H}=125");
-   vectColourSig.push_back(6);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000);
-//    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   int GammaOverGammaSM = 5;
+   TString nameSignal   = Form("H off x%d", GammaOverGammaSM);
+   TString nameSignalOn = Form("H on  x%d", GammaOverGammaSM);
+   
+   
    
 //    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
 //    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
@@ -174,14 +172,44 @@ void Plot_AM_HWidth_Propaganda() {
    
    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back ("H offshell");
+   vectNameSig.push_back (nameSignal.Data());
    vectColourSig.push_back(7);
    vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000);
+   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+
+   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(7);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+
+   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(7);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
    //    vectNormalizationSig.push_back(0.719);  
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
-    
+  
+   
+   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(7);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+      
+   
+   
    ///==== signal (end)  ====
    
    
@@ -237,7 +265,7 @@ void Plot_AM_HWidth_Propaganda() {
    vectNameBkg.push_back ("Top");
    vectColourBkg.push_back(400);
    vectSystBkg.push_back(0.10);
-   vectScaleBkg.push_back(0.85);
+   vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(5.654);
 
    
@@ -267,6 +295,35 @@ void Plot_AM_HWidth_Propaganda() {
 //     vectNormalizationBkg.push_back(2.256);
 //    }
    
+   
+   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("ggWW");
+   vectColourBkg.push_back(8);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   //    vectNormalizationBkg.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   
+   name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back (nameSignalOn.Data());
+//    vectNameBkg.push_back ("H m_{H}=125 ");
+   vectColourBkg.push_back(6);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+//    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationBkg.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   
+   
+   
    ///==== background (end)  ====
    
    
@@ -291,8 +348,8 @@ void Plot_AM_HWidth_Propaganda() {
    ///==== data (end)  ====
    
    
-//    hs->setBlindBinSx(10);
-   hs->setBlindBinSx(0);
+   hs->setBlindBinSx(100);
+//    hs->setBlindBinSx(0);
 //    hs->setBlindBinDx(10);
    hs->setBlindBinDx(0);
    
@@ -313,17 +370,17 @@ void Plot_AM_HWidth_Propaganda() {
  hs->set_vectNameBkg   (vectNameBkg);    
  hs->set_vectColourBkg (vectColourBkg);  
 //  if (which == 4) hs->set_vectSystBkg   (vectSystBkg);    
-//  hs->set_vectScaleBkg  (vectScaleBkg);   
+ hs->set_vectScaleBkg  (vectScaleBkg);   
  
  hs->set_vectTHSig     (vectTHSig);      
  hs->set_vectNameSig   (vectNameSig);    
  hs->set_vectColourSig (vectColourSig);  
-//  hs->set_vectScaleSig  (vectScaleSig);   
+ hs->set_vectScaleSig  (vectScaleSig);   
  
  
 
 //  hs->addWeight(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
-//  hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+ hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
  
  hs->prepare();
  
@@ -348,6 +405,9 @@ void Plot_AM_HWidth_Propaganda() {
 //  double vedges[] = {0,10,20,30,40,50,60,70,80,90, 100,110,120,130,140,150,160,170,180,190, 200,210,220,230,240,250,260,270,280,290,300 };  //----> analysis
  
  double vedges[] = {-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300};
+ 
+//  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
+ 
  
 //   for (int i=0; i<30; i++) {
 //    vedges[i] = 0. + 10*i; 

@@ -3220,7 +3220,8 @@ class PlotVHqqHggH {
 //                              temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-50 ,300); //--- for time evolution
 //                              temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-10 ,45); //--- for time evolution
 //                              temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-100 ,300); //--- for hww paper
-                             temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-10 ,15); //--- for WWewk
+//                              temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-10 ,15); //--- for WWewk
+                             temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(-10 ,200); //--- for Higgs width
                             }
                             else {
                                 temp_vectTHstackSig.at(iSig) ->GetYaxis () -> SetRangeUser(0 ,temp_vectTHstackSig.at(temp_vectTHstackSig.size()-1)->GetMaximum() * 1.5 + 5);
