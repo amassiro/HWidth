@@ -98,7 +98,8 @@ void Plot_AM_HWidth_Propaganda() {
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
- hs->setLabel("mll*");
+//  hs->setLabel("mll*");
+ hs->setLabel("mll");
  
  //  hs->setLumi(20);
  //  hs->setLumi(200);
@@ -127,7 +128,8 @@ void Plot_AM_HWidth_Propaganda() {
  std::vector<int> binsToSelect; 
  
 //  int NMAXX = 30;  //---- variable bin
- int NMAXX = 16;  //---- variable bin
+//  int NMAXX = 16;  //---- variable bin
+ int NMAXX = 8;  //---- variable bin
  int NMAXY = 6;  
  
  int minNY = 0;
@@ -155,7 +157,7 @@ void Plot_AM_HWidth_Propaganda() {
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-   int GammaOverGammaSM = 5;
+   int GammaOverGammaSM = 50;
    TString nameSignal   = Form("H off x%d", GammaOverGammaSM);
    TString nameSignalOn = Form("H on  x%d", GammaOverGammaSM);
    
@@ -404,7 +406,8 @@ void Plot_AM_HWidth_Propaganda() {
  hs->setUnits ("GeV");
 //  double vedges[] = {0,10,20,30,40,50,60,70,80,90, 100,110,120,130,140,150,160,170,180,190, 200,210,220,230,240,250,260,270,280,290,300 };  //----> analysis
  
- double vedges[] = {-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300};
+//  double vedges[] = {-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300};
+ double vedges[] = {0, 20, 50, 75, 100, 150, 200, 250, 300};
  
 //  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
  
