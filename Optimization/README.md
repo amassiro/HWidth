@@ -3,7 +3,7 @@ Training
 
 source of root, needed for the GUI later
 
-    source /afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.00/x86_64-slc5-gcc46-opt/root/bin/thisroot.sh
+    source /afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.21/x86_64-slc5-gcc47-opt/root/bin/thisroot.sh
 
 Train:
 
@@ -20,4 +20,11 @@ Test:
 
 
 
+
+
+
+where:
+
+    cmsneu
+    /home/amassiro/Latinos/ForGammaHiggsWW/HWidth/Optimization
 
