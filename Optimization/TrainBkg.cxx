@@ -220,9 +220,14 @@ void TrainBkg( TString myMethodList = "" )
  TFile *inputS2 = TFile::Open( fname );
  TTree *signal2     = (TTree*) inputS2->Get("latino");
 
- fname = Form ("/home/amassiro/Latinos/Shape/tree_skim_all/nominals/latinogg2vv_Hw25_SigOnPeak_8TeV.root");
+ fname = Form ("/home/amassiro/Latinos/Shape/tree_skim_all/nominals/latino_019_TTTo2L2Nu2B.root");
  TFile *inputB1 = TFile::Open( fname );
  TTree *background1 = (TTree*) inputB1->Get("latino");
+
+ fname = Form ("/home/amassiro/Latinos/Shape/tree_skim_all/nominals/latino_000_WWJets2LMad.root");
+ TFile *inputB2 = TFile::Open( fname );
+ TTree *background2 = (TTree*) inputB2->Get("latino");
+
 
    // --- Register the training and test trees
 //  TTree *signal     = (TTree*)input->Get("TreeS");
@@ -237,7 +242,11 @@ void TrainBkg( TString myMethodList = "" )
  factory->AddSignalTree(    signal2, signalWeight );
 
  factory->AddBackgroundTree( background1, backgroundWeight );
-   
+ factory->AddBackgroundTree( background2, backgroundWeight );
+
+ //---- global weight
+ factory->SetWeightExpression("baseW");
+
    // To give different trees for training and testing, do as follows:
    //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
    //    factory->AddSignalTree( signalTestTree,     signalTestWeight,  "Test" );
@@ -283,8 +292,8 @@ void TrainBkg( TString myMethodList = "" )
 //  factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
- TCut mycuts = ""; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
- TCut mycutb = ""; // for example: TCut mycutb = "abs(var1)<0.5";
+ TCut mycuts = "ch1*ch2<0 && pt2>20 && mpmet>20 && pfmet>20 && mll>12 && nextra==0"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
+ TCut mycutb = "ch1*ch2<0 && pt2>20 && mpmet>20 && pfmet>20 && mll>12 && nextra==0"; // for example: TCut mycutb = "abs(var1)<0.5";
 
    // Tell the factory how to use the training and testing events
  //

@@ -238,6 +238,10 @@ void Train( TString myMethodList = "" )
 
  factory->AddBackgroundTree( background1, backgroundWeight );
    
+  //---- global weight
+ factory->SetWeightExpression("baseW");
+
+ 
    // To give different trees for training and testing, do as follows:
    //    factory->AddSignalTree( signalTrainingTree, signalTrainWeight, "Training" );
    //    factory->AddSignalTree( signalTestTree,     signalTestWeight,  "Test" );
@@ -283,8 +287,8 @@ void Train( TString myMethodList = "" )
 //  factory->SetBackgroundWeightExpression( "weight" );
 
    // Apply additional cuts on the signal and background samples (can be different)
- TCut mycuts = ""; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
- TCut mycutb = ""; // for example: TCut mycutb = "abs(var1)<0.5";
+ TCut mycuts = "ch1*ch2<0 && pt2>20 && mpmet>20 && pfmet>20 && mll>12 && nextra==0"; // for example: TCut mycuts = "abs(var1)<0.5 && abs(var2-0.5)<1";
+ TCut mycutb = "ch1*ch2<0 && pt2>20 && mpmet>20 && pfmet>20 && mll>12 && nextra==0"; // for example: TCut mycutb = "abs(var1)<0.5";
 
    // Tell the factory how to use the training and testing events
  //

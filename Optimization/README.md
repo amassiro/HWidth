@@ -7,7 +7,12 @@ source of root, needed for the GUI later
 
 Train:
 
+ggH vs off-shell
     r99t Train.cxx\(\"BDTG\"\)
+
+bkg vs off-shell
+    r99t TrainBkg.cxx\(\"BDTG\"\)
+
 
 Test:
 
