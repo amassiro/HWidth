@@ -506,6 +506,17 @@ void Train( TString myMethodList = "" )
    // Save the output
  outputFile->Close();
 
+ std::string toDo;
+ toDo = "rm -r Weights-ggH/";
+ std::cerr << "toDo = " << toDo << std::endl;
+ system (toDo.c_str()); 
+
+ toDo = "mv weights Weights-ggH/";
+ std::cerr << "toDo = " << toDo << std::endl;
+ system (toDo.c_str()); 
+
+ 
+ 
  std::cout << "==> Wrote root file: " << outputFile->GetName() << std::endl;
  std::cout << "==> TMVAClassification is done!" << std::endl;
 

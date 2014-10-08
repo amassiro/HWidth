@@ -3,6 +3,7 @@ Training
 
 source of root, needed for the GUI later
 
+    cmsenv of a CMSSW release  CMSSW_5_3_11_patch6
     source /afs/cern.ch/sw/lcg/app/releases/ROOT/5.34.21/x86_64-slc5-gcc47-opt/root/bin/thisroot.sh
 
 Train:
