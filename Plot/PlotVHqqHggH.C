@@ -991,6 +991,7 @@ class PlotVHqqHggH {
         void set_vectEdges (std::vector<double>& vEdges) { 
             for (unsigned int iEdg = 0; iEdg<vEdges.size(); iEdg++) {
                 _vEdges.push_back(vEdges.at(iEdg));
+//                 std::cout << " vEdges.at(" << iEdg << ") = " << vEdges.at(iEdg) << std::endl;
             }
         }
 
