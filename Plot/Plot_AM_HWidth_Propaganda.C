@@ -62,7 +62,7 @@ void Plot_AM_HWidth_Propaganda() {
  
  TString nameChannel;
  if   (which == 0)        { nameChannel = Form ("of_0j/"); }       //---- signal injection
- else if (which == 1)     { nameChannel = Form ("of_2jtche05/"); }
+ else if (which == 1)     { nameChannel = Form ("of_0j/"); }
 
  std::cout << " which = " << which << std::endl;
  
@@ -94,7 +94,7 @@ void Plot_AM_HWidth_Propaganda() {
   
  
  if      (which == 0)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
- else if (which == 1)   { f[0] = new TFile("postFit-WW2jewk-05/Hwidth-error-data.root");  doSignalInjection = false; }
+ else if (which == 1)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
@@ -129,8 +129,11 @@ void Plot_AM_HWidth_Propaganda() {
  
 //  int NMAXX = 30;  //---- variable bin
 //  int NMAXX = 16;  //---- variable bin
+//  int NMAXX = 8;  //---- variable bin
+//  int NMAXY = 6;  
+
  int NMAXX = 8;  //---- variable bin
- int NMAXY = 6;  
+ int NMAXY = 8;  
  
  int minNY = 0;
  int minNX = 0;
@@ -159,7 +162,7 @@ void Plot_AM_HWidth_Propaganda() {
       
    int GammaOverGammaSM = 50;
    TString nameSignal   = Form("H off x%d", GammaOverGammaSM);
-   TString nameSignalOn = Form("H on  x%d", GammaOverGammaSM);
+   TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    
    
    
@@ -407,7 +410,10 @@ void Plot_AM_HWidth_Propaganda() {
 //  double vedges[] = {0,10,20,30,40,50,60,70,80,90, 100,110,120,130,140,150,160,170,180,190, 200,210,220,230,240,250,260,270,280,290,300 };  //----> analysis
  
 //  double vedges[] = {-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300};
- double vedges[] = {0, 20, 50, 75, 100, 150, 200, 250, 300};
+//  double vedges[] = {0, 20, 50, 75, 100, 150, 200, 250, 300};
+ 
+ double vedges[] = {-1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00};  //---- mva
+ 
  
 //  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
  
