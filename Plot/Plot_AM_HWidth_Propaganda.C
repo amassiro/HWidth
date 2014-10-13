@@ -135,12 +135,19 @@ void Plot_AM_HWidth_Propaganda() {
  int NMAXX = 8;  //---- variable bin
  int NMAXY = 8;  
  
+ //---- all ----
  int minNY = 0;
  int minNX = 0;
  
- //---- all ----
  int NX = NMAXX;
  int NY = NMAXY;
+ 
+ 
+//  int minNY = 0;
+//  int minNX = 6;
+ 
+//  int NX = NMAXX;
+//  int NY = NMAXY;
  
  
  
