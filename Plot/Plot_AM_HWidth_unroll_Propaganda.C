@@ -63,7 +63,9 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  TString nameChannel;
  if   (which == 0)        { nameChannel = Form ("of_0j/"); }       //---- signal injection
  else if (which == 1)     { nameChannel = Form ("of_0j/"); }
-
+ else if (which == 2)     { nameChannel = Form ("of_1j/"); }
+ else if (which == 3)     { nameChannel = Form ("of_2j/"); }
+ 
  std::cout << " which = " << which << std::endl;
  
  
@@ -95,6 +97,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  
  if      (which == 0)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
  else if (which == 1)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 2)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+ else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-signalInjection.root");  doSignalInjection = false; }
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
@@ -132,7 +136,11 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //  int NMAXX = 8;  //---- variable bin
 //  int NMAXY = 6;  
 
- int NMAXX = 8*8;  //---- variable bin
+//  int NMAXX = 8*8;  //---- variable bin
+//  int NMAXY = 1;  
+
+//  int NMAXX = 5*6;  //---- variable bin
+ int NMAXX = 3*11;  //---- variable bin
  int NMAXY = 1;  
  
  //---- all ----
@@ -421,8 +429,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  
 //  double vedges[] = {-1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00};  //---- mva
  
- double vedges[64+1];
- for (int i=0; i<64+1; i++) {
+ double vedges[NMAXX+1];
+ for (int i=0; i<NMAXX+1; i++) {
   vedges[i] = 0. + 1.*i; 
   std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
  }
