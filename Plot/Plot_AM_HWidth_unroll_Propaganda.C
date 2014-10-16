@@ -56,7 +56,7 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 void Plot_AM_HWidth_unroll_Propaganda() {
  
- int which = 0;
+ int which = 3;
 //  int which = 1;
  
  
@@ -95,9 +95,12 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  bool doSignalInjection;
   
  
- if      (which == 0)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
- else if (which == 1)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
- else if (which == 2)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+ if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+ else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+//  if      (which == 0)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//  else if (which == 1)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//  else if (which == 2)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-signalInjection.root");  doSignalInjection = false; }
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
@@ -140,8 +143,18 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //  int NMAXY = 1;  
 
 //  int NMAXX = 5*6;  //---- variable bin
- int NMAXX = 3*11;  //---- variable bin
+//  int NMAXX = 4*11;  //---- variable bin
+
+
+ int NMAXX = 6*(7);  //---- variable bin
+ if (which == 3) NMAXX = 3*(7);  //---- variable bin
+ 
+//  int NMAXX = 4*(8+2);  //---- variable bin
+//  if (which == 3) NMAXX = 6*(7);  //---- variable bin
+//  if (which == 3) NMAXX = 10*(11+1);  //---- variable bin
  int NMAXY = 1;  
+
+
  
  //---- all ----
  int minNY = 0;
@@ -177,7 +190,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
       
    int GammaOverGammaSM = 50;
    TString nameSignal   = Form("H off x%d", GammaOverGammaSM);
-   TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
+//    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
+   TString nameSignalOn = Form("H on shell");
    
    
    
@@ -339,6 +353,15 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    //    vectNormalizationBkg.push_back(0.719);  
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
+   name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back (nameSignalOn.Data());
+   //    vectNameBkg.push_back ("H m_{H}=125 ");
+   vectColourBkg.push_back(6);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationBkg.push_back(0.719);  
    
    
    
@@ -368,15 +391,22 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    ///==== data (end)  ====
    
    
-   hs->setBlindBinSx(100);
-//    hs->setBlindBinSx(0);
-//    hs->setBlindBinDx(10);
-   hs->setBlindBinDx(0);
-   
+//    hs->setBlindBinSx(100);
+   hs->setBlindBinSx(9);
+   hs->setBlindBinDx(9);
+//    hs->setBlindBinDx(0);
+
+   if (which == 3) {
+     hs->setBlindBinSx(13);
+     hs->setBlindBinDx(11);
+   }
+
    hs->setCutSx(-999,">");
    hs->setCutDx(-999,"<");
    
    name = Form("%s%smodel_errs",folder.Data(),nameChannel.Data()); 
+   //    TString folderBkg = Form ("bkg/");
+   //    name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data()); 
    std::cout << " name = " << name.Data() << std::endl;  
    
    hs->set_ErrorBand( *(FilterBins(binsToSelect, (TGraphAsymmErrors*) f[iFile]->Get(name))) );  
@@ -400,7 +430,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  
 
 //  hs->addWeight(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
- hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+//  hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
  
  hs->prepare();
  
@@ -432,7 +462,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  double vedges[NMAXX+1];
  for (int i=0; i<NMAXX+1; i++) {
   vedges[i] = 0. + 1.*i; 
-  std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
+//   std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
  }
  
  
