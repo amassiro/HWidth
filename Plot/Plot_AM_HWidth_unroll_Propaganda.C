@@ -56,8 +56,11 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 void Plot_AM_HWidth_unroll_Propaganda() {
  
- int which = 3;
-//  int which = 1;
+//  int which = 0;
+//  int which = 2;
+//  int which = 3;
+//  int which = 4;
+ int which = 6;
  
  
  TString nameChannel;
@@ -65,6 +68,9 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  else if (which == 1)     { nameChannel = Form ("of_0j/"); }
  else if (which == 2)     { nameChannel = Form ("of_1j/"); }
  else if (which == 3)     { nameChannel = Form ("of_2j/"); }
+ else if (which == 4)     { nameChannel = Form ("of_0j/"); }
+ else if (which == 5)     { nameChannel = Form ("of_0j/"); }
+ else if (which == 6)     { nameChannel = Form ("of_1j/"); }
  
  std::cout << " which = " << which << std::endl;
  
@@ -98,10 +104,12 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
  else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
  else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
-//  if      (which == 0)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
-//  else if (which == 1)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
-//  else if (which == 2)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-signalInjection.root");  doSignalInjection = false; }
+
+ if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+ else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+ 
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
@@ -146,8 +154,13 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //  int NMAXX = 4*11;  //---- variable bin
 
 
- int NMAXX = 6*(7);  //---- variable bin
- if (which == 3) NMAXX = 3*(7);  //---- variable bin
+ //---- 0/1 jet mth:mll
+ int NMAXX = 6*(8);  //---- variable bin
+ //---- 2 jet mth:mll
+ if (which == 3) NMAXX = 5*(7);  //---- variable bin
+
+ //---- 0/1 jet mva:mva
+ if (which == 4 || which == 5 || which == 6) NMAXX = 4*(10);  //---- variable bin
  
 //  int NMAXX = 4*(8+2);  //---- variable bin
 //  if (which == 3) NMAXX = 6*(7);  //---- variable bin
@@ -397,10 +410,15 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //    hs->setBlindBinDx(0);
 
    if (which == 3) {
-     hs->setBlindBinSx(13);
-     hs->setBlindBinDx(11);
+     hs->setBlindBinSx(4);
+     hs->setBlindBinDx(8);
    }
 
+   if (which == 0 || which == 2) {
+    hs->setBlindBinSx(15);
+    hs->setBlindBinDx(25);
+   }
+   
    hs->setCutSx(-999,">");
    hs->setCutDx(-999,"<");
    

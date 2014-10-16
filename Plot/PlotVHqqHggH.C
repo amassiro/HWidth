@@ -281,7 +281,7 @@ class PlotVHqqHggH {
                 double integral;
                 double error;
                 integral = vh.at(iBkg)->IntegralAndError(-1,-1, error);
-                std::cout << " samp = " << "bkg[" << iBkg << "] ::" << " yield = " << integral << " +/- " << error << std::endl;
+                std::cout << " samp = " << "bkg[" << iBkg << "] ::" << " yield = " << integral << " +/- " << error << " ---- " << vh.at(iBkg)->GetTitle() << std::endl;
                 std::cout << " ~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
             }
         }
