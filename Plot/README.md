@@ -19,5 +19,10 @@ Copy and plot:
     r00t Plot_AM_HWidth_unroll_Propaganda.C+
      
      
-     
+Where:
+
+    /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot
+
+
+
  

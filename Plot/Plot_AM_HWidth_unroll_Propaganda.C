@@ -57,10 +57,10 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 void Plot_AM_HWidth_unroll_Propaganda() {
  
 //  int which = 0;
-//  int which = 2;
+ int which = 2;
 //  int which = 3;
 //  int which = 4;
- int which = 6;
+//  int which = 6;
  
  
  TString nameChannel;
@@ -155,7 +155,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 
 
  //---- 0/1 jet mth:mll
- int NMAXX = 6*(8);  //---- variable bin
+//  int NMAXX = 6*(8);  //---- variable bin
+ int NMAXX = 6*(7);  //---- variable bin
  //---- 2 jet mth:mll
  if (which == 3) NMAXX = 5*(7);  //---- variable bin
 
