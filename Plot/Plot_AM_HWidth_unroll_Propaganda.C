@@ -56,11 +56,11 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 void Plot_AM_HWidth_unroll_Propaganda() {
  
-//  int which = 0;
- int which = 2;
-//  int which = 3;
-//  int which = 4;
-//  int which = 6;
+//  int which = 0;  //---- mth:mll 0 jet
+ int which = 2;  //---- mth:mll 1 jet
+//  int which = 3;   //---- mth:mll 2 jet
+//  int which = 4;  //---- mva 0 jet
+//  int which = 6;  //---- mva 1 jet
  
  
  TString nameChannel;
@@ -158,10 +158,12 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //  int NMAXX = 6*(8);  //---- variable bin
  int NMAXX = 6*(7);  //---- variable bin
  //---- 2 jet mth:mll
- if (which == 3) NMAXX = 5*(7);  //---- variable bin
-
+//  if (which == 3) NMAXX = 5*(7);  //---- variable bin
+ if (which == 3) NMAXX = 4*(6);  //---- variable bin
+ 
  //---- 0/1 jet mva:mva
- if (which == 4 || which == 5 || which == 6) NMAXX = 4*(10);  //---- variable bin
+ if (              which == 5 || which == 6) NMAXX = 5*(12);  //---- variable bin
+ if (which == 4                            ) NMAXX = 4*(12);  //---- variable bin
  
 //  int NMAXX = 4*(8+2);  //---- variable bin
 //  if (which == 3) NMAXX = 6*(7);  //---- variable bin
@@ -410,14 +412,24 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    hs->setBlindBinDx(9);
 //    hs->setBlindBinDx(0);
 
+   if (which == 4) {
+    hs->setBlindBinSx(9+5+2+2);
+    hs->setBlindBinDx(9+3+3-2);
+   }
+
+   if (which == 6) {
+    hs->setBlindBinSx(9+9);
+    hs->setBlindBinDx(9);
+   }
+   
    if (which == 3) {
-     hs->setBlindBinSx(4);
+     hs->setBlindBinSx(12-3);
      hs->setBlindBinDx(8);
    }
 
    if (which == 0 || which == 2) {
-    hs->setBlindBinSx(15);
-    hs->setBlindBinDx(25);
+    hs->setBlindBinSx(13);
+    hs->setBlindBinDx(20);
    }
    
    hs->setCutSx(-999,">");
