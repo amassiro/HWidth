@@ -5,7 +5,7 @@
 
 {
 
- std::string nameFile = "test/HWidth/ttbar/result-eff-shape-of-pt-0-tche-0.txt";     //  [30,-]
+ std::string nameFile = "test/HWidth/ttbar/result-eff-shape-of-pt-0-tche-0-0.txt";     //  [30,-]
  
  
  
@@ -27,13 +27,13 @@
  etaMin.push_back (0.5);
  etaMin.push_back (1.0);
  etaMin.push_back (1.5);
- etaMin.push_back (2.0); //--> before disabled
+//  etaMin.push_back (2.0); //--> before disabled
 //  etaMin.push_back (2.5);
  
  etaMax.push_back (0.5);
  etaMax.push_back (1.0);
  etaMax.push_back (1.5);
- etaMax.push_back (2.0); //--> before disabled
+//  etaMax.push_back (2.0); //--> before disabled
  etaMax.push_back (2.5);
  
  
