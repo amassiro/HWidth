@@ -14,6 +14,7 @@ propaganda plot for shape analysis
 Copy and plot:
     
     scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/?jetDF?TeV/postFit/Hwidth-*-erro*.root    postFit/ 
+    scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/*jetDF?TeV/postFit/Hwidth-*-erro*.root    postFit/ 
     scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/?jetDF?TeVSimple/postFit/Hwidth-*-erro*.root    postFitSimple/ 
 
     r00t Plot_AM_HWidth_unroll_Propaganda.C+

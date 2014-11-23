@@ -57,10 +57,11 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 void Plot_AM_HWidth_unroll_Propaganda() {
  
 //  int which = 0;  //---- mth:mll 0 jet
- int which = 2;  //---- mth:mll 1 jet
+//  int which = 2;  //---- mth:mll 1 jet
 //  int which = 3;   //---- mth:mll 2 jet
 //  int which = 4;  //---- mva 0 jet
-//  int which = 6;  //---- mva 1 jet
+ int which = 6;  //---- mva 1 jet
+//  int which = 7;  //---- mva 0+1 jet
  
  
  TString nameChannel;
@@ -71,6 +72,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  else if (which == 4)     { nameChannel = Form ("of_0j/"); }
  else if (which == 5)     { nameChannel = Form ("of_0j/"); }
  else if (which == 6)     { nameChannel = Form ("of_1j/"); }
+ else if (which == 7)     { nameChannel = Form ("of_01j/"); }
  
  std::cout << " which = " << which << std::endl;
  
@@ -95,8 +97,9 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  gROOT->LoadMacro("PlotVHqqHggH.C+");
  gInterpreter->ExecuteMacro("LatinoStyle2.C");
  
- TCanvas* c1 = new TCanvas("mll","mll",550,660);
-
+//  TCanvas* c1 = new TCanvas("mll","mll",550,660);
+ TCanvas* c1 = new TCanvas("mll","mll",800,660);
+ 
  TFile* f[10];
  bool doSignalInjection;
   
@@ -109,6 +112,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
  else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
  else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+ else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-signalInjection.root");  doSignalInjection = false; }
  
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
@@ -142,6 +146,11 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  
  std::vector<int> binsToSelect; 
  
+ 
+
+ 
+ 
+ 
 //  int NMAXX = 30;  //---- variable bin
 //  int NMAXX = 16;  //---- variable bin
 //  int NMAXX = 8;  //---- variable bin
@@ -153,17 +162,35 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 //  int NMAXX = 5*6;  //---- variable bin
 //  int NMAXX = 4*11;  //---- variable bin
 
-
+ 
  //---- 0/1 jet mth:mll
 //  int NMAXX = 6*(8);  //---- variable bin
  int NMAXX = 6*(7);  //---- variable bin
  //---- 2 jet mth:mll
 //  if (which == 3) NMAXX = 5*(7);  //---- variable bin
- if (which == 3) NMAXX = 4*(6);  //---- variable bin
+//  if (which == 3) NMAXX = 4*(6);  //---- variable bin
  
  //---- 0/1 jet mva:mva
- if (              which == 5 || which == 6) NMAXX = 5*(12);  //---- variable bin
- if (which == 4                            ) NMAXX = 4*(12);  //---- variable bin
+//  if (              which == 5 || which == 6) NMAXX = 5*(12);  //---- variable bin
+//  if (which == 4                            ) NMAXX = 4*(12);  //---- variable bin
+ 
+ 
+ 
+ if (which == 0) NMAXX = 7*(11);  //---- variable bin
+ if (which == 2) NMAXX = 7*(11);  //---- variable bin
+ if (which == 3) NMAXX = 2*(5);  //---- variable bin
+ if (which == 4) NMAXX = 6*(19-2);  //---- variable bin
+ if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
+ if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
+ 
+ //  int which = 0;  //---- mth:mll 0 jet
+ //  int which = 2;  //---- mth:mll 1 jet
+ //  int which = 3;  //---- mth:mll 2 jet
+ //  int which = 4;  //---- mva 0 jet
+ //  int which = 6;  //---- mva 1 jet
+ //  int which = 7;  //---- mva 0+1 jet
+ 
+ 
  
 //  int NMAXX = 4*(8+2);  //---- variable bin
 //  if (which == 3) NMAXX = 6*(7);  //---- variable bin
@@ -204,8 +231,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-   int GammaOverGammaSM = 50;
-   TString nameSignal   = Form("H off x%d", GammaOverGammaSM);
+   int GammaOverGammaSM = 30;
+   TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
 //    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    TString nameSignalOn = Form("H on shell");
    
@@ -223,7 +250,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameSig.push_back (nameSignal.Data());
-   vectColourSig.push_back(7);
+   vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
    //    vectNormalizationSig.push_back(0.719);  
@@ -232,7 +259,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameSig.push_back (nameSignal.Data());
-   vectColourSig.push_back(7);
+   vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
    //    vectNormalizationSig.push_back(0.719);  
@@ -241,7 +268,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameSig.push_back (nameSignal.Data());
-   vectColourSig.push_back(7);
+   vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
    //    vectNormalizationSig.push_back(0.719);  
@@ -252,12 +279,79 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameSig.push_back (nameSignal.Data());
-   vectColourSig.push_back(7);
+   vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*GammaOverGammaSM);
    //    vectNormalizationSig.push_back(0.719);  
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
+   
+   
+   
+   
+//---- VBF
+   
+   name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameSig.push_back (nameSignal.Data());
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
    ///==== signal (end)  ====
@@ -407,29 +501,50 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    ///==== data (end)  ====
    
    
+   //  int which = 0;  //---- mth:mll 0 jet
+   //  int which = 2;  //---- mth:mll 1 jet
+   //  int which = 3;  //---- mth:mll 2 jet
+   //  int which = 4;  //---- mva 0 jet
+   //  int which = 6;  //---- mva 1 jet
+   //  int which = 7;  //---- mva 0+1 jet
+   
+   
 //    hs->setBlindBinSx(100);
    hs->setBlindBinSx(9);
    hs->setBlindBinDx(9);
 //    hs->setBlindBinDx(0);
 
    if (which == 4) {
-    hs->setBlindBinSx(9+5+2+2);
-    hs->setBlindBinDx(9+3+3-2);
+    hs->setBlindBinSx(17*3-10);
+    hs->setBlindBinDx(17*1+5);
    }
 
    if (which == 6) {
-    hs->setBlindBinSx(9+9);
-    hs->setBlindBinDx(9);
+    hs->setBlindBinSx(15*2-10);
+    hs->setBlindBinDx(15*1-5);
+   }
+
+   if (which == 7) {
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+//     hs->setBlindBinSx(17*3-10);
+//     hs->setBlindBinDx(17*1+5);
    }
    
    if (which == 3) {
-     hs->setBlindBinSx(12-3);
-     hs->setBlindBinDx(8);
+     hs->setBlindBinSx(3);
+     hs->setBlindBinDx(5);
    }
 
-   if (which == 0 || which == 2) {
-    hs->setBlindBinSx(13);
-    hs->setBlindBinDx(20);
+   if (which == 0) {
+    hs->setBlindBinSx(11*3);
+    hs->setBlindBinDx(11*2);
+   }
+   
+   
+   if (which == 2) {
+    hs->setBlindBinSx(11*2+4);
+    hs->setBlindBinDx(11*2+4);
    }
    
    hs->setCutSx(-999,">");
