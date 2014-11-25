@@ -269,10 +269,20 @@ class PlotVHqqHggH {
         }
            
         
+        
+        void CopyHisto(std::vector<TH1*>& newone, std::vector<TH1F*>& oldone) {
+         for (unsigned int i = 0; i<oldone.size(); i++) {
+          TH1* h = (TH1*) oldone.at(i)->Clone();
+          newone.at(i) = h;
+         }
+         std::cout << " newone size = " << newone.size() << std::endl;
+        }
+        
         ///---- background
         void set_vectTHBkg (std::vector<TH1F*>& vh) {
             std::vector<TH1*> dummy(vh.size());
-            std::copy(vh.begin(), vh.end(), dummy.begin());
+//             std::copy(vh.begin(), vh.end(), dummy.begin());
+            CopyHisto(dummy, vh);
             this -> set_vectTHBkg(dummy);
             
         }
@@ -328,7 +338,8 @@ class PlotVHqqHggH {
         ///---- signal
         void set_vectTHSig (std::vector<TH1F*>& vh) {
             std::vector<TH1*> dummy(vh.size());
-            std::copy(vh.begin(), vh.end(), dummy.begin());
+//             std::copy(vh.begin(), vh.end(), dummy.begin());
+            CopyHisto(dummy, vh);
             this -> set_vectTHSig(dummy);
             
         }

@@ -13,7 +13,17 @@
 TH1F* FilterBins(std::vector<int> binsToSelect, TH1F* inputTH) {
  int numbin = binsToSelect.size();
  
- TString name = Form ("%s_new",inputTH->GetName());
+ TString name;
+
+ name = Form ("%s_new",inputTH->GetName());
+ TObject* isItFound = gROOT->FindObject(name.Data());
+ int icounter = 0;
+ while (isItFound != 0x0) {
+  name = Form ("%s_new_%d",inputTH->GetName(), icounter); 
+  isItFound = gROOT->FindObject(name.Data());
+  icounter++;
+ }
+ 
  TString title = Form ("%s",inputTH->GetTitle());
  
  TH1F* newTH = new TH1F (name,title,numbin,0,numbin);
@@ -236,7 +246,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-   int GammaOverGammaSM = 30;
+//    int GammaOverGammaSM = 30;
+   int GammaOverGammaSM = 1;
    TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
 //    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    TString nameSignalOn = Form("H on shell");
@@ -254,6 +265,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
 //    vectNameSig.push_back (nameSignal.Data());
    vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
@@ -265,6 +277,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
    vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
@@ -275,6 +288,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
    vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
@@ -287,6 +301,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
    vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
@@ -583,7 +598,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  }
  
  std::cout << " * end iFile * " << std::endl;
- 
+  
  hs->set_vectTHBkg     (vectTHBkg);      
  hs->set_vectNameBkg   (vectNameBkg);    
  hs->set_vectColourBkg (vectColourBkg);  
@@ -595,7 +610,6 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  hs->set_vectColourSig (vectColourSig);  
  hs->set_vectScaleSig  (vectScaleSig);   
  
- 
 
 //  hs->addWeight(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
 //  hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
@@ -605,7 +619,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  hs->mergeSamples(); //---- merge trees with the same name! ---- to be called after "prepare" !
  
  hs->set_addSignalOnBackground(1); // 1 = signal over background , 0 = signal on its own
- 
+  
  hs->set_mergeSignal(0);    // 1 = merge signal in 1 bin, 0 = let different signals as it is
  
  hs->setMass(125); 
@@ -671,19 +685,22 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  TFile* outfile = new TFile (nameOutFile.c_str(),"recreate");
  
  for (int iBkg = 0; iBkg < vectScaleBkg.size(); iBkg++) { 
-  vectTHBkg.at(iBkg) -> Scale(vectScaleBkg.at(iBkg));
+  (vectTHBkg.at(iBkg)) -> Sumw2();
+  vectTHBkg.at(iBkg)   -> Scale(vectScaleBkg.at(iBkg));
  }
  for (int iSig = 0; iSig < vectScaleSig.size(); iSig++) { 
-  vectTHSig.at(iSig) -> Scale(vectScaleSig.at(iSig));
+  (vectTHSig.at(iSig)) -> Sumw2();
+  std::cout << " vectScaleSig.at(" << iSig << ") = " << vectScaleSig.at(iSig)  << " Integral = " << vectTHSig.at(iSig)->Integral() << std::endl;
+  vectTHSig.at(iSig)   -> Scale(vectScaleSig.at(iSig));
+  std::cout << " vectScaleSig.at(" << iSig << ") = " << vectScaleSig.at(iSig)  << " Integral = " << vectTHSig.at(iSig)->Integral() << std::endl;
  }
  
 //  
  
  ///---- Bkg ----
-  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
-   (vectTHBkg.at(iBkg)) -> Sumw2();
-   (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
-  }
+//   for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+//    (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
+//   }
   
   //---- add systematic background
   for (int iBkg = 0; iBkg < vectSystBkg.size(); iBkg++) { 
@@ -699,6 +716,7 @@ void Plot_AM_HWidth_unroll_Propaganda() {
   
   
   for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
    for (int jBkg = iBkg+1; jBkg < vectNameBkg.size(); jBkg++) {
     if (vectNameBkg.at(iBkg) == vectNameBkg.at(jBkg)) {
      (vectTHBkg.at(iBkg)) -> Add(vectTHBkg.at(jBkg));
@@ -720,15 +738,18 @@ void Plot_AM_HWidth_unroll_Propaganda() {
   }
   
   ///---- Sig ----
-  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
-   (vectTHSig.at(iSig)) -> Sumw2();
-   (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
-  }
+//   for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+//    (vectTHSig.at(iSig)) -> Sumw2();
+//    (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
+//   }
   
   for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
    for (int jSig = iSig+1; jSig < vectNameSig.size(); jSig++) {
     if (vectNameSig.at(iSig) == vectNameSig.at(jSig)) {
+     std::cout << " Adding: vectNameSig.at(" << iSig << "::" << jSig << ") :: to " << vectNameSig.at(jSig) << " out of total = " << vectNameSig.size() << std::endl;
      (vectTHSig.at(iSig)) -> Add(vectTHSig.at(jSig));
+     std::cout << "    Integral = " << (vectTHSig.at(iSig)) -> Integral() << " addition was = " << vectTHSig.at(jSig)->Integral() << std::endl;
     }
    }
   }
