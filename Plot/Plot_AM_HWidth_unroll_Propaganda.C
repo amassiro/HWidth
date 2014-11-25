@@ -670,6 +670,15 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  std::string nameOutFile(stress.str());
  TFile* outfile = new TFile (nameOutFile.c_str(),"recreate");
  
+ for (int iBkg = 0; iBkg < vectScaleBkg.size(); iBkg++) { 
+  vectTHBkg.at(iBkg) -> Scale(vectScaleBkg.at(iBkg));
+ }
+ for (int iSig = 0; iSig < vectScaleSig.size(); iSig++) { 
+  vectTHSig.at(iSig) -> Scale(vectScaleSig.at(iSig));
+ }
+ 
+//  
+ 
  ///---- Bkg ----
   for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
    (vectTHBkg.at(iBkg)) -> Sumw2();

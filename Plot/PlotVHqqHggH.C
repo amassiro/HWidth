@@ -2579,7 +2579,7 @@ class PlotVHqqHggH {
             float ph = pad1->GetAbsHNDC()*c1->GetWh();
 
 //             float fontscale = min(pw,ph)/1000;
-            float fontscale = min(pw,ph)/600;
+            float fontscale = std::min(pw,ph)/600;
             this->_axisLabelSize *= fontscale;
 //             this->_legendTextSize *= (fontscale/1.2);
             this->_legendTextSize *= (fontscale/1.5);
