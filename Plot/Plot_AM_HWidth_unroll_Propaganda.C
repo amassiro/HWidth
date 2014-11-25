@@ -246,8 +246,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-//    int GammaOverGammaSM = 30;
-   int GammaOverGammaSM = 1;
+   int GammaOverGammaSM = 30;
+//    int GammaOverGammaSM = 1;
    TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
 //    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    TString nameSignalOn = Form("H on shell");
