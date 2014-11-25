@@ -6,6 +6,7 @@
 
 #include "PlotVHqqHggH.C"
 
+#include <sstream>
 
 
 //---- Filter bins ----
@@ -143,6 +144,10 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  std::vector<double> vectNormalizationSig; 
  std::vector<TH1F*> vectTHSig;          
  
+ std::vector<TH1F*> vectTHData;
+ std::vector<std::string> vectNameData;
+ 
+ 
  
  std::vector<int> binsToSelect; 
  
@@ -249,7 +254,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -258,7 +264,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 
    name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -267,7 +274,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
 
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -278,7 +286,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("ggHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*GammaOverGammaSM);
@@ -293,7 +302,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -302,7 +312,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -311,7 +322,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -322,7 +334,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameSig.push_back (nameSignal.Data());
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
    vectColourSig.push_back(2);
    vectSystSig.push_back(0.00);
    vectScaleSig.push_back(1.0000*GammaOverGammaSM);
@@ -358,12 +371,12 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    
    
-   ///==== background (begin)  ====
-   
+   ///==== background (begin)  ====  
      
    name = Form("%sVV%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("WZ/ZZ/VVV");
+//    vectNameBkg.push_back ("WZ/ZZ/VVV");
+   vectNameBkg.push_back ("VVandVVV");
    vectColourBkg.push_back(858);
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
@@ -372,7 +385,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sVVV%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("WZ/ZZ/VVV");
+//    vectNameBkg.push_back ("WZ/ZZ/VVV");
+   vectNameBkg.push_back ("VVandVVV");
    vectColourBkg.push_back(858);
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
@@ -388,7 +402,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sVg%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+//    vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+   vectNameBkg.push_back ("Vg");
    vectColourBkg.push_back(616+1);
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
@@ -397,7 +412,9 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    name = Form("%sVgS%s",cutNameBefore.Data(),cutNameAfter.Data());
    if (f[iFile]->GetListOfKeys()->Contains(name)) {
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+//     vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+//     vectNameBkg.push_back ("Wgs");
+    vectNameBkg.push_back ("Vg");
     vectColourBkg.push_back(616+2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
@@ -406,7 +423,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sTop%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("Top");
+//    vectNameBkg.push_back ("Top");
+   vectNameBkg.push_back ("top");
    vectColourBkg.push_back(400);
    vectSystBkg.push_back(0.10);
    vectScaleBkg.push_back(1.0000);
@@ -415,7 +433,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sDYTT%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("DYTT");
+//    vectNameBkg.push_back ("DYTT");
+   vectNameBkg.push_back ("DY+jets");
    vectColourBkg.push_back(418);
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
@@ -454,7 +473,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back (nameSignalOn.Data());
+   vectNameBkg.push_back ("ggH");
+//    vectNameBkg.push_back (nameSignalOn.Data());
 //    vectNameBkg.push_back ("H m_{H}=125 ");
    vectColourBkg.push_back(6);
    vectSystBkg.push_back(0.00);
@@ -465,7 +485,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    
    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back (nameSignalOn.Data());
+   vectNameBkg.push_back ("qqH");
+//    vectNameBkg.push_back (nameSignalOn.Data());
    //    vectNameBkg.push_back ("H m_{H}=125 ");
    vectColourBkg.push_back(6);
    vectSystBkg.push_back(0.00);
@@ -485,6 +506,8 @@ void Plot_AM_HWidth_unroll_Propaganda() {
       
    if (doSignalInjection == false) {
     name = Form("%sData%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHData.push_back ( (TH1F*) ((TH1F*) f[iFile]->Get(name))->Clone() );
+    vectNameData.push_back ("Data");
     hs->setDataHist (FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)));
    }
    else {
@@ -556,7 +579,6 @@ void Plot_AM_HWidth_unroll_Propaganda() {
    std::cout << " name = " << name.Data() << std::endl;  
    
    hs->set_ErrorBand( *(FilterBins(binsToSelect, (TGraphAsymmErrors*) f[iFile]->Get(name))) );  
-   
   }
  }
  
@@ -638,6 +660,118 @@ void Plot_AM_HWidth_unroll_Propaganda() {
  c1bis->Print("bkgSub_mll.pdf");
  c1bis->Print("bkgSub_mll.png");
  c1bis->Print("bkgSub_mll.eps");
+ 
+ 
+ 
+ 
+ ///---- output file to dump and prepare common plots
+ std::ostringstream stress;
+ stress << "final_" << which << ".root";
+ std::string nameOutFile(stress.str());
+ TFile* outfile = new TFile (nameOutFile.c_str(),"recreate");
+ 
+ ///---- Bkg ----
+  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   (vectTHBkg.at(iBkg)) -> Sumw2();
+   (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
+  }
+  
+  //---- add systematic background
+  for (int iBkg = 0; iBkg < vectSystBkg.size(); iBkg++) { 
+   int nbin = vectTHBkg.at(iBkg) -> GetNbinsX();
+   for (int iBin = 0; iBin < nbin; iBin++) {
+    double err_before = vectTHBkg.at(iBkg) -> GetBinError(iBin+1);
+    double value = vectTHBkg.at(iBkg) -> GetBinContent(iBin+1);
+    double syst = vectSystBkg.at(iBkg);
+    double err_after = sqrt(err_before*err_before + syst*value*syst*value);
+    vectTHBkg.at(iBkg) -> SetBinError(iBin+1, err_after);
+   }
+  }
+  
+  
+  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   for (int jBkg = iBkg+1; jBkg < vectNameBkg.size(); jBkg++) {
+    if (vectNameBkg.at(iBkg) == vectNameBkg.at(jBkg)) {
+     (vectTHBkg.at(iBkg)) -> Add(vectTHBkg.at(jBkg));
+    }
+   }
+  }
+  
+  
+  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   bool alreadySaved = false;
+   for (int jBkg = iBkg-1; jBkg >= 0; jBkg--) {
+    if (vectNameBkg.at(iBkg) == vectNameBkg.at(jBkg)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHBkg.at(iBkg))->Write();
+   }
+  }
+  
+  ///---- Sig ----
+  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   (vectTHSig.at(iSig)) -> Sumw2();
+   (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
+  }
+  
+  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   for (int jSig = iSig+1; jSig < vectNameSig.size(); jSig++) {
+    if (vectNameSig.at(iSig) == vectNameSig.at(jSig)) {
+     (vectTHSig.at(iSig)) -> Add(vectTHSig.at(jSig));
+    }
+   }
+  }
+  
+  
+  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   bool alreadySaved = false;
+   for (int jSig = iSig-1; jSig >= 0; jSig--) {
+    if (vectNameSig.at(iSig) == vectNameSig.at(jSig)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHSig.at(iSig))->Write();
+   }
+  }
+  
+  
+  ///---- Data ----
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   (vectTHData.at(iData)) -> Sumw2();
+   (vectTHData.at(iData))->SetName(vectNameData.at(iData).c_str());
+  }
+  
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   for (int jData = iData+1; jData < vectNameData.size(); jData++) {
+    if (vectNameData.at(iData) == vectNameData.at(jData)) {
+     (vectTHData.at(iData)) -> Add(vectTHData.at(jData));
+    }
+   }
+  }
+  
+  
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   bool alreadySaved = false;
+   for (int jData = iData-1; jData >= 0; jData--) {
+    if (vectNameData.at(iData) == vectNameData.at(jData)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHData.at(iData))->Write();
+   }
+  }
+  
+  
+  ///---- error band ----
+  TGraphAsymmErrors* finalErrorBand = (TGraphAsymmErrors*) (hs->get_ErrorBand());
+  finalErrorBand->SetName("errorBand");
+  finalErrorBand->Write();
+  
+  outfile->Close();
  
 }
 

@@ -224,6 +224,11 @@ class PlotVHqqHggH {
         }
 
         
+        TGraphAsymmErrors* get_ErrorBand () {
+         std::cout << " TGraphAsymmErrors:: retrive error band"  << std::endl;
+         return (TGraphAsymmErrors*) (_BandError)->Clone();
+        }
+        
         void UpdateError () {
          for (unsigned int iErr = 0; iErr<_vectBandError.size(); iErr++) {
           if (iErr == 0) {
