@@ -1,0 +1,819 @@
+#include "TString.h"
+#include "TH1F.h"
+#include "TSystem.h"
+#include "TInterpreter.h"
+#include "TFile.h"
+
+#include "PlotVHqqHggH.C"
+
+#include <sstream>
+
+
+//---- Filter bins ----
+TH1F* FilterBins(std::vector<int> binsToSelect, TH1F* inputTH) {
+ int numbin = binsToSelect.size();
+ 
+ TString name;
+
+ name = Form ("%s_new",inputTH->GetName());
+ TObject* isItFound = gROOT->FindObject(name.Data());
+ int icounter = 0;
+ while (isItFound != 0x0) {
+  name = Form ("%s_new_%d",inputTH->GetName(), icounter); 
+  isItFound = gROOT->FindObject(name.Data());
+  icounter++;
+ }
+ 
+ TString title = Form ("%s",inputTH->GetTitle());
+ 
+ TH1F* newTH = new TH1F (name,title,numbin,0,numbin);
+ for (int i=0; i< binsToSelect.size(); i++) {
+  newTH->SetBinContent (i+1, inputTH->GetBinContent(binsToSelect.at(i)));
+  newTH->SetBinError   (i+1, inputTH->GetBinError(binsToSelect.at(i)));
+ }
+ 
+ return newTH;
+}
+
+TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* inputGR) {
+ int numbin = binsToSelect.size();
+ 
+ TString name = Form ("%s_new",inputGR->GetName());
+ TString title = Form ("%s",inputGR->GetTitle());
+ 
+ TGraphAsymmErrors* newGR = new TGraphAsymmErrors();
+ newGR -> SetName (name);
+ 
+ for (int i=0; i< binsToSelect.size(); i++) {
+  
+  double X = i+0.5;
+  double Y = (inputGR->GetY()) [binsToSelect.at(i)-1];
+  
+  double errXUp      = inputGR->GetErrorXhigh(binsToSelect.at(i)-1);
+  double errXDown    = inputGR->GetErrorXlow(binsToSelect.at(i)-1);
+  double errYUp      = inputGR->GetErrorYhigh(binsToSelect.at(i)-1);
+  double errYDown    = inputGR->GetErrorYlow(binsToSelect.at(i)-1);
+  
+  newGR->SetPoint(i, X, Y);
+  newGR->SetPointError(i, errXDown, errXUp, errYDown, errYUp);
+  
+  //     std::cout << " i = " << i << " X = " << X << " Y = " << Y << std::endl;
+ }
+ 
+ return newGR;
+}
+
+
+
+void prepareForAN() {
+ 
+//  int which = 0;  //---- mth:mll 0 jet
+//  int which = 2;  //---- mth:mll 1 jet
+ int which = 3;   //---- mth:mll 2 jet
+//  int which = 4;  //---- mva 0 jet
+//  int which = 6;  //---- mva 1 jet
+//  int which = 7;  //---- mva 0+1 jet
+ 
+ 
+ TString nameChannel;
+ if   (which == 0)        { nameChannel = Form ("of_0j/"); }       //---- signal injection
+ else if (which == 1)     { nameChannel = Form ("of_0j/"); }
+ else if (which == 2)     { nameChannel = Form ("of_1j/"); }
+ else if (which == 3)     { nameChannel = Form ("of_2j/"); }
+ else if (which == 4)     { nameChannel = Form ("of_0j/"); }
+ else if (which == 5)     { nameChannel = Form ("of_0j/"); }
+ else if (which == 6)     { nameChannel = Form ("of_1j/"); }
+ else if (which == 7)     { nameChannel = Form ("of_01j/"); }
+ 
+ std::cout << " which = " << which << std::endl;
+ 
+ 
+//  TString folder = Form("sig/");
+//  TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
+
+ TString folder = Form("init/");
+ TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
+
+ std::cout << " nameChannel   = " << nameChannel.Data() << std::endl;
+ std::cout << " cutNameBefore = " << cutNameBefore.Data() << std::endl;
+ 
+ //  TString folder = Form("bkg/");
+ //  TString nameChannel = Form ("of_vh2j/");
+ //  TString cutNameBefore = Form("bkg/%shisto_",nameChannel.Data());
+ 
+ 
+ //                            cut_variable 
+ TString cutNameAfter  = Form("");
+ 
+ gROOT->LoadMacro("PlotVHqqHggH.C+");
+ gInterpreter->ExecuteMacro("LatinoStyle2.C");
+ 
+//  TCanvas* c1 = new TCanvas("mll","mll",550,660);
+ TCanvas* c1 = new TCanvas("mll","mll",800,660);
+ 
+ TFile* f[10];
+ bool doSignalInjection;
+  
+ 
+ if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+ else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+ 
+ if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+ else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+ else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+ 
+//  if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//  else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//  else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+//  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-signalInjection.root");  doSignalInjection = false; }
+// 
+//  if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//  else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//  else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
+//  else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-signalInjection.root");  doSignalInjection = false; }
+//  
+ 
+ PlotVHqqHggH* hs = new PlotVHqqHggH();
+ 
+//  hs->setLabel("mll*");
+ hs->setLabel("mll");
+ 
+ //  hs->setLumi(20);
+ //  hs->setLumi(200);
+ //  hs->addLabel("#splitline{      WHSC}{     #sqrt{s} = 13 TeV}");
+  
+ hs->setLumi(19.4);
+ hs->addLabel("#splitline{     Hwidth}{     #sqrt{s} = 8 TeV}");
+//  
+ TString name;
+ 
+ std::vector<int> vectColourBkg;        
+ std::vector<double> vectSystBkg;       
+ std::vector<double> vectScaleBkg;      
+ std::vector<std::string> vectNameBkg;  
+ std::vector<double> vectNormalizationBkg; 
+ std::vector<TH1F*> vectTHBkg;          
+ 
+ std::vector<int> vectColourSig;      
+ std::vector<double> vectSystSig;       
+ std::vector<double> vectScaleSig;      
+ std::vector<std::string> vectNameSig;  
+ std::vector<double> vectNormalizationSig; 
+ std::vector<TH1F*> vectTHSig;          
+ 
+ std::vector<TH1F*> vectTHData;
+ std::vector<std::string> vectNameData;
+ 
+ 
+ 
+ std::vector<int> binsToSelect; 
+ 
+ 
+
+ 
+ 
+ 
+//  int NMAXX = 30;  //---- variable bin
+//  int NMAXX = 16;  //---- variable bin
+//  int NMAXX = 8;  //---- variable bin
+//  int NMAXY = 6;  
+
+//  int NMAXX = 8*8;  //---- variable bin
+//  int NMAXY = 1;  
+
+//  int NMAXX = 5*6;  //---- variable bin
+//  int NMAXX = 4*11;  //---- variable bin
+
+ 
+ //---- 0/1 jet mth:mll
+//  int NMAXX = 6*(8);  //---- variable bin
+ int NMAXX = 6*(7);  //---- variable bin
+ //---- 2 jet mth:mll
+//  if (which == 3) NMAXX = 5*(7);  //---- variable bin
+//  if (which == 3) NMAXX = 4*(6);  //---- variable bin
+ 
+ //---- 0/1 jet mva:mva
+//  if (              which == 5 || which == 6) NMAXX = 5*(12);  //---- variable bin
+//  if (which == 4                            ) NMAXX = 4*(12);  //---- variable bin
+ 
+ 
+ 
+ if (which == 0) NMAXX = 7*(11);  //---- variable bin
+ if (which == 2) NMAXX = 7*(11);  //---- variable bin
+ if (which == 3) NMAXX = 2*(5);  //---- variable bin
+ if (which == 4) NMAXX = 6*(19-2);  //---- variable bin
+ if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
+ if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
+ 
+ //  int which = 0;  //---- mth:mll 0 jet
+ //  int which = 2;  //---- mth:mll 1 jet
+ //  int which = 3;  //---- mth:mll 2 jet
+ //  int which = 4;  //---- mva 0 jet
+ //  int which = 6;  //---- mva 1 jet
+ //  int which = 7;  //---- mva 0+1 jet
+ 
+ 
+ 
+//  int NMAXX = 4*(8+2);  //---- variable bin
+//  if (which == 3) NMAXX = 6*(7);  //---- variable bin
+//  if (which == 3) NMAXX = 10*(11+1);  //---- variable bin
+ int NMAXY = 1;  
+
+
+ 
+ //---- all ----
+ int minNY = 0;
+ int minNX = 0;
+ 
+ int NX = NMAXX;
+ int NY = NMAXY;
+ 
+ 
+//  int minNY = 0;
+//  int minNX = 6;
+ 
+//  int NX = NMAXX;
+//  int NY = NMAXY;
+ 
+ 
+ 
+ for (int iFile = 0; iFile<1; iFile++) {
+  
+  std::cout << "iFile = " << iFile << std::endl;
+  
+  ///---- project along X : sum over Y
+  for (int iY=minNY; iY<NY; iY++){
+   binsToSelect.clear();
+   for (int iX=minNX; iX<NX; iX++){
+    binsToSelect.push_back (iX*NMAXY+iY+1);
+    std::cout << " iX*NY+iY+1 = " << iX*NY+iY+1 << std::endl;
+   }
+   
+   ///==== signal (begin) ====
+   int WHEREAMI = 0;
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+      
+   int GammaOverGammaSM = 30;
+//    int GammaOverGammaSM = 1;
+   TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
+//    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
+   TString nameSignalOn = Form("H on shell");
+   
+   
+   
+//    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
+//    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back ("H m_{H}=125");
+//    vectColourSig.push_back(6);
+//    vectSystSig.push_back(0.00);
+//    vectScaleSig.push_back(1.0000);
+// //    vectNormalizationSig.push_back(2.565);
+//    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("ggHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+
+   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+   vectNameSig.push_back ("ggHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+
+   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+   vectNameSig.push_back ("ggHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+  
+   
+   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+   vectNameSig.push_back ("ggHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+      
+   
+   
+   
+   
+//---- VBF
+   
+   name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameSig.push_back (nameSignal.Data());
+   vectNameSig.push_back ("qqHoff");
+   vectColourSig.push_back(2);
+   vectSystSig.push_back(0.00);
+   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+   //    vectNormalizationSig.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   ///==== signal (end)  ====
+   
+   
+   
+   ///==== background (begin)  ====  
+     
+   name = Form("%sVV%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("WZ/ZZ/VVV");
+   vectNameBkg.push_back ("VVandVVV");
+   vectColourBkg.push_back(858);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(0.281);
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sVVV%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("WZ/ZZ/VVV");
+   vectNameBkg.push_back ("VVandVVV");
+   vectColourBkg.push_back(858);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(0.281);
+   
+   name = Form("%sWJet%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("W+jets");
+   vectColourBkg.push_back(921);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(0.667);
+   
+   name = Form("%sVg%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+   vectNameBkg.push_back ("Vg");
+   vectColourBkg.push_back(616+1);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(1.000);
+   
+   name = Form("%sVgS%s",cutNameBefore.Data(),cutNameAfter.Data());
+   if (f[iFile]->GetListOfKeys()->Contains(name)) {
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//     vectNameBkg.push_back ("V+#gamma/V+#gamma*");
+//     vectNameBkg.push_back ("Wgs");
+    vectNameBkg.push_back ("Vg");
+    vectColourBkg.push_back(616+2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(1.000);
+   }
+   
+   name = Form("%sTop%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("Top");
+   vectNameBkg.push_back ("top");
+   vectColourBkg.push_back(400);
+   vectSystBkg.push_back(0.10);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(5.654);
+
+   
+   name = Form("%sDYTT%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("DYTT");
+   vectNameBkg.push_back ("DY+jets");
+   vectColourBkg.push_back(418);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(0.377);
+   
+   name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("WW");
+   vectColourBkg.push_back(851);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(2.256);
+   
+//    name = Form("%sggWW%s",cutNameBefore.Data(),cutNameAfter.Data());
+//    if (f[iFile]->GetListOfKeys()->Contains(name)) {
+//     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//     vectNameBkg.push_back ("WW");
+//     vectColourBkg.push_back(853);
+//     vectSystBkg.push_back(0.00);
+//     vectScaleBkg.push_back(1.0000);
+//     vectNormalizationBkg.push_back(2.256);
+//    }
+   
+   
+   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("ggWW");
+   vectColourBkg.push_back(8);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   //    vectNormalizationBkg.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   
+   
+   
+   name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("ggH");
+//    vectNameBkg.push_back (nameSignalOn.Data());
+//    vectNameBkg.push_back ("H m_{H}=125 ");
+   vectColourBkg.push_back(6);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+//    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationBkg.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   
+   name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("qqH");
+//    vectNameBkg.push_back (nameSignalOn.Data());
+   //    vectNameBkg.push_back ("H m_{H}=125 ");
+   vectColourBkg.push_back(6);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+   //    vectNormalizationBkg.push_back(0.719);  
+   
+   
+   
+   
+   
+   ///==== background (end)  ====
+   
+   
+   
+   ///==== data (begin)  ====
+      
+   if (doSignalInjection == false) {
+    name = Form("%sData%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHData.push_back ( (TH1F*) ((TH1F*) f[iFile]->Get(name))->Clone() );
+    vectNameData.push_back ("Data");
+    hs->setDataHist (FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)));
+   }
+   else {
+    TH1F* tempData = (TH1F*) vectTHBkg.at(0)->Clone();
+    for (int iBkg = 1; iBkg < vectTHBkg.size(); iBkg++) {
+     tempData->Add((TH1F*) vectTHBkg.at(iBkg)->Clone());
+    }
+    for (int iSig = 0; iSig < vectTHSig.size(); iSig++) {
+     tempData->Add((TH1F*) vectTHSig.at(iSig)->Clone());
+    }
+    hs->setDataHist (tempData);
+   }
+   
+   ///==== data (end)  ====
+   
+   
+   //  int which = 0;  //---- mth:mll 0 jet
+   //  int which = 2;  //---- mth:mll 1 jet
+   //  int which = 3;  //---- mth:mll 2 jet
+   //  int which = 4;  //---- mva 0 jet
+   //  int which = 6;  //---- mva 1 jet
+   //  int which = 7;  //---- mva 0+1 jet
+   
+   
+//    hs->setBlindBinSx(100);
+   hs->setBlindBinSx(9);
+   hs->setBlindBinDx(9);
+//    hs->setBlindBinDx(0);
+
+   if (which == 4) {
+    hs->setBlindBinSx(17*3-10);
+    hs->setBlindBinDx(17*1+5);
+   }
+
+   if (which == 6) {
+    hs->setBlindBinSx(15*2-10);
+    hs->setBlindBinDx(15*1-5);
+   }
+
+   if (which == 7) {
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+//     hs->setBlindBinSx(17*3-10);
+//     hs->setBlindBinDx(17*1+5);
+   }
+   
+   if (which == 3) {
+     hs->setBlindBinSx(3);
+     hs->setBlindBinDx(5);
+   }
+
+   if (which == 0) {
+    hs->setBlindBinSx(11*3);
+    hs->setBlindBinDx(11*2);
+   }
+   
+   
+   if (which == 2) {
+    hs->setBlindBinSx(11*2+4);
+    hs->setBlindBinDx(11*2+4);
+   }
+   
+   hs->setCutSx(-999,">");
+   hs->setCutDx(-999,"<");
+   
+   name = Form("%s%smodel_errs",folder.Data(),nameChannel.Data()); 
+   //    TString folderBkg = Form ("bkg/");
+   //    name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data()); 
+   std::cout << " name = " << name.Data() << std::endl;  
+   
+   hs->set_ErrorBand( *(FilterBins(binsToSelect, (TGraphAsymmErrors*) f[iFile]->Get(name))) );  
+  }
+ }
+ 
+ std::cout << " * end iFile * " << std::endl;
+  
+ hs->set_vectTHBkg     (vectTHBkg);      
+ hs->set_vectNameBkg   (vectNameBkg);    
+ hs->set_vectColourBkg (vectColourBkg);  
+//  if (which == 4) hs->set_vectSystBkg   (vectSystBkg);    
+ hs->set_vectScaleBkg  (vectScaleBkg);   
+ 
+ hs->set_vectTHSig     (vectTHSig);      
+ hs->set_vectNameSig   (vectNameSig);    
+ hs->set_vectColourSig (vectColourSig);  
+ hs->set_vectScaleSig  (vectScaleSig);   
+ 
+
+//  hs->addWeight(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+//  hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+ 
+ hs->prepare();
+ 
+ hs->mergeSamples(); //---- merge trees with the same name! ---- to be called after "prepare" !
+ 
+ hs->set_addSignalOnBackground(1); // 1 = signal over background , 0 = signal on its own
+  
+ hs->set_mergeSignal(0);    // 1 = merge signal in 1 bin, 0 = let different signals as it is
+ 
+ hs->setMass(125); 
+ 
+// hs->set_plotSigAlone(true); //---- false = "do not plot signal not-stacked to the background
+ 
+ 
+ hs->set_doLabelNumber ( false ) ;
+ 
+ ///==== draw ====
+  
+ TCanvas* c1bis = new TCanvas("bkgSub","bkgSub",500,500);
+ 
+ hs->setUnits ("GeV");
+//  double vedges[] = {0,10,20,30,40,50,60,70,80,90, 100,110,120,130,140,150,160,170,180,190, 200,210,220,230,240,250,260,270,280,290,300 };  //----> analysis
+ 
+//  double vedges[] = {-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300};
+//  double vedges[] = {0, 20, 50, 75, 100, 150, 200, 250, 300};
+ 
+//  double vedges[] = {-1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00};  //---- mva
+ 
+ double vedges[NMAXX+1];
+ for (int i=0; i<NMAXX+1; i++) {
+  vedges[i] = 0. + 1.*i; 
+//   std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
+ }
+ 
+ 
+ 
+//  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
+ 
+ 
+//   for (int i=0; i<30; i++) {
+//    vedges[i] = 0. + 10*i; 
+//   }
+ 
+ std::cout << "  vedges + sizeof(vedges) / sizeof(double) = " <<  vedges + sizeof(vedges) / sizeof(double) << std::endl;
+ 
+ 
+ std::vector<double> vEdges (vedges, vedges + sizeof(vedges) / sizeof(double) );
+ hs->set_vectEdges(vEdges);
+ hs->set_divide(0); //---- if 1 then divide by bin width
+ //   hs->set_divide(1); //---- if 1 then divide by bin width
+  
+ //----  canvas, rebin, div, shadow, background subtracted canvas ----
+ hs->Draw(c1,1,true,true,c1bis);
+ 
+ c1->Print("mll.pdf");
+ c1->Print("mll.png");
+ c1->Print("mll.eps");
+ 
+ c1bis->Print("bkgSub_mll.pdf");
+ c1bis->Print("bkgSub_mll.png");
+ c1bis->Print("bkgSub_mll.eps");
+ 
+ 
+ 
+ 
+ ///---- output file to dump and prepare common plots
+ std::ostringstream stress;
+ stress << "final_" << which << ".root";
+ std::string nameOutFile(stress.str());
+ TFile* outfile = new TFile (nameOutFile.c_str(),"recreate");
+ 
+ for (int iBkg = 0; iBkg < vectScaleBkg.size(); iBkg++) { 
+  (vectTHBkg.at(iBkg)) -> Sumw2();
+  vectTHBkg.at(iBkg)   -> Scale(vectScaleBkg.at(iBkg));
+ }
+ for (int iSig = 0; iSig < vectScaleSig.size(); iSig++) { 
+  (vectTHSig.at(iSig)) -> Sumw2();
+  std::cout << " vectScaleSig.at(" << iSig << ") = " << vectScaleSig.at(iSig)  << " Integral = " << vectTHSig.at(iSig)->Integral() << std::endl;
+  vectTHSig.at(iSig)   -> Scale(vectScaleSig.at(iSig));
+  std::cout << " vectScaleSig.at(" << iSig << ") = " << vectScaleSig.at(iSig)  << " Integral = " << vectTHSig.at(iSig)->Integral() << std::endl;
+ }
+ 
+//  
+ 
+ ///---- Bkg ----
+//   for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+//    (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
+//   }
+  
+  //---- add systematic background
+  for (int iBkg = 0; iBkg < vectSystBkg.size(); iBkg++) { 
+   int nbin = vectTHBkg.at(iBkg) -> GetNbinsX();
+   for (int iBin = 0; iBin < nbin; iBin++) {
+    double err_before = vectTHBkg.at(iBkg) -> GetBinError(iBin+1);
+    double value = vectTHBkg.at(iBkg) -> GetBinContent(iBin+1);
+    double syst = vectSystBkg.at(iBkg);
+    double err_after = sqrt(err_before*err_before + syst*value*syst*value);
+    vectTHBkg.at(iBkg) -> SetBinError(iBin+1, err_after);
+   }
+  }
+  
+  
+  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   (vectTHBkg.at(iBkg))->SetName(vectNameBkg.at(iBkg).c_str());
+   for (int jBkg = iBkg+1; jBkg < vectNameBkg.size(); jBkg++) {
+    if (vectNameBkg.at(iBkg) == vectNameBkg.at(jBkg)) {
+     (vectTHBkg.at(iBkg)) -> Add(vectTHBkg.at(jBkg));
+    }
+   }
+  }
+  
+  
+  for (int iBkg = 0; iBkg < vectNameBkg.size(); iBkg++) { 
+   bool alreadySaved = false;
+   for (int jBkg = iBkg-1; jBkg >= 0; jBkg--) {
+    if (vectNameBkg.at(iBkg) == vectNameBkg.at(jBkg)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHBkg.at(iBkg))->Write();
+   }
+  }
+  
+  ///---- Sig ----
+//   for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+//    (vectTHSig.at(iSig)) -> Sumw2();
+//    (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
+//   }
+  
+  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   (vectTHSig.at(iSig))->SetName(vectNameSig.at(iSig).c_str());
+   for (int jSig = iSig+1; jSig < vectNameSig.size(); jSig++) {
+    if (vectNameSig.at(iSig) == vectNameSig.at(jSig)) {
+     std::cout << " Adding: vectNameSig.at(" << iSig << "::" << jSig << ") :: to " << vectNameSig.at(jSig) << " out of total = " << vectNameSig.size() << std::endl;
+     (vectTHSig.at(iSig)) -> Add(vectTHSig.at(jSig));
+     std::cout << "    Integral = " << (vectTHSig.at(iSig)) -> Integral() << " addition was = " << vectTHSig.at(jSig)->Integral() << std::endl;
+    }
+   }
+  }
+  
+  
+  for (int iSig = 0; iSig < vectNameSig.size(); iSig++) { 
+   bool alreadySaved = false;
+   for (int jSig = iSig-1; jSig >= 0; jSig--) {
+    if (vectNameSig.at(iSig) == vectNameSig.at(jSig)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHSig.at(iSig))->Write();
+   }
+  }
+  
+  
+  ///---- Data ----
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   (vectTHData.at(iData)) -> Sumw2();
+   (vectTHData.at(iData))->SetName(vectNameData.at(iData).c_str());
+  }
+  
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   for (int jData = iData+1; jData < vectNameData.size(); jData++) {
+    if (vectNameData.at(iData) == vectNameData.at(jData)) {
+     (vectTHData.at(iData)) -> Add(vectTHData.at(jData));
+    }
+   }
+  }
+  
+  for (int iData = 0; iData < vectNameData.size(); iData++) { 
+   bool alreadySaved = false;
+   for (int jData = iData-1; jData >= 0; jData--) {
+    if (vectNameData.at(iData) == vectNameData.at(jData)) {
+     alreadySaved = true;
+    }
+   }
+   if (!alreadySaved) {
+    (vectTHData.at(iData))->Write();
+   }
+  }
+  
+  
+  ///---- error band ----
+  TGraphAsymmErrors* finalErrorBand = (TGraphAsymmErrors*) (hs->get_ErrorBand());
+  finalErrorBand->SetName("errorBand");
+  finalErrorBand->Write();
+  
+  outfile->Close();
+ 
+}
+
+
+
+
