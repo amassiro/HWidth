@@ -11,3 +11,16 @@ cat test/HWidth/ttbar/result-shape-of-pt-0-tche-0-0.txt >>  TopCard_2j-shape-of-
 rm TopCard_2j-shape-of-pt-0-tche-0-ScaleFactor.txt
 cat test/HWidth/ttbar/result-SF-shape-of-pt-0-tche-0-0.txt >>  TopCard_2j-shape-of-pt-0-tche-0-ScaleFactor.txt
 
+
+
+
+
+# 7 TeV 
+
+rm test/HWidth/ttbar/result-eff-shape-7TeV-of-pt-0-tche-0.txt
+root -l test/HWidth/ttbar/GetTop-Macro-forDataCard-Complete-7TeV.cxx\(0,\"of\"\,\"shape-7TeV\",true,0,0\)
+rm TopCard_2j-shape-7TeV-of-pt-0-tche-0.txt
+cat test/HWidth/ttbar/result-shape-7TeV-of-pt-0-tche-0-0.txt >>  TopCard_2j-shape-7TeV-of-pt-0-tche-0.txt
+rm TopCard_2j-shape-7TeV-of-pt-0-tche-0-ScaleFactor.txt
+cat test/HWidth/ttbar/result-SF-shape-7TeV-of-pt-0-tche-0-0.txt >>  TopCard_2j-shape-7TeV-of-pt-0-tche-0-ScaleFactor.txt
+
