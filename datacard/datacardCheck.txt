@@ -1,0 +1,244 @@
+name                                              b-only fit            s+b fit         rho
+BRhiggs_hvv                                      -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_eff_l                                   +0.00, 0.98        +0.00, 0.98       +0.00
+CMS_7TeV_hww_DYTT_of_0j_stat_bin1                -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_DYTT_of_0j_stat_shape               +0.01, 0.94        -0.00, 0.95       +0.00
+CMS_7TeV_hww_DYTT_of_1j_stat_bin1                +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_DYTT_of_1j_stat_shape            * -0.00, 0.87*     * +0.00, 0.87*       +0.00
+CMS_7TeV_hww_DYTT_of_2j_stat_bin1                -0.01, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_DYTT_of_2j_stat_shape               +0.01, 0.95        -0.00, 0.96       +0.00
+CMS_7TeV_hww_FakeRate                            +0.01, 0.91        +0.00, 0.91       +0.00
+CMS_7TeV_hww_Top_2j_of_2j_extr                   -0.00, 0.99        +0.01, 0.99       +0.00
+CMS_7TeV_hww_Top_2j_of_2j_stat                   +0.01, 0.99        +0.01, 0.99       +0.00
+CMS_7TeV_hww_Top_ctrlTT                          -0.01, 0.93        -0.00, 0.93       +0.00
+CMS_7TeV_hww_Top_fTW                             +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_Top_of_0j_stat_bin1                 -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_Top_of_0j_stat_shape                +0.00, 0.98        +0.00, 0.99       +0.00
+CMS_7TeV_hww_Top_of_1j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_Top_of_1j_stat_shape                -0.01, 0.94        -0.00, 0.94       +0.00
+CMS_7TeV_hww_Top_of_2j_stat_shape                -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_VV_of_0j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_VV_of_0j_stat_shape                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_VV_of_1j_stat_bin1                  +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_VV_of_1j_stat_shape                 -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_VV_of_2j_stat_bin1                  -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_VV_of_2j_stat_shape                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_VgS_of_0j_stat_bin1                 -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_VgS_of_0j_stat_shape                -0.00, 0.96        -0.00, 0.96       +0.00
+CMS_7TeV_hww_VgS_of_1j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_VgS_of_1j_stat_shape             * -0.01, 0.84*     * +0.00, 0.87*       +0.00
+CMS_7TeV_hww_VgS_of_2j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_VgS_of_2j_stat_shape                +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_Vg_of_0j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_Vg_of_0j_stat_shape                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_Vg_of_1j_stat_bin1                  +0.00, 0.99        -0.00, 1.03       +0.00
+CMS_7TeV_hww_Vg_of_1j_stat_shape                 -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_Vg_of_2j_stat_bin1                  -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_Vg_of_2j_stat_shape                 +0.00, 0.92        +0.01, 0.92       +0.00
+CMS_7TeV_hww_WJet_FakeRate_e_shape            * -0.01, 0.84*     * -0.00, 0.83*       +0.00
+CMS_7TeV_hww_WJet_FakeRate_m_shape            * -0.01, 0.72*     * -0.00, 0.73*       +0.00
+CMS_7TeV_hww_WJet_of_0j_stat_bin1                +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_WJet_of_0j_stat_shape            * +0.01, 0.60*     * -0.00, 0.60*       +0.00
+CMS_7TeV_hww_WJet_of_1j_stat_bin1                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_WJet_of_1j_stat_shape            * -0.00, 0.65*     * -0.00, 0.66*       +0.00
+CMS_7TeV_hww_WJet_of_2j_stat_bin1                -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_WJet_of_2j_stat_shape               -0.01, 0.92        -0.01, 0.92       +0.00
+CMS_7TeV_hww_WW_of_0j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_WW_of_0j_stat_shape                 -0.01, 0.92        -0.00, 0.91       +0.00
+CMS_7TeV_hww_WW_of_1j_stat_bin1                  -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_WW_of_1j_stat_shape                 -0.01, 0.97        -0.00, 0.97       +0.00
+CMS_7TeV_hww_WW_of_2j_stat_bin1                  +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_WW_of_2j_stat_shape                 -0.00, 1.00        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_b_of_0j_stat_bin1               -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_b_of_0j_stat_shape              -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_b_of_1j_stat_bin1               -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_b_of_1j_stat_shape              +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_b_of_2j_stat_bin1               -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_b_of_2j_stat_shape              -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_0j_stat_bin1                 +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_0j_stat_shape                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_1j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_1j_stat_shape                +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_2j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_of_2j_stat_shape                +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_s_of_0j_stat_bin1               +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_s_of_0j_stat_shape              +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_s_of_1j_stat_bin1               +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_s_of_1j_stat_shape              +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_s_of_2j_stat_bin1               -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_s_of_2j_stat_shape              +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_sbi_of_0j_stat_bin1             +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_sbi_of_0j_stat_shape            -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_sbi_of_1j_stat_bin1             -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_sbi_of_1j_stat_shape            -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_ggH_sbi_of_2j_stat_bin1             -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_ggH_sbi_of_2j_stat_shape            -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_b_of_0j_stat_bin1               -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_b_of_0j_stat_shape              -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_b_of_1j_stat_bin1               -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_b_of_1j_stat_shape              -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_b_of_2j_stat_bin1               +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_b_of_2j_stat_shape              -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_of_0j_stat_bin1                 +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_of_0j_stat_shape                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_of_1j_stat_bin1                 -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_of_1j_stat_shape                +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_of_2j_stat_bin1                 -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_of_2j_stat_shape                +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_s_of_0j_stat_bin1               -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_s_of_0j_stat_shape              +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_s_of_1j_stat_bin1               +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_s_of_1j_stat_shape              -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_s_of_2j_stat_bin1               +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_s_of_2j_stat_shape              +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_sbi_of_0j_stat_bin1             +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_sbi_of_0j_stat_shape            +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_sbi_of_1j_stat_bin1             +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_sbi_of_1j_stat_shape            -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_hww_qqH_sbi_of_2j_stat_bin1             +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_hww_qqH_sbi_of_2j_stat_shape            -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_7TeV_met                                     -0.01, 0.92        -0.00, 0.93       +0.00
+CMS_7TeV_norm_DYTT                            * -0.00, 0.77*     * +0.00, 0.77*       +0.00
+CMS_7TeV_norm_Vg                                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_7TeV_p_res_e                                 -0.00, 0.95        -0.00, 0.95       +0.00
+CMS_7TeV_p_scale_e                            * -0.03, 0.74*     * -0.00, 0.74*       +0.00
+CMS_7TeV_p_scale_j                            * +0.00, 0.83*     * -0.00, 0.84*       +0.00
+CMS_7TeV_p_scale_m                               -0.01, 0.93        +0.00, 0.93       +0.00
+CMS_8TeV_eff_l                                   -0.03, 0.94        +0.00, 0.96       +0.00
+CMS_8TeV_hww_DYTT_of_0j_stat_bin1                +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_DYTT_of_0j_stat_shape            * +0.00, 0.85*     * +0.00, 0.85*       +0.00
+CMS_8TeV_hww_DYTT_of_1j_stat_bin1                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_DYTT_of_1j_stat_shape               +0.01, 0.92        +0.00, 0.92       +0.00
+CMS_8TeV_hww_DYTT_of_2j_stat_bin1                +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_DYTT_of_2j_stat_shape               +0.01, 0.97        +0.00, 0.98       +0.00
+CMS_8TeV_hww_FakeRate                            +0.01, 0.90     * +0.00, 0.90*       +0.00
+CMS_8TeV_hww_Top_1j_of_1j_extr                   -0.00, 0.98        +0.00, 0.98       +0.00
+CMS_8TeV_hww_Top_1j_of_1j_stat                   -0.00, 0.98        +0.00, 0.98       +0.00
+CMS_8TeV_hww_Top_2j_of_2j_extr                * -0.03, 0.72*     * +0.03, 0.72*       +0.00
+CMS_8TeV_hww_Top_2j_of_2j_stat                   -0.02, 0.93        +0.02, 0.93       +0.00
+CMS_8TeV_hww_Top_ctrlTT                       * -0.02, 0.70*     * -0.00, 0.71*       +0.00
+CMS_8TeV_hww_Top_fTW                             -0.01, 0.96        +0.00, 0.96       +0.00
+CMS_8TeV_hww_Top_of_0j_stat_bin1                 -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_Top_of_0j_stat_shape             ! -0.02, 0.44!     ! -0.00, 0.44!       +0.00
+CMS_8TeV_hww_Top_of_1j_stat_shape             ! -0.00, 0.48!     ! +0.00, 0.50!       +0.00
+CMS_8TeV_hww_Top_of_2j_stat_shape                +0.01, 0.91        -0.00, 0.91       +0.00
+CMS_8TeV_hww_VVV_of_0j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_VVV_of_0j_stat_shape                +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_VVV_of_1j_stat_bin1                 +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_VVV_of_1j_stat_shape                +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_VVV_of_2j_stat_bin1                 -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_VVV_of_2j_stat_shape                +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_VV_of_0j_stat_bin1                  -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_VV_of_0j_stat_shape                 +0.01, 0.97        +0.00, 0.98       +0.00
+CMS_8TeV_hww_VV_of_1j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_VV_of_1j_stat_shape                 +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_VV_of_2j_stat_bin1                  -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_VV_of_2j_stat_shape                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_VgS_of_0j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_VgS_of_0j_stat_shape             * -0.01, 0.73*     * -0.00, 0.75*       +0.00
+CMS_8TeV_hww_VgS_of_1j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_VgS_of_1j_stat_shape             * -0.04, 0.83*     * -0.00, 0.86*       +0.00
+CMS_8TeV_hww_Vg_of_0j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_Vg_of_0j_stat_shape                 +0.00, 0.91        +0.00, 0.91       +0.00
+CMS_8TeV_hww_Vg_of_1j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_Vg_of_1j_stat_shape              * +0.02, 0.75*     * +0.00, 0.79*       +0.00
+CMS_8TeV_hww_Vg_of_2j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_Vg_of_2j_stat_shape                 +0.00, 1.00        +0.00, 1.00       +0.00
+CMS_8TeV_hww_WJet_FakeRate_e_shape            * -0.01, 0.88*     * -0.00, 0.85*       +0.00
+CMS_8TeV_hww_WJet_FakeRate_m_shape            * -0.01, 0.68*     * +0.00, 0.67*       +0.00
+CMS_8TeV_hww_WJet_of_0j_stat_bin1                +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_WJet_of_0j_stat_shape            * -0.01, 0.56*     * -0.00, 0.56*       +0.00
+CMS_8TeV_hww_WJet_of_1j_stat_bin1                +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_WJet_of_1j_stat_shape            * -0.02, 0.79*     * +0.00, 0.80*       +0.00
+CMS_8TeV_hww_WJet_of_2j_stat_bin1                -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_WJet_of_2j_stat_shape               -0.02, 1.00        +0.00, 0.98       +0.00
+CMS_8TeV_hww_WW_of_0j_stat_bin1                  -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_WW_of_0j_stat_shape              * +0.02, 0.57*     * +0.00, 0.59*       +0.00
+CMS_8TeV_hww_WW_of_1j_stat_bin1                  +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_WW_of_1j_stat_shape              * +0.01, 0.84*     * +0.00, 0.85*       +0.00
+CMS_8TeV_hww_WW_of_2j_stat_bin1                  -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_WW_of_2j_stat_shape                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_b_of_0j_stat_bin1               -0.00, 0.99        -0.00, 1.02       +0.00
+CMS_8TeV_hww_ggH_b_of_0j_stat_shape              -0.01, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_b_of_1j_stat_bin1               -0.00, 0.99        +0.00, 0.98       +0.00
+CMS_8TeV_hww_ggH_b_of_1j_stat_shape              +0.01, 0.98        +0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_b_of_2j_stat_bin1               -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_b_of_2j_stat_shape              +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_0j_stat_bin1                 -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_0j_stat_shape                +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_1j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_1j_stat_shape                -0.01, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_2j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_of_2j_stat_shape                -0.01, 1.00        +0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_s_of_0j_stat_bin1               +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_s_of_0j_stat_shape              -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_s_of_1j_stat_bin1               +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_s_of_1j_stat_shape              -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_s_of_2j_stat_bin1               +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_s_of_2j_stat_shape              +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_sbi_of_0j_stat_bin1             +0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_sbi_of_0j_stat_shape            +0.00, 0.99        +0.00, 0.98       +0.00
+CMS_8TeV_hww_ggH_sbi_of_1j_stat_bin1             -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_ggH_sbi_of_1j_stat_shape            +0.00, 0.99        +0.00, 0.98       +0.00
+CMS_8TeV_hww_ggH_sbi_of_2j_stat_bin1             -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_ggH_sbi_of_2j_stat_shape            +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_b_of_0j_stat_bin1               -0.00, 0.99        +0.00, 1.03       +0.00
+CMS_8TeV_hww_qqH_b_of_0j_stat_shape              -0.00, 0.99        +0.00, 1.02       +0.00
+CMS_8TeV_hww_qqH_b_of_1j_stat_bin1               +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_b_of_1j_stat_shape              +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_b_of_2j_stat_bin1               -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_b_of_2j_stat_shape              +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_of_0j_stat_bin1                 -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_of_0j_stat_shape                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_of_1j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_of_1j_stat_shape                -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_of_2j_stat_bin1                 +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_of_2j_stat_shape                -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_s_of_0j_stat_bin1               +0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_s_of_0j_stat_shape              -0.00, 0.99        -0.00, 1.02       +0.00
+CMS_8TeV_hww_qqH_s_of_1j_stat_bin1               -0.00, 0.99        +0.00, 1.01       +0.00
+CMS_8TeV_hww_qqH_s_of_1j_stat_shape              -0.00, 0.99        -0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_s_of_2j_stat_bin1               +0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_s_of_2j_stat_shape              -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_sbi_of_0j_stat_bin1             -0.00, 0.99        -0.00, 1.02       +0.00
+CMS_8TeV_hww_qqH_sbi_of_0j_stat_shape            +0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_sbi_of_1j_stat_bin1             -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_sbi_of_1j_stat_shape            -0.00, 0.99        +0.00, 1.00       +0.00
+CMS_8TeV_hww_qqH_sbi_of_2j_stat_bin1             -0.00, 0.99        +0.00, 0.99       +0.00
+CMS_8TeV_hww_qqH_sbi_of_2j_stat_shape            -0.00, 0.99        -0.00, 0.99       +0.00
+CMS_8TeV_met                                  * -0.02, 0.69*     * +0.00, 0.68*       +0.00
+CMS_8TeV_norm_DYTT                            ! +0.02, 0.47!     ! +0.00, 0.47!       +0.00
+CMS_8TeV_norm_Vg                                 +0.01, 0.97        +0.00, 0.96       +0.00
+CMS_8TeV_p_res_e                              * -0.04, 0.62*     * -0.00, 0.59*       +0.00
+CMS_8TeV_p_scale_e                            * -0.02, 0.51*     * +0.00, 0.52*       +0.00
+CMS_8TeV_p_scale_j                            * -0.03, 0.58*     * +0.00, 0.62*       +0.00
+CMS_8TeV_p_scale_m                            * -0.01, 0.74*     * +0.00, 0.75*       +0.00
+CMS_norm_0j_WW                                ! -0.01, 0.11!     ! -0.00, 0.12!       +0.00
+CMS_norm_1j_WW                                ! -0.03, 0.21!     ! +0.00, 0.21!       +0.00
+CMS_norm_2j_WW                                * +0.01, 1.40*     * +0.36, 1.21*       +0.00
+Gen_nlo_WW                                    ! +0.02, 0.16!     ! +0.00, 0.16!       +0.00
+Gen_scale_WW                                  ! +0.00, 0.33!     ! -0.00, 0.32!       +0.00
+QCDscale_VV                                      +0.00, 0.99        +0.00, 1.00       +0.00
+QCDscale_VVV                                     -0.00, 0.99        +0.00, 0.99       +0.00
+QCDscale_VgS                                  * +0.01, 0.74*     * +0.00, 0.74*       +0.00
+QCDscale_WW                                      +0.00, 0.99        -0.00, 1.02       +0.00
+QCDscale_WW1in                                   -0.00, 0.99        +0.00, 0.99       +0.00
+QCDscale_WW2in                                   -0.01, 0.99        +0.00, 0.99       +0.00
+QCDscale_ggH                                     -0.02, 0.97        +0.00, 0.97       +0.00
+QCDscale_ggH1in                               * +0.03, 0.85*     * -0.00, 0.85*       +0.00
+QCDscale_ggH2in                                  -0.00, 0.99        +0.00, 0.99       +0.00
+QCDscale_ggH2in_vbf                              -0.00, 0.99        -0.00, 0.99       +0.00
+QCDscale_ggH_ACCEPT                              -0.00, 0.99        -0.00, 0.99       +0.00
+QCDscale_ggH_offshell                            -0.08, 0.93        +0.00, 0.94       +0.00
+QCDscale_ggWW_0jet                               -0.02, 0.93        -0.00, 0.93       +0.00
+QCDscale_ggWW_1jet                               -0.07, 0.93        +0.00, 0.95       +0.00
+QCDscale_ggWW_2jet                               -0.02, 0.97        +0.00, 0.98       +0.00
+QCDscale_qqH                                     -0.00, 0.99        -0.00, 0.99       +0.00
+QCDscale_qqH_ACCEPT                              +0.00, 0.99        -0.00, 0.99       +0.00
+UEPS                                             -0.04, 0.93        +0.00, 0.94       +0.00
+UEPS_WW                                          +0.00, 0.99        -0.00, 1.02       +0.00
+UEPS_hww_vbf                                     -0.00, 0.99        -0.00, 0.99       +0.00
+lumi_7TeV                                        +0.00, 0.95        +0.00, 0.95       +0.00
+lumi_8TeV                                        -0.02, 0.93        +0.00, 0.94       +0.00
+pdf_gg                                           -0.02, 0.99        +0.00, 0.99       +0.00
+pdf_qqbar                                        -0.00, 0.99        +0.00, 1.01       +0.00
