@@ -25,7 +25,9 @@ Prepare
 
 
 Combine and run
-    
+
+    /afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine
+
     combineCards.py   of0j7TeV=datacards-0j-7TeV/hww-4.94fb.mH125.of_0j_shape.txt \
                   of1j7TeV=datacards-1j-7TeV/hww-4.94fb.mH125.of_1j_shape.txt \
                   of2j7TeV=datacards-2j-7TeV/hww-4.94fb.mH125.of_2j_shape.txt \
@@ -123,7 +125,9 @@ Run
     text2workspace.py -m 125.6 test.txt                               -P LimitCombine.HiggsWidth.HiggsWidthStandalone:higgswidth  --PO=is2l2nu  -o    test.root
 
     combine -M MaxLikelihoodFit -t -1 --expectSignal 1  test.root
+    
     python diffNuisances.py -a  mlfit.root -g plots.root   -p R
+    python diffNuisances.py -a  mlfit.root -g plots.root   -p CMS_zz4l_GGsm
 
 
 
