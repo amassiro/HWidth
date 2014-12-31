@@ -157,7 +157,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
 //  hs->setLabel("mll*");
- hs->setLabel("mll");
+ hs->setLabel("mth");
  
  //  hs->setLumi(20);
  //  hs->setLumi(200);
@@ -199,19 +199,6 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
 
  
  
- 
-//  int NMAXX = 30;  //---- variable bin
-//  int NMAXX = 16;  //---- variable bin
-//  int NMAXX = 8;  //---- variable bin
-//  int NMAXY = 6;  
-
-//  int NMAXX = 8*8;  //---- variable bin
-//  int NMAXY = 1;  
-
-//  int NMAXX = 5*6;  //---- variable bin
-//  int NMAXX = 4*11;  //---- variable bin
-
- 
  //---- 0/1 jet mth:mll
 //  int NMAXX = 6*(8);  //---- variable bin
  int NMAXX = 6*(7);  //---- variable bin
@@ -228,8 +215,18 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  int minNX = 0;
  
    
+ //  int which = 0;  //---- mth:mll 0 jet
+ //  int which = 2;  //---- mth:mll 1 jet
+ //  int which = 3;   //---- mth:mll 2 jet
+ //  int which = 4;  //---- mva 0 jet
+ //  int which = 6;  //---- mva 1 jet
+ //  int which = 7;  //---- mva 0+1 jet
+ 
+ 
+ 
+ 
   if (energy == 0) { //---- 8 TeV
-   if (which == 0) {
+   if ((which == 0) || (which == 2)) {
     NMAXY = 7*(11);  //---- variable bin
     NMAXX = 1;
     
@@ -246,15 +243,65 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     }
     
    }
-   if (which == 2) {
-//     NMAXX = 7*(11);  //---- variable bin
-    NMAXY = 11;  //---- variable bin
-    minNX = 5;
-    NMAXX = 7;  //---- variable bin
+   
+   if (which == 3) {
+    NMAXY = 2*(5);  //---- variable bin
+    NMAXX = 1;
+    
+    
+    if (doWeight == 1) { //---- on-shell
+     NMAXY = 5;  //---- variable bin
+     minNX = 0; 
+     NMAXX = 1;
+    }
+    else if (doWeight == 2) { //---- off-shell
+     NMAXY = 5;  //---- variable bin
+     minNX = 1; 
+     NMAXX = 2;
+    }
+    
    }
-   if (which == 3) NMAXX = 2*(5);  //---- variable bin
-   if (which == 4) NMAXX = 6*(19-2);  //---- variable bin
-   if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
+   
+   if (which == 4) {
+    NMAXY = 6*(17);  //---- variable bin
+    NMAXX = 1;
+    
+    
+    if (doWeight == 1) { //---- on-shell
+     NMAXY = 17;  //---- variable bin
+     minNX = 0; 
+     NMAXX = 4;
+    }
+    else if (doWeight == 2) { //---- off-shell
+     NMAXY = 17;  //---- variable bin
+     minNX = 4; 
+     NMAXX = 6;
+    }
+    
+   }
+
+   
+   if (which == 6) {
+    NMAXY = 4*(15);  //---- variable bin
+    NMAXX = 1;
+    
+    
+    if (doWeight == 1) { //---- on-shell
+     NMAXY = 15;  //---- variable bin
+     minNX = 0; 
+     NMAXX = 3;
+    }
+    else if (doWeight == 2) { //---- off-shell
+     NMAXY = 15;  //---- variable bin
+     minNX = 3; 
+     NMAXX = 4;
+    }
+    
+   }
+   
+   
+   
+//    if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
    if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
   }
   else { //---- 7 TeV
@@ -847,7 +894,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  
  
  if (energy == 0) { //---- 8 TeV
-  if (which == 0) {
+  if ((which == 0) || (which == 2)) {
    if (doWeight == 1) { //---- on-shell
     double vedges_temp[] = {0, 50, 70, 90, 100, 110, 120, 130, 140, 160, 200, 450};
     for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
@@ -861,6 +908,53 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     }
    }
   }
+  
+  if (which == 3) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {0, 50, 100, 130, 170, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {0, 50, 100, 130, 170, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  if (which == 4) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {-1.00, -0.70, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = ((vedges_temp[i]) + 1.00) * 160.; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {-1.00, -0.70, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  if (which == 6) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {-1.00, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = ((vedges_temp[i]) + 1.00) * 160.; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {-1.00, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  
  }
   
  
