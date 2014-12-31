@@ -722,7 +722,7 @@ class PlotVHqqHggH {
             //---- add signal histograms
             _vectTHstackSig.clear(); //---->>> very important! Otherwise it crashes!!!
             for (unsigned int iSig = 0; iSig<_vectTHSig.size(); iSig++) {
-                std::cout << " nbin(" << iSig << ") = " << _vectTHSig.at (iSig)->GetNbinsX() << std::endl;
+//                 std::cout << " nbin(" << iSig << ") = " << _vectTHSig.at (iSig)->GetNbinsX() << std::endl;
                 _vectTHstackSig.push_back ((TH1*) _vectTHSig.at (iSig) -> Clone() );
                 if (iSig != 0 && _addSignal) { 
                     _vectTHstackSig.at (iSig) -> Add ( _vectTHstackSig.at (iSig-1) ) ;

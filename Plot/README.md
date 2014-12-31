@@ -20,7 +20,7 @@ Copy and plot:
     scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/?jetDF7TeVSimple/postFit/Hwidth-*-erro*.root    postFit7TeV/ 
     
     r00t Plot_AM_HWidth_unroll_Propaganda.C+
-     
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0\)
      
 Where:
 
