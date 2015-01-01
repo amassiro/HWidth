@@ -21,6 +21,8 @@ Copy and plot:
     
     r00t Plot_AM_HWidth_unroll_Propaganda.C+
     r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0\)
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0,0,1\)
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0,1,1\)
      
 Where:
 
@@ -30,6 +32,8 @@ Where:
 
 Prepare for AN: 
  
+8 TeV:
+
     r99t -l -q PrepareForAN.C+\(0,0,0\)
     r99t -l -q PrepareForAN.C+\(0,0,1\)
     r99t -l -q PrepareForAN.C+\(0,0,2\)
@@ -49,4 +53,18 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(6,0,0\)
     r99t -l -q PrepareForAN.C+\(6,0,1\)
     r99t -l -q PrepareForAN.C+\(6,0,2\)
+
+7 TeV:
+
+    r99t -l -q PrepareForAN.C+\(0,1,0\)
+    r99t -l -q PrepareForAN.C+\(0,1,1\)
+    r99t -l -q PrepareForAN.C+\(0,1,2\)
+    
+    r99t -l -q PrepareForAN.C+\(2,1,0\)
+    r99t -l -q PrepareForAN.C+\(2,1,1\)
+    r99t -l -q PrepareForAN.C+\(2,1,2\)
+    
+    r99t -l -q PrepareForAN.C+\(3,1,0\)
+    r99t -l -q PrepareForAN.C+\(3,1,1\)
+    r99t -l -q PrepareForAN.C+\(3,1,2\)
     

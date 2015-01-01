@@ -305,9 +305,44 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
   }
   else { //---- 7 TeV
-   if (which == 0) NMAXX = 7*(7);  //---- variable bin
-   if (which == 2) NMAXX = 7*(7);  //---- variable bin
-   if (which == 3) NMAXX = 2*(3);  //---- variable bin
+   
+   
+   if ((which == 0) || (which == 2)) {
+    NMAXY = 7*(7);  //---- variable bin
+    NMAXX = 1;
+    
+    
+    if (doWeight == 1) { //---- on-shell
+     NMAXY = 7;  //---- variable bin
+     minNX = 0; 
+     NMAXX = 3;
+    }
+    else if (doWeight == 2) { //---- off-shell
+     NMAXY = 7;  //---- variable bin
+     minNX = 3; 
+     NMAXX = 7;
+    }
+    
+   }
+   
+   if (which == 3) {
+    NMAXY = 2*(3);  //---- variable bin
+    NMAXX = 1;
+    
+    
+    if (doWeight == 1) { //---- on-shell
+     NMAXY = 3;  //---- variable bin
+     minNX = 0; 
+     NMAXX = 1;
+    }
+    else if (doWeight == 2) { //---- off-shell
+     NMAXY = 3;  //---- variable bin
+     minNX = 1; 
+     NMAXX = 2;
+    }
+    
+   }
+  
   }
   
  //  int which = 0;  //---- mth:mll 0 jet
@@ -545,7 +580,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     vectNormalizationBkg.push_back(0.281);
    }
    
-   if (energy == 0) { //---- only 8 TeV
+//    if (energy == 0) { //---- only 8 TeV
     name = Form("%sWJet%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     vectNameBkg.push_back ("W+jets");
@@ -553,7 +588,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
     vectNormalizationBkg.push_back(0.667);
-   }
+//    }
    
    name = Form("%sVg%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
@@ -585,16 +620,16 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(5.654);
 
-   if (energy == 0) { //---- only 8 TeV
-    name = Form("%sDYTT%s",cutNameBefore.Data(),cutNameAfter.Data());
-    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    //    vectNameBkg.push_back ("DYTT");
-    vectNameBkg.push_back ("DY+jets");
-    vectColourBkg.push_back(418);
-    vectSystBkg.push_back(0.00);
-    vectScaleBkg.push_back(1.0000);
-    vectNormalizationBkg.push_back(0.377);
-   }
+//    if (energy == 0) { //---- only 8 TeV
+   name = Form("%sDYTT%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   //    vectNameBkg.push_back ("DYTT");
+   vectNameBkg.push_back ("DY+jets");
+   vectColourBkg.push_back(418);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(0.377);
+//    }
    
    name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
@@ -956,14 +991,40 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
   
   
  }
+ else { //---- 7 TeV
+  if ((which == 0) || (which == 2)) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {0, 50, 90, 110, 130, 160, 200, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {0, 50, 90, 110, 130, 160, 200, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
   
+  if (which == 3) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {0, 80, 130, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {0, 80, 130, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
  
-//  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
+ }
  
  
-//   for (int i=0; i<30; i++) {
-//    vedges[i] = 0. + 10*i; 
-//   }
  
  std::cout << "  vedges + sizeof(vedges) / sizeof(double) = " <<  vedges + sizeof(vedges) / sizeof(double) << std::endl;
  
