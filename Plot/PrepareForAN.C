@@ -65,11 +65,11 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 
 
-void prepareForAN() {
+void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
  
 //  int which = 0;  //---- mth:mll 0 jet
 //  int which = 2;  //---- mth:mll 1 jet
- int which = 3;   //---- mth:mll 2 jet
+//  int which = 3;   //---- mth:mll 2 jet
 //  int which = 4;  //---- mva 0 jet
 //  int which = 6;  //---- mva 1 jet
 //  int which = 7;  //---- mva 0+1 jet
@@ -115,26 +115,30 @@ void prepareForAN() {
  bool doSignalInjection;
   
  
- if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
- else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
- else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
- else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+ if (energy == 0) {
+  if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+  else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+  
+  if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+  else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+ }
+ else {
+  if      (which == 0)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 1)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+  else if (which == 2)   { f[0] = new TFile("postFit7TeV/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 3)   { f[0] = new TFile("postFit7TeV/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+  
+  if      (which == 4)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 5)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+  else if (which == 6)   { f[0] = new TFile("postFit7TeV/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 7)   { f[0] = new TFile("postFit7TeV/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+ }
  
- if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
- else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
- else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
- else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
- 
-//  if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
-//  else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
-//  else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
-//  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-signalInjection.root");  doSignalInjection = false; }
-// 
-//  if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
-//  else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
-//  else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-signalInjection.root");  doSignalInjection = false; }
-//  else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-signalInjection.root");  doSignalInjection = false; }
-//  
+   
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
@@ -172,71 +176,114 @@ void prepareForAN() {
  std::vector<int> binsToSelect; 
  
  
-
- 
- 
- 
-//  int NMAXX = 30;  //---- variable bin
-//  int NMAXX = 16;  //---- variable bin
-//  int NMAXX = 8;  //---- variable bin
-//  int NMAXY = 6;  
-
-//  int NMAXX = 8*8;  //---- variable bin
-//  int NMAXY = 1;  
-
-//  int NMAXX = 5*6;  //---- variable bin
-//  int NMAXX = 4*11;  //---- variable bin
-
- 
- //---- 0/1 jet mth:mll
-//  int NMAXX = 6*(8);  //---- variable bin
  int NMAXX = 6*(7);  //---- variable bin
- //---- 2 jet mth:mll
-//  if (which == 3) NMAXX = 5*(7);  //---- variable bin
-//  if (which == 3) NMAXX = 4*(6);  //---- variable bin
+ int NMAXY = 1;  
+ int minNY = 0;
+ int minNX = 0;
  
- //---- 0/1 jet mva:mva
-//  if (              which == 5 || which == 6) NMAXX = 5*(12);  //---- variable bin
-//  if (which == 4                            ) NMAXX = 4*(12);  //---- variable bin
- 
- 
- 
- if (which == 0) NMAXX = 7*(11);  //---- variable bin
- if (which == 2) NMAXX = 7*(11);  //---- variable bin
- if (which == 3) NMAXX = 2*(5);  //---- variable bin
- if (which == 4) NMAXX = 6*(19-2);  //---- variable bin
- if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
- if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
  
  //  int which = 0;  //---- mth:mll 0 jet
  //  int which = 2;  //---- mth:mll 1 jet
- //  int which = 3;  //---- mth:mll 2 jet
+ //  int which = 3;   //---- mth:mll 2 jet
  //  int which = 4;  //---- mva 0 jet
  //  int which = 6;  //---- mva 1 jet
  //  int which = 7;  //---- mva 0+1 jet
  
  
  
-//  int NMAXX = 4*(8+2);  //---- variable bin
-//  if (which == 3) NMAXX = 6*(7);  //---- variable bin
-//  if (which == 3) NMAXX = 10*(11+1);  //---- variable bin
- int NMAXY = 1;  
-
-
+ 
+ if (energy == 0) { //---- 8 TeV
+  if ((which == 0) || (which == 2)) {
+   NMAXY = 7*(11);  //---- variable bin
+   NMAXX = 1;
+   
+   
+   if (doWeight == 1) { //---- on-shell
+    NMAXY = 11;  //---- variable bin
+    minNX = 0; 
+    NMAXX = 3;
+   }
+   else if (doWeight == 2) { //---- off-shell
+    NMAXY = 11;  //---- variable bin
+    minNX = 3; 
+    NMAXX = 7;
+   }
+   
+  }
+  
+  if (which == 3) {
+   NMAXY = 2*(5);  //---- variable bin
+   NMAXX = 1;
+   
+   
+   if (doWeight == 1) { //---- on-shell
+    NMAXY = 5;  //---- variable bin
+    minNX = 0; 
+    NMAXX = 1;
+   }
+   else if (doWeight == 2) { //---- off-shell
+    NMAXY = 5;  //---- variable bin
+    minNX = 1; 
+    NMAXX = 2;
+   }
+   
+  }
+  
+  if (which == 4) {
+   NMAXY = 6*(17);  //---- variable bin
+   NMAXX = 1;
+   
+   
+   if (doWeight == 1) { //---- on-shell
+    NMAXY = 17;  //---- variable bin
+    minNX = 0; 
+    NMAXX = 4;
+   }
+   else if (doWeight == 2) { //---- off-shell
+    NMAXY = 17;  //---- variable bin
+    minNX = 4; 
+    NMAXX = 6;
+   }
+   
+  }
+  
+  
+  if (which == 6) {
+   NMAXY = 4*(15);  //---- variable bin
+   NMAXX = 1;
+   
+   
+   if (doWeight == 1) { //---- on-shell
+    NMAXY = 15;  //---- variable bin
+    minNX = 0; 
+    NMAXX = 3;
+   }
+   else if (doWeight == 2) { //---- off-shell
+    NMAXY = 15;  //---- variable bin
+    minNX = 3; 
+    NMAXX = 4;
+   }
+   
+  }
+  
+  
+  
+  //    if (which == 6) NMAXX = 4*(19-2-1-1);  //---- variable bin
+  if (which == 7) NMAXX = 6*(19-2);  //---- variable bin
+ }
+ else { //---- 7 TeV
+  if (which == 0) NMAXX = 7*(7);  //---- variable bin
+  if (which == 2) NMAXX = 7*(7);  //---- variable bin
+  if (which == 3) NMAXX = 2*(3);  //---- variable bin
+ }
+ 
+ 
+ 
  
  //---- all ----
- int minNY = 0;
- int minNX = 0;
  
  int NX = NMAXX;
  int NY = NMAXY;
- 
- 
-//  int minNY = 0;
-//  int minNX = 6;
- 
-//  int NX = NMAXX;
-//  int NY = NMAXY;
  
  
  
@@ -244,10 +291,18 @@ void prepareForAN() {
   
   std::cout << "iFile = " << iFile << std::endl;
   
-  ///---- project along X : sum over Y
-  for (int iY=minNY; iY<NY; iY++){
+//   ///---- project along X : sum over Y
+//   for (int iY=minNY; iY<NY; iY++){
+//    binsToSelect.clear();
+//    for (int iX=minNX; iX<NX; iX++){
+//     binsToSelect.push_back (iX*NMAXY+iY+1);
+//     std::cout << " iX*NY+iY+1 = " << iX*NY+iY+1 << std::endl;
+//    }
+   
+  ///---- project along Y : sum over X
+  for (int iX=minNX; iX<NX; iX++){
    binsToSelect.clear();
-   for (int iX=minNX; iX<NX; iX++){
+   for (int iY=minNY; iY<NY; iY++){
     binsToSelect.push_back (iX*NMAXY+iY+1);
     std::cout << " iX*NY+iY+1 = " << iX*NY+iY+1 << std::endl;
    }
@@ -257,121 +312,137 @@ void prepareForAN() {
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
    int GammaOverGammaSM = 30;
-//    int GammaOverGammaSM = 1;
+   //    int GammaOverGammaSM = 1;
    TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
-//    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
+   //    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    TString nameSignalOn = Form("H on shell");
    
    
    
-//    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
-//    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back ("H m_{H}=125");
-//    vectColourSig.push_back(6);
-//    vectSystSig.push_back(0.00);
-//    vectScaleSig.push_back(1.0000);
-// //    vectNormalizationSig.push_back(2.565);
-//    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
-   name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-//    vectNameSig.push_back (nameSignal.Data());
-   vectNameSig.push_back ("ggHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-
-   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-   vectNameSig.push_back ("ggHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-
-   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-   vectNameSig.push_back ("ggHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-   
-  
-   
-   name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-   vectNameSig.push_back ("ggHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-      
-   
-   
-   
-   
-//---- VBF
-   
-   name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   vectNameSig.push_back ("qqHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-   
-   name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   vectNameSig.push_back ("qqHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-   
-   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   vectNameSig.push_back ("qqHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-   
-   
-   
-   name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-//    vectNameSig.push_back (nameSignal.Data());
-   vectNameSig.push_back ("qqHoff");
-   vectColourSig.push_back(2);
-   vectSystSig.push_back(0.00);
-   vectScaleSig.push_back(1.0000*GammaOverGammaSM);
-   //    vectNormalizationSig.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
-   
-   
-   
-   
-   
-   
+   if (doWeight != 1) { 
+    
+    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+    vectNameSig.push_back (nameSignal.Data());
+    //    vectNameSig.push_back ("ggHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+    //    vectNameSig.push_back ("ggHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+    //    vectNameSig.push_back ("ggHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
+    //    vectNameSig.push_back ("ggHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    
+    
+    //---- VBF
+    
+    name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    //    vectNameSig.push_back ("qqHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    //    vectNameSig.push_back ("qqHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    //    vectNameSig.push_back ("qqHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameSig.push_back (nameSignal.Data());
+    //    vectNameSig.push_back ("qqHoff");
+    vectColourSig.push_back(2);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000*GammaOverGammaSM);
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+   }
+   else { //---- on-shell Higgs as signal
+    name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    //    vectNameSig.push_back ("ggH");
+    vectNameSig.push_back (nameSignalOn.Data());
+    //    vectNameSig.push_back ("H m_{H}=125 ");
+    vectColourSig.push_back(6);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000);
+    //    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    //    vectNameSig.push_back ("qqH");
+    vectNameSig.push_back (nameSignalOn.Data());
+    //    vectNameSig.push_back ("H m_{H}=125 ");
+    vectColourSig.push_back(6);
+    vectSystSig.push_back(0.00);
+    vectScaleSig.push_back(1.0000);
+    //    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationSig.push_back(0.719);  
+   }
    
    
    
@@ -496,29 +567,133 @@ void prepareForAN() {
    
    
    
-   name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("ggH");
-//    vectNameBkg.push_back (nameSignalOn.Data());
-//    vectNameBkg.push_back ("H m_{H}=125 ");
-   vectColourBkg.push_back(6);
-   vectSystBkg.push_back(0.00);
-   vectScaleBkg.push_back(1.0000);
-//    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationBkg.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+  
    
-   name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("qqH");
-//    vectNameBkg.push_back (nameSignalOn.Data());
-   //    vectNameBkg.push_back ("H m_{H}=125 ");
-   vectColourBkg.push_back(6);
-   vectSystBkg.push_back(0.00);
-   vectScaleBkg.push_back(1.0000);
-   //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
-   //    vectNormalizationBkg.push_back(0.719);  
-   
+   if (doWeight != 1) { //---- on-shell higgs as background
+    
+    name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    //    vectNameBkg.push_back ("ggH");
+    vectNameBkg.push_back (nameSignalOn.Data());
+    //    vectNameBkg.push_back ("H m_{H}=125 ");
+    vectColourBkg.push_back(6);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    //    vectNameBkg.push_back ("qqH");
+    vectNameBkg.push_back (nameSignalOn.Data());
+    //    vectNameBkg.push_back ("H m_{H}=125 ");
+    vectColourBkg.push_back(6);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    
+   }
+   else { //---- off-shell higgs as background
+    
+    name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
+    vectNameBkg.push_back (nameSignal.Data());
+    //    vectNameBkg.push_back ("ggHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
+    //    vectNameBkg.push_back ("ggHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
+    //    vectNameBkg.push_back ("ggHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
+    //    vectNameBkg.push_back ("ggHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000*GammaOverGammaSM);
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    
+    
+    //---- VBF
+    
+    name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    //    vectNameBkg.push_back ("qqHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    //    vectNameBkg.push_back ("qqHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    //    vectNameBkg.push_back ("qqHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+    name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back (nameSignal.Data());
+    //    vectNameBkg.push_back ("qqHoff");
+    vectColourBkg.push_back(2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000*GammaOverGammaSM);
+    //    vectNormalizationBkg.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+    
+    
+    
+   }
    
    
    
@@ -621,6 +796,10 @@ void prepareForAN() {
  hs->set_vectScaleSig  (vectScaleSig);   
  
 
+ if (doWeight != 0) {
+  //   hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+  hs->addWeight1D(NX-minNX); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+ }
 //  hs->addWeight(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
 //  hs->addWeight1D(NY-minNY); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
  
@@ -651,20 +830,80 @@ void prepareForAN() {
  
 //  double vedges[] = {-1.00, -0.75, -0.50, -0.25, 0.00, 0.25, 0.50, 0.75, 1.00};  //---- mva
  
- double vedges[NMAXX+1];
- for (int i=0; i<NMAXX+1; i++) {
+ double vedges[(NMAXX-minNX)*(NMAXY-minNY)+1];
+ for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
   vedges[i] = 0. + 1.*i; 
-//   std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
+  //   std::cout << " vedges[" << i << "] = " << vedges[i] << std::endl;
  }
  
  
  
-//  [-300, -250, -200, -150, -100, -75, -50, -20, 0, 20, 50, 75, 100, 150, 200, 250, 300],[30,60,130,150,200,250,400]
+ 
+ if (energy == 0) { //---- 8 TeV
+  if ((which == 0) || (which == 2)) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {0, 50, 70, 90, 100, 110, 120, 130, 140, 160, 200, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {0, 50, 70, 90, 100, 110, 120, 130, 140, 160, 200, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  if (which == 3) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {0, 50, 100, 130, 170, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {0, 50, 100, 130, 170, 450};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  if (which == 4) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {-1.00, -0.70, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = ((vedges_temp[i]) + 1.00) * 160.; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {-1.00, -0.70, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 0.80, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  if (which == 6) {
+   if (doWeight == 1) { //---- on-shell
+    double vedges_temp[] = {-1.00, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = ((vedges_temp[i]) + 1.00) * 160.; 
+    }
+   }
+   else if (doWeight == 2) { //---- off-shell
+    double vedges_temp[] = {-1.00, -0.60, -0.50, -0.40, -0.30, -0.20, -0.10, 0.00, 0.10, 0.20, 0.30, 0.40, 0.50, 0.60, 0.70, 1.00};
+    for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
+     vedges[i] = vedges_temp[i]; 
+    }
+   }
+  }
+  
+  
+ }
  
  
-//   for (int i=0; i<30; i++) {
-//    vedges[i] = 0. + 10*i; 
-//   }
  
  std::cout << "  vedges + sizeof(vedges) / sizeof(double) = " <<  vedges + sizeof(vedges) / sizeof(double) << std::endl;
  
@@ -690,7 +929,7 @@ void prepareForAN() {
  
  ///---- output file to dump and prepare common plots
  std::ostringstream stress;
- stress << "final_" << which << ".root";
+ stress << "final_" << which << "_" << energy << "_" << doWeight << ".root";
  std::string nameOutFile(stress.str());
  TFile* outfile = new TFile (nameOutFile.c_str(),"recreate");
  
@@ -812,6 +1051,20 @@ void prepareForAN() {
   
   outfile->Close();
  
+  
+  
+  
+  std::cout << " ~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl;
+  std::cout << " which = " << which << std::endl;
+  std::cout << " energy = " << energy << std::endl;
+  std::cout << " doWeight = " << doWeight << std::endl;
+  
+  std::cout << " NMAXY = " << NMAXY << std::endl;
+  std::cout << " minNX = " << minNX << std::endl;
+  std::cout << " NMAXX = " << NMAXX << std::endl;
+  
+  
+  
 }
 
 
