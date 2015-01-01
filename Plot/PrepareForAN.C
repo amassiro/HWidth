@@ -359,8 +359,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-    vectNameSig.push_back (nameSignal.Data());
-    //    vectNameSig.push_back ("ggHoff");
+//     vectNameSig.push_back (nameSignal.Data());
+       vectNameSig.push_back ("ggHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -369,9 +369,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
+//     vectNameSig.push_back (nameSignal.Data());
     std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-    //    vectNameSig.push_back ("ggHoff");
+    vectNameSig.push_back ("ggHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -380,9 +380,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
+//     vectNameSig.push_back (nameSignal.Data());
     std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-    //    vectNameSig.push_back ("ggHoff");
+    vectNameSig.push_back ("ggHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -393,9 +393,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
+//     vectNameSig.push_back (nameSignal.Data());
     std::cout << " >>>> integral = " << vectTHSig.at(vectTHSig.size()-1) -> Integral () << std::endl;;
-    //    vectNameSig.push_back ("ggHoff");
+    vectNameSig.push_back ("ggHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(1.0000*GammaOverGammaSM);
@@ -410,8 +410,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
-    //    vectNameSig.push_back ("qqHoff");
+//     vectNameSig.push_back (nameSignal.Data());
+    vectNameSig.push_back ("qqHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -420,8 +420,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
-    //    vectNameSig.push_back ("qqHoff");
+//     vectNameSig.push_back (nameSignal.Data());
+    vectNameSig.push_back ("qqHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -430,8 +430,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
-    //    vectNameSig.push_back ("qqHoff");
+//     vectNameSig.push_back (nameSignal.Data());
+    vectNameSig.push_back ("qqHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -442,8 +442,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameSig.push_back (nameSignal.Data());
-    //    vectNameSig.push_back ("qqHoff");
+//     vectNameSig.push_back (nameSignal.Data());
+    vectNameSig.push_back ("qqHoff");
     vectColourSig.push_back(2);
     vectSystSig.push_back(0.00);
     vectScaleSig.push_back(1.0000*GammaOverGammaSM);
@@ -456,8 +456,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    else { //---- on-shell Higgs as signal
     name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    //    vectNameSig.push_back ("ggH");
-    vectNameSig.push_back (nameSignalOn.Data());
+    vectNameSig.push_back ("ggH");
+//     vectNameSig.push_back (nameSignalOn.Data());
     //    vectNameSig.push_back ("H m_{H}=125 ");
     vectColourSig.push_back(6);
     vectSystSig.push_back(0.00);
@@ -468,8 +468,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHSig.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    //    vectNameSig.push_back ("qqH");
-    vectNameSig.push_back (nameSignalOn.Data());
+    vectNameSig.push_back ("qqH");
+//     vectNameSig.push_back (nameSignalOn.Data());
     //    vectNameSig.push_back ("H m_{H}=125 ");
     vectColourSig.push_back(6);
     vectSystSig.push_back(0.00);
@@ -619,8 +619,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    //    vectNameBkg.push_back ("ggH");
-    vectNameBkg.push_back (nameSignalOn.Data());
+    vectNameBkg.push_back ("ggH");
+//     vectNameBkg.push_back (nameSignalOn.Data());
     //    vectNameBkg.push_back ("H m_{H}=125 ");
     vectColourBkg.push_back(6);
     vectSystBkg.push_back(0.00);
@@ -631,8 +631,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    //    vectNameBkg.push_back ("qqH");
-    vectNameBkg.push_back (nameSignalOn.Data());
+    vectNameBkg.push_back ("qqH");
+//     vectNameBkg.push_back (nameSignalOn.Data());
     //    vectNameBkg.push_back ("H m_{H}=125 ");
     vectColourBkg.push_back(6);
     vectSystBkg.push_back(0.00);
@@ -646,8 +646,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     name = Form("%sggH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
-    vectNameBkg.push_back (nameSignal.Data());
-    //    vectNameBkg.push_back ("ggHoff");
+//     vectNameBkg.push_back (nameSignal.Data());
+    vectNameBkg.push_back ("ggHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -656,9 +656,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
+//     vectNameBkg.push_back (nameSignal.Data());
     std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
-    //    vectNameBkg.push_back ("ggHoff");
+    vectNameBkg.push_back ("ggHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -667,9 +667,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sggH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
+//     vectNameBkg.push_back (nameSignal.Data());
     std::cout << " >>>> integral = " << vectTHBkg.at(vectTHBkg.size()-1) -> Integral () << std::endl;;
-    //    vectNameBkg.push_back ("ggHoff");
+    vectNameBkg.push_back ("ggHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -697,8 +697,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_sbi%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
-    //    vectNameBkg.push_back ("qqHoff");
+//     vectNameBkg.push_back (nameSignal.Data());
+    vectNameBkg.push_back ("qqHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -707,8 +707,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
-    //    vectNameBkg.push_back ("qqHoff");
+//     vectNameBkg.push_back (nameSignal.Data());
+    vectNameBkg.push_back ("qqHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -717,8 +717,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
-    //    vectNameBkg.push_back ("qqHoff");
+//     vectNameBkg.push_back (nameSignal.Data());
+    vectNameBkg.push_back ("qqHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
@@ -729,8 +729,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
     
     name = Form("%sqqH_s%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back (nameSignal.Data());
-    //    vectNameBkg.push_back ("qqHoff");
+//     vectNameBkg.push_back (nameSignal.Data());
+    vectNameBkg.push_back ("qqHoff");
     vectColourBkg.push_back(2);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000*GammaOverGammaSM);
@@ -752,8 +752,10 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
       
    if (doSignalInjection == false) {
     name = Form("%sData%s",cutNameBefore.Data(),cutNameAfter.Data());
-    vectTHData.push_back ( (TH1F*) ((TH1F*) f[iFile]->Get(name))->Clone() );
+    vectTHData.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//     vectTHData.push_back ( (TH1F*) ((TH1F*) f[iFile]->Get(name))->Clone() );
     vectNameData.push_back ("Data");
+//     hs->setDataHist (FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)));
     hs->setDataHist (FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)));
    }
    else {
@@ -794,10 +796,10 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    }
 
    if (which == 7) {
-    hs->setBlindBinSx(0);
-    hs->setBlindBinDx(0);
-//     hs->setBlindBinSx(17*3-10);
-//     hs->setBlindBinDx(17*1+5);
+//     hs->setBlindBinSx(0);
+//     hs->setBlindBinDx(0);
+    hs->setBlindBinSx(17*3-10);
+    hs->setBlindBinDx(17*1+5);
    }
    
    if (which == 3) {
@@ -806,8 +808,10 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    }
 
    if (which == 0) {
-    hs->setBlindBinSx(11*3);
-    hs->setBlindBinDx(11*2);
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+//     hs->setBlindBinSx(11*3);
+//     hs->setBlindBinDx(11*2);
    }
    
    
@@ -1009,6 +1013,23 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
  
  
  ///---- output file to dump and prepare common plots
+
+ TGraphAsymmErrors* finalErrorBand = (TGraphAsymmErrors*) (hs->get_ErrorBand());
+ finalErrorBand->SetName("errorBand");
+ 
+ ///---- fix bin edges (begin) ----
+//  set_vectEdges(vEdges, vectTHBkg, vectTHSig, vectTHData, finalErrorBand);
+ std::cout << " vectNameData.size() = " << vectNameData.size() << std::endl;
+ std::cout << " vectTHData.size() =   " << vectTHData.size() << std::endl;
+ set_vectEdges(vEdges, vectTHBkg, vectTHSig, vectTHData);
+ ///---- fix bin edges (end) ----
+ 
+ ///---- re-weight the histograms to apply the weight (begin) ----
+ if (doWeight != 0) {
+  addWeight1D(NX-minNX, vectTHBkg, vectTHSig, vectTHData); //---- add S/(S+B) weight ---> used only for propaganda plot and data-background
+ }
+ ///---- re-weight the histograms to apply the weight (end) ----
+ 
  std::ostringstream stress;
  stress << "final_" << which << "_" << energy << "_" << doWeight << ".root";
  std::string nameOutFile(stress.str());
@@ -1099,6 +1120,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
   
   
   ///---- Data ----
+  std::cout << " vectNameData.size() = " << vectNameData.size() << std::endl;
+  std::cout << " vectTHData.size() =   " << vectTHData.size() << std::endl;
   for (int iData = 0; iData < vectNameData.size(); iData++) { 
    (vectTHData.at(iData)) -> Sumw2();
    (vectTHData.at(iData))->SetName(vectNameData.at(iData).c_str());
@@ -1121,15 +1144,18 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    }
    if (!alreadySaved) {
     (vectTHData.at(iData))->Write();
+    TCanvas* cccccc = new TCanvas();
+    std::cout << " iData = " << iData << std::endl;
+    (vectTHData.at(iData))->Draw();
    }
   }
   
   
+  
   ///---- error band ----
-  TGraphAsymmErrors* finalErrorBand = (TGraphAsymmErrors*) (hs->get_ErrorBand());
-  finalErrorBand->SetName("errorBand");
   finalErrorBand->Write();
   
+    
   outfile->Close();
  
   

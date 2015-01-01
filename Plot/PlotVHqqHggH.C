@@ -49,6 +49,124 @@ float yOffB[] = {0,1,2,0,1,2,3,3,4,4,4};
 
 
 
+
+///---- transform histograms/TGraphErrors to deal with correct edges (begin) ----
+void set_vectEdges(std::vector<double> vEdges, std::vector<TH1F*>& vectTHBkg, std::vector<TH1F*>& vectTHSig, std::vector<TH1F*>& vectTHData, TGraphAsymmErrors* finalErrorBand = 0) {
+ 
+ if (vEdges.size() != 0) {
+  double Xedge[1000];
+  for (uint iEdg = 0; iEdg < vEdges.size(); iEdg++) {
+   Xedge[iEdg] = vEdges.at(iEdg);
+  }
+  std::vector<TH1F*> tempo_vectTHBkg;
+  for (unsigned int iBkg = 0; iBkg<vectTHBkg.size(); iBkg++) {
+   TString name = Form("edge_temp_function_%s",vectTHBkg.at(iBkg)->GetName());
+   TH1F* tempoHisto = new TH1F(name, vectTHBkg.at(iBkg)->GetTitle(), vectTHBkg.at(iBkg)->GetNbinsX(), Xedge);
+   for (int iBin = 0; iBin < vectTHBkg.at(iBkg)->GetNbinsX(); iBin ++) {
+    tempoHisto->SetBinContent (iBin+1, vectTHBkg.at(iBkg)->GetBinContent(iBin+1));
+    tempoHisto->SetBinError   (iBin+1, vectTHBkg.at(iBkg)->GetBinError(iBin+1)  );
+   }
+   std::swap(vectTHBkg.at(iBkg), tempoHisto);
+  }
+  
+  std::vector<TH1F*> tempo_vectTHSig;
+  for (unsigned int iSig = 0; iSig<vectTHSig.size(); iSig++) {
+   TString name = Form("edge_temp_function_%s",vectTHSig.at(iSig)->GetName());
+   TH1F* tempoHisto = new TH1F(name, vectTHSig.at(iSig)->GetTitle(), vectTHSig.at(iSig)->GetNbinsX(), Xedge);
+   for (int iBin = 0; iBin < vectTHSig.at(iSig)->GetNbinsX(); iBin ++) {
+    tempoHisto->SetBinContent (iBin+1, vectTHSig.at(iSig)->GetBinContent(iBin+1));
+    tempoHisto->SetBinError   (iBin+1, vectTHSig.at(iSig)->GetBinError(iBin+1)  );
+   }
+   std::swap(vectTHSig.at(iSig), tempoHisto);
+  }
+  
+  std::vector<TH1F*> tempo_vectTHData;
+  for (unsigned int iData = 0; iData<vectTHData.size(); iData++) {
+   TString name = Form("edge_temp_function_%d_%s",iData,vectTHData.at(iData)->GetName());
+   TH1F* tempoHisto = new TH1F(name, vectTHData.at(iData)->GetTitle(), vectTHData.at(iData)->GetNbinsX(), Xedge);
+   for (int iBin = 0; iBin < vectTHData.at(iData)->GetNbinsX(); iBin ++) {
+    tempoHisto->SetBinContent (iBin+1, vectTHData.at(iData)->GetBinContent(iBin+1));
+    tempoHisto->SetBinError   (iBin+1, vectTHData.at(iData)->GetBinError(iBin+1)  );
+   }
+   std::swap(vectTHData.at(iData), tempoHisto);
+  }
+  
+  if (finalErrorBand) {
+   TGraphAsymmErrors* tempoGr = new TGraphAsymmErrors();
+   for (int iBin = 0; iBin < finalErrorBand->GetN(); iBin ++) {
+    double xx;
+    double yy;
+    finalErrorBand->GetPoint(iBin, xx, yy);
+    double err_y_up = finalErrorBand->GetErrorYhigh(iBin);
+    double err_y_lo = finalErrorBand->GetErrorYlow(iBin);
+    xx = (vEdges.at(iBin) + vEdges.at(iBin+1) ) / 2.;
+    double err_x = (vEdges.at(iBin+1) - vEdges.at(iBin) ) / 2.;
+    tempoGr->SetPoint      (iBin, xx, yy);
+    tempoGr->SetPointError (iBin, err_x, err_x, err_y_lo, err_y_up);
+//     std::cout << " iBin = " << iBin << " eY = " << err_y_lo << " - " << err_y_up << " eX = " << err_x << " - " << err_x << std::endl;
+//     std::cout << "                  Y = " << yy << std::endl;
+    
+   }
+   std::swap(finalErrorBand, tempoGr);
+  }
+ 
+ }
+}
+///---- transform histograms/TGraphErrors to deal with correct edges (end) ----
+
+
+
+
+///---- add weights S/(S+B) line-by-line (begin) ----
+
+void addWeight1D(int nCycle, std::vector<TH1F*>& vectTHBkg, std::vector<TH1F*>& vectTHSig, std::vector<TH1F*>& vectTHData) {
+  
+ int nBin = vectTHBkg.at(0) -> GetNbinsX(); //---- at least 1 background!!!
+ for (int iCycle = 0; iCycle<nCycle; iCycle++) { //---- loop on different arrows of 2D plot
+  std::cout << " iCycle = " << iCycle << " :: " << nCycle << std::endl;          
+  double sumBkg = 0;
+  double sumSig = 0;
+  for (int iBin=0; iBin<nBin; iBin++) {
+   for (unsigned int iBkg = 0; iBkg<(vectTHBkg.size()/nCycle); iBkg++) {
+    sumBkg = sumBkg + vectTHBkg.at( iBkg + (iCycle*vectTHBkg.size()/nCycle) )->GetBinContent(iBin+1);
+   }
+   for (unsigned int iSig = 0; iSig<(vectTHSig.size()/nCycle); iSig++) {
+    sumSig = sumSig + vectTHSig.at( iSig + (iCycle*vectTHSig.size()/nCycle) )->GetBinContent(iBin+1);
+   }
+  }
+  double weight;
+  if ((sumSig + sumBkg) != 0) weight = sumSig / (sumSig + sumBkg);
+  else weight = 1;
+  
+  for (int iBin=0; iBin<nBin; iBin++) {
+   
+   for (unsigned int iBkg = 0; iBkg<(vectTHBkg.size()/nCycle); iBkg++) {
+    double value = vectTHBkg.at( iBkg + (iCycle*vectTHBkg.size()/nCycle) )->GetBinContent(iBin+1);
+    double error = vectTHBkg.at( iBkg + (iCycle*vectTHBkg.size()/nCycle) )->GetBinError(iBin+1);
+    vectTHBkg.at( iBkg + (iCycle*vectTHBkg.size()/nCycle) )->SetBinContent(iBin+1, value * weight);
+    vectTHBkg.at( iBkg + (iCycle*vectTHBkg.size()/nCycle) )->SetBinError  (iBin+1, error * weight);
+   }
+   for (unsigned int iSig = 0; iSig<(vectTHSig.size()/nCycle); iSig++) {
+    double value = vectTHSig.at( iSig + (iCycle*vectTHSig.size()/nCycle) )->GetBinContent(iBin+1);
+    double error = vectTHSig.at( iSig + (iCycle*vectTHSig.size()/nCycle) )->GetBinError(iBin+1);
+    vectTHSig.at( iSig + (iCycle*vectTHSig.size()/nCycle) )->SetBinContent(iBin+1, value * weight);
+    vectTHSig.at( iSig + (iCycle*vectTHSig.size()/nCycle) )->SetBinError  (iBin+1, error * weight);
+   } 
+   for (unsigned int iDat = 0; iDat<(vectTHData.size()/nCycle); iDat++) {
+    double value = vectTHData.at( iDat + (iCycle*vectTHData.size()/nCycle) )->GetBinContent(iBin+1);
+    double error = vectTHData.at( iDat + (iCycle*vectTHData.size()/nCycle) )->GetBinError(iBin+1);
+    vectTHData.at( iDat + (iCycle*vectTHData.size()/nCycle) )->SetBinContent(iBin+1, value * weight);
+    vectTHData.at( iDat + (iCycle*vectTHData.size()/nCycle) )->SetBinError  (iBin+1, error * weight);
+   }
+  }
+ }
+}
+
+///---- add weights S/(S+B) line-by-line (end) ----
+
+
+
+
 //------------------------------------------------------------------------------
 // GetMaximumIncludingErrors
 //------------------------------------------------------------------------------
