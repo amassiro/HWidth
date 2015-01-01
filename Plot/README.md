@@ -28,4 +28,25 @@ Where:
 
 
 
+Prepare for AN: 
  
+    r99t -l -q PrepareForAN.C+\(0,0,0\)
+    r99t -l -q PrepareForAN.C+\(0,0,1\)
+    r99t -l -q PrepareForAN.C+\(0,0,2\)
+    
+    r99t -l -q PrepareForAN.C+\(2,0,0\)
+    r99t -l -q PrepareForAN.C+\(2,0,1\)
+    r99t -l -q PrepareForAN.C+\(2,0,2\)
+    
+    r99t -l -q PrepareForAN.C+\(3,0,0\)
+    r99t -l -q PrepareForAN.C+\(3,0,1\)
+    r99t -l -q PrepareForAN.C+\(3,0,2\)
+    
+    r99t -l -q PrepareForAN.C+\(4,0,0\)
+    r99t -l -q PrepareForAN.C+\(4,0,1\)
+    r99t -l -q PrepareForAN.C+\(4,0,2\)
+    
+    r99t -l -q PrepareForAN.C+\(6,0,0\)
+    r99t -l -q PrepareForAN.C+\(6,0,1\)
+    r99t -l -q PrepareForAN.C+\(6,0,2\)
+    
