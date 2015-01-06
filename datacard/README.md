@@ -43,6 +43,7 @@ Combine and run
 
     /afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine
 
+    
     combineCards.py   of0j7TeV=datacards-0j-7TeV/hww-4.94fb.mH125.of_0j_shape.txt \
                   of1j7TeV=datacards-1j-7TeV/hww-4.94fb.mH125.of_1j_shape.txt \
                   of2j7TeV=datacards-2j-7TeV/hww-4.94fb.mH125.of_2j_shape.txt \
@@ -51,6 +52,12 @@ Combine and run
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
                   >   test.txt
 
+                  
+    combineCards.py   of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
+                  of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
+                  >   test.txt
+                  
+                  
     combineCards.py   of0j7TeV=datacards-0j-7TeV/hww-4.94fb.mH125.of_0j_shape.txt \
                   of1j7TeV=datacards-1j-7TeV/hww-4.94fb.mH125.of_1j_shape.txt \
                   of2j7TeV=datacards-2j-7TeV/hww-4.94fb.mH125.of_2j_shape.txt \
@@ -64,7 +71,23 @@ Combine and run
                   of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
                   >   test.txt
+                  
+    combineCards.py  \
+                  of0j=datacards-0j/hww-19.36fb.mH125.of_0j_shape.txt \
+                  of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
+                  of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
+                  >   test.txt                  
 
+    combineCards.py  \
+                  of0j=datacards-0j/hww-19.36fb.mH125.of_0j_shape.txt \
+                  of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
+                  >   test.txt                  
+ 
+    combineCards.py  \
+                  of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
+                  of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
+                  >   test.txt                  
+ 
     combineCards.py   of1j7TeV=datacards-1j-7TeV/hww-4.94fb.mH125.of_1j_shape.txt \
                   of2j7TeV=datacards-2j-7TeV/hww-4.94fb.mH125.of_2j_shape.txt \
                   of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
