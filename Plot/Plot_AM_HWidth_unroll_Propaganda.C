@@ -97,6 +97,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
 //  TString folder = Form("sig/");
 //  TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
 
+
  TString folder = Form("init/");
  TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
 

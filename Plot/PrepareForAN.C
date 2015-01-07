@@ -91,6 +91,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
 //  TString folder = Form("sig/");
 //  TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
 
+ TString folderBkg = Form("bkg/");
+ TString cutNameBeforeBkg = Form("bkg/%shisto_",nameChannel.Data());
+ 
  TString folder = Form("init/");
  TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
 
@@ -823,9 +826,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    hs->setCutSx(-999,">");
    hs->setCutDx(-999,"<");
    
-   name = Form("%s%smodel_errs",folder.Data(),nameChannel.Data()); 
-   //    TString folderBkg = Form ("bkg/");
-   //    name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data()); 
+//    name = Form("%s%smodel_errs",folder.Data(),nameChannel.Data()); 
+   name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data());  //----> background fit uncertainty -> removal of lnU effects 
    std::cout << " name = " << name.Data() << std::endl;  
    
    hs->set_ErrorBand( *(FilterBins(binsToSelect, (TGraphAsymmErrors*) f[iFile]->Get(name))) );  
@@ -1144,9 +1146,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    }
    if (!alreadySaved) {
     (vectTHData.at(iData))->Write();
-    TCanvas* cccccc = new TCanvas();
-    std::cout << " iData = " << iData << std::endl;
-    (vectTHData.at(iData))->Draw();
+//     TCanvas* cccccc = new TCanvas();
+//     std::cout << " iData = " << iData << std::endl;
+//     (vectTHData.at(iData))->Draw();
    }
   }
   
