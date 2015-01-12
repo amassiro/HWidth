@@ -52,6 +52,11 @@ Combine and run
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
                   >   test.txt
 
+    combineCards.py \
+                  of0j=datacards-0j/hww-19.36fb.mH125.of_0j_shape.txt \
+                  of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
+                  of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
+                  >   test.txt
                   
     combineCards.py   of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
@@ -78,6 +83,11 @@ Combine and run
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
                   >   test.txt                  
 
+    combineCards.py  \
+                  of0j=datacards-0j/hww-19.36fb.mH125.of_0j_shape.txt \
+                  of1j=datacards-1j/hww-19.36fb.mH125.of_1j_shape.txt \
+                  >   test.txt                  
+                  
     combineCards.py  \
                   of0j=datacards-0j/hww-19.36fb.mH125.of_0j_shape.txt \
                   of2j=datacards-2j/hww-19.36fb.mH125.of_2j_shape.txt \
