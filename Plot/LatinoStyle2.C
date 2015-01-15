@@ -104,5 +104,5 @@ void LatinoStyle2()
   TColor::CreateGradientColorTable(NRGBs, stops, red, green, blue, NCont);
   LatinosStyle->SetNumberContours(NCont);
 
-  return();
+//   return();
 }
