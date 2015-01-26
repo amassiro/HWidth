@@ -318,7 +318,7 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 // #include "TError.h"
 
-void DrawSystematicsVariation() {
+void DrawSystematicsVariation(int jetbin) {
  
  //  gErrorIgnoreLevel = 0;
  
@@ -331,8 +331,38 @@ void DrawSystematicsVariation() {
  
   
  TString date = Form ("shapeUnc_26Jan");
- TFile* f0 = new TFile("postFit/Hwidth-0j-of-error-data.root");
- std::string NameDC[] = {"of_0j"}; //---- ,"of_1j","of_2j"};
+ 
+ int NMAXX = 1;
+ int NMAXY = 1;  
+ int minNY = 0;
+ int minNX = 0;
+ 
+ 
+ TFile* f0;
+ std::string NameDC[] = {""};
+ if (jetbin == 0) {
+  //---- 0 jet @8 TeV
+  f0 = new TFile("postFit/Hwidth-0j-of-error-data.root");
+  NameDC[0] = {"of_0j"};
+  NMAXY = 6*(17);  //---- variable bin
+  NMAXX = 1; 
+ }
+ if (jetbin == 1) {
+  //---- 1 jet @8 TeV
+  f0 = new TFile("postFit/Hwidth-1j-of-error-data.root");
+  NameDC[0] = {"of_1j"};
+  NMAXY = 4*(15);  //---- variable bin
+  NMAXX = 1; 
+ }
+ if (jetbin == 2) {
+  //---- 2 jet @8 TeV
+  f0 = new TFile("postFit/Hwidth-2j-of-error-data.root");
+  NameDC[0] = {"of_2j"};
+  NMAXY = 2*(5);  //---- variable bin
+  NMAXX = 1;
+  label = Form ("m_{ll} : m_{T}^{H}");
+ }
+ 
  std::vector<std::string> vNameDC (NameDC, NameDC + sizeof(NameDC) / sizeof(std::string) );
  
  std::string NameFolders[] = {"init"}; //---- inside the root file
@@ -340,15 +370,7 @@ void DrawSystematicsVariation() {
  
  
  
- int NMAXX = 6*(7);  //---- variable bin
- int NMAXY = 1;  
- int minNY = 0;
- int minNX = 0;
- 
- //---- 0 jet @8 TeV
- NMAXY = 6*(17);  //---- variable bin
- NMAXX = 1; 
- 
+   
  double vedges[(NMAXX-minNX)*(NMAXY-minNY)+1];
  for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
   vedges[i] = 0. + 1.*i; 
@@ -434,8 +456,8 @@ void DrawSystematicsVariation() {
  
  for (int iFolder = 0; iFolder < vNameFolders.size(); iFolder++) {
   
-  CommandToExec = Form("rm -r %s_%s",date.Data(),vNameFolders.at(iFolder).c_str());
-  gSystem->Exec(CommandToExec);  
+//   CommandToExec = Form("rm -r %s_%s",date.Data(),vNameFolders.at(iFolder).c_str());
+//   gSystem->Exec(CommandToExec);  
   
   CommandToExec = Form("mkdir %s_%s",date.Data(),vNameFolders.at(iFolder).c_str());
   gSystem->Exec(CommandToExec);  

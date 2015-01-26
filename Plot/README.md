@@ -72,6 +72,7 @@ Prepare for AN:
     
 Run nuisances scan:
 
-    r00t DrawSystematicsVariation.C+
-
+    r00t DrawSystematicsVariation.C+\(0\)
+    r00t DrawSystematicsVariation.C+\(1\)
+    r00t DrawSystematicsVariation.C+\(2\)    
     
