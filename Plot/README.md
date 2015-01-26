@@ -68,3 +68,10 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(3,1,1\)
     r99t -l -q PrepareForAN.C+\(3,1,2\)
     
+
+    
+Run nuisances scan:
+
+    r00t DrawSystematicsVariation.C+
+
+    

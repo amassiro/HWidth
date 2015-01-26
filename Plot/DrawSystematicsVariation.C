@@ -324,7 +324,8 @@ void DrawSystematicsVariation() {
  
  TH1::AddDirectory(kFALSE);
  
- TString label = Form ("m_{ll} [GeV]");
+//  TString label = Form ("m_{ll} [GeV]");
+ TString label = Form ("m_{ll} : m_{T}^{H}/mva");
  
 //  gInterpreter->ExecuteMacro("../Plot/LatinoStyle2.C");
  
@@ -352,10 +353,12 @@ void DrawSystematicsVariation() {
  for (int i=0; i<(NMAXX-minNX)*(NMAXY-minNY)+1; i++) {
   vedges[i] = 0. + 1.*i; 
  }
- 
- 
  std::vector<double> vEdges (vedges, vedges + sizeof(vedges) / sizeof(double) );
  
+ 
+ //---- all ----
+ int NX = NMAXX;
+ int NY = NMAXY;
  
  
  int vFillStyle[100] = {3003, 3004, 3005};
@@ -381,7 +384,7 @@ void DrawSystematicsVariation() {
  TObjArray* obj =  (TObjArray*) f0->Get("info/nuisances");
  TIter iter = TIter(obj);
  TObjString* ostr;
- while ( ostr = (TObjString*) iter.Next() ){
+ while ( (ostr = ((TObjString*) iter.Next())) ){
   std::cout << ostr->GetString().Data() << std::endl;
   vNameSystematics.push_back(std::string(ostr->GetString().Data()));
  }
@@ -421,7 +424,7 @@ void DrawSystematicsVariation() {
  gStyle->SetOptStat(0);
  TCanvas* ccRatio = new TCanvas("ccRatio","ccRatio",600,400);
  gStyle->SetOptStat(0);
- TCanvas* cc = new TCanvas("cc","cc",600,600);
+ TCanvas* cc = new TCanvas("cc","cc",800,500);
  gStyle->SetOptStat(0);
  
  TString CommandToExec;
