@@ -1,5 +1,6 @@
 void drawOffWithWithoutWeight(TString var, TString cutAdditional = "1") {
 
+ //  From /home/amassiro/Latinos/Shape/tree_skim_all_hwidth
  //---- r99t  drawOffWithWithoutWeight.cxx\(\"njet*\(njet\<2\)+2*\(njet\>1\)\"\)
  
  TFile *_file0 = TFile::Open("latinogg2vv_Hw1_SigShoulder_8TeV.root");
