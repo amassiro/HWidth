@@ -1,9 +1,16 @@
 {
  
  TH1F* hafter_offshell = new TH1F("hafter_offshell","weighted",3,0,3);
- hafter_offshell->SetBinContent(1,9.0428);
- hafter_offshell->SetBinContent(2,9.1635);
- hafter_offshell->SetBinContent(3,8.8432);
+ 
+ //---- old scale factors
+//  hafter_offshell->SetBinContent(1,9.0428);
+//  hafter_offshell->SetBinContent(2,9.1635);
+//  hafter_offshell->SetBinContent(3,8.8432);
+ 
+ hafter_offshell->SetBinContent(1,9.8382);
+ hafter_offshell->SetBinContent(2,6.3889);
+ hafter_offshell->SetBinContent(3,0.2261);
+ 
  
  hafter_offshell->SetLineColor(kBlue);
  hafter_offshell->SetLineWidth(2.0);
@@ -13,7 +20,8 @@
  TH1F* hbefore_offshell = new TH1F("hbefore_offshell","un-weighted",3,0,3);
  hbefore_offshell->SetBinContent(1,9.0428 / (13.3258/5.85323));
  hbefore_offshell->SetBinContent(2,9.1635 / (5.78547/1.40855));
- hbefore_offshell->SetBinContent(3,8.8432 / (1.79911/0.195922));
+//  hbefore_offshell->SetBinContent(3,8.8432 / (1.79911/0.195922));
+ hbefore_offshell->SetBinContent(3, 0.0716);
  
  hbefore_offshell->SetLineColor(kRed);
  hbefore_offshell->SetLineWidth(2.0);
