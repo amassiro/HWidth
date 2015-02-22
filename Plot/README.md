@@ -76,3 +76,10 @@ Run nuisances scan:
     r00t DrawSystematicsVariation.C+\(1\)
     r00t DrawSystematicsVariation.C+\(2\)    
     
+    
+Plot:
+
+    r00t DrawNjet.cxx
+    r00t DrawSignalComposition.cxx
+    
+    
