@@ -1,11 +1,12 @@
 {
-
- TH1F* h_qqH_norm = new TH1F ("qqH_norm","qqH",3, 0, 3);
- TH1F* h_ggH_norm = new TH1F ("ggH_norm","ggH",3, 0, 3);
+ //---- VBF central jet veto
+ 
+ TH1F* h_qqH_norm = new TH1F ("qqH_norm","qqH",2, 0, 2);
+ TH1F* h_ggH_norm = new TH1F ("ggH_norm","ggH",2, 0, 2);
 
  
- TH1F* h_qqH = new TH1F ("qqH","qqH",3, 0, 3);
- TH1F* h_ggH = new TH1F ("ggH","ggH",3, 0, 3);
+ TH1F* h_qqH = new TH1F ("qqH","qqH",2, 0, 2);
+ TH1F* h_ggH = new TH1F ("ggH","ggH",2, 0, 2);
  
  //---- 0 jet
  h_qqH -> SetBinContent(1,3.1310);
@@ -20,13 +21,6 @@
  h_ggH_norm -> SetBinContent(2, 69.8991/(8.7510+69.8991));
  
  
- //---- 2 jet
- h_qqH -> SetBinContent(3, 4.5291);
- h_ggH -> SetBinContent(3, 1.4172);
- h_qqH_norm -> SetBinContent(3, 4.5291/(4.5291+1.4172));
- h_ggH_norm -> SetBinContent(3, 1.4172/(4.5291+1.4172));
-          
-    
  h_qqH->SetFillColor(kBlue);
  h_qqH->SetLineColor(kBlue);
  h_qqH->SetFillStyle(3004);
@@ -60,7 +54,7 @@
  TCanvas* cc = new TCanvas("cComposition","cComposition",1000,500);
 //  hs->Draw("C");
  hs->Draw("histo");
- hs->GetXaxis()->SetTitle("number of jets");
+ hs->GetXaxis()->SetTitle("central jet veto");
  hs->GetXaxis()->SetRangeUser(110,600);
  hs->GetYaxis()->SetRangeUser(0,1);
  hs->GetYaxis()->SetTitle("Expected events");
@@ -73,7 +67,7 @@
  
  TCanvas* cc_norm = new TCanvas("cCompositionNorm","cCompositionNorm",1000,500);
  hs_norm->Draw("histo");
- hs_norm->GetXaxis()->SetTitle("number of jets");
+ hs_norm->GetXaxis()->SetTitle("central jet veto");
  hs_norm->GetXaxis()->SetRangeUser(110,600);
  hs_norm->GetYaxis()->SetRangeUser(0,1);
  hs_norm->GetYaxis()->SetTitle("relative composition");
