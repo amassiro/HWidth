@@ -24,7 +24,7 @@
  h_powheg_norm -> Scale (1. / integral);
 
  
- TLegend * legend = new TLegend(0.83,0.93,0.95,0.20);
+ TLegend * legend = new TLegend(0.70,0.90,0.90,0.70);
 //  legend -> AddEntry(h_ggH, "ggH");
  legend -> AddEntry(h_powheg, "powheg");
  legend -> SetFillColor(kWhite);
