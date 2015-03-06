@@ -8,11 +8,8 @@
  
  
  TH1F* h_powheg_norm = new TH1F ("powheg_norm","powheg",2, 0, 2);
- TH1F* h_ggH_norm = new TH1F ("ggH_norm","ggH",2, 0, 2);
-
  
  TH1F* h_powheg = new TH1F ("powheg","powheg",2, 0, 2);
- TH1F* h_ggH = new TH1F ("ggH","ggH",2, 0, 2);
  
  //---- 0 = cjv, 1 = !cjv
  h_powheg -> SetBinContent(1,5.494381e-01);
@@ -22,16 +19,9 @@
  h_powheg->SetLineColor(kBlue);
  h_powheg->SetFillStyle(3004);
  
- h_ggH->SetFillColor(kRed);
- h_ggH->SetLineColor(kRed);
- h_ggH->SetFillStyle(3003);
-
- 
- h_ggH_norm->SetFillColor(kRed);
- h_ggH_norm->SetLineColor(kRed);
- h_ggH_norm->SetFillStyle(3003);
-
- h_powheg_norm
+ h_powheg_norm = (TH1F*) h_powheg->Clone();
+ float integral = h_powheg_norm->Integral();
+ h_powheg_norm -> Scale (1. / integral);
 
  
  TLegend * legend = new TLegend(0.83,0.93,0.95,0.20);
@@ -49,10 +39,10 @@
  
  
  TCanvas* cc_norm = new TCanvas("cCompositionNorm","cCompositionNorm",1000,500);
- h_powheg->DrawNormalized();
- h_powheg->GetXaxis()->SetTitle("central jet veto");
- h_powheg->GetYaxis()->SetRangeUser(0,1);
- h_powheg->GetYaxis()->SetTitle("relative composition");
+ h_powheg_norm->Draw();
+ h_powheg_norm->GetXaxis()->SetTitle("central jet veto");
+ h_powheg_norm->GetYaxis()->SetRangeUser(0,1);
+ h_powheg_norm->GetYaxis()->SetTitle("relative composition");
  legend->Draw();
  gPad->SetGrid();
  
