@@ -3,9 +3,7 @@
  
 //  latino->Draw("1"," baseW * effW * triggW * ( (njet>=2 && njet<=3 && (jetpt3<=30 || !(jetpt3 > 30 && ( (jeteta1-jeteta3 > 0 && jeteta2-jeteta3 < 0) || (jeteta2-jeteta3 > 0 && jeteta1-jeteta3 < 0)))))       &&     (ch1*ch2 ==-1) && trigger==1. && pt1>20 && pt2>20 && mll>70. && (nextra==0) * (bveto_mu && bveto_ip && nbjettche==0) && mjj>500 && ptll>45 && njet>=2 && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5 && detajj>2.5)")
 //  latino->Draw("1"," baseW * effW * triggW * (                                                                                                                                                                        (ch1*ch2 ==-1) && trigger==1. && pt1>20 && pt2>20 && mll>70. && (nextra==0) * (bveto_mu && bveto_ip && nbjettche==0) && mjj>500 && ptll>45 && njet>=2 && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5 && detajj>2.5)")
- 
- 
- 
+
  
  TH1F* h_powheg_norm = new TH1F ("powheg_norm","powheg",2, 0, 2);
  
