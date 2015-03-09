@@ -7,10 +7,16 @@
 // 
 //  latino->Draw("1", "baseW * effW * triggW * (mWW>130)*( 0.125*( (dataset == 160) || (dataset == 169) || (dataset == 176) || (dataset == 172)) - 0.250*( (dataset == 161) || (dataset == 175) || (dataset == 173) || (dataset == 170)) + 0.125*( (dataset == 162) || (dataset == 171) || (dataset == 174) || (dataset == 177)))")
 
+ 
+//  TChain latino("latino")
+//  latino->Add("nominals/latino_160_qqww1smEM_baseW.root")
+//  latino->Add("nominals/latino_161_qqww9smEM_baseW.root")
+//  latino->Add("nominals/latino_162_qqww25smEM_baseW.root")
 //  TH1F h ("h","",10,0,2)
 //  latino->Draw("1 >> h", "baseW * effW * triggW * ( (njet>=2 && njet<=3 && (jetpt3<=30 || !(jetpt3 > 30 && ( (jeteta1-jeteta3 > 0 && jeteta2-jeteta3 < 0) || (jeteta2-jeteta3 > 0 && jeteta1-jeteta3 < 0)))))       &&     (ch1*ch2 ==-1) && trigger==1. && pt1>20 && pt2>20 && mll>70. && (nextra==0) * (bveto_mu && bveto_ip && nbjettche==0) && mjj>500 && ptll>45 && njet>=2 && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5 && detajj>2.5) * (mWW>130)*( 0.125*( (dataset == 160) || (dataset == 169) || (dataset == 176) || (dataset == 172)) - 0.250*( (dataset == 161) || (dataset == 175) || (dataset == 173) || (dataset == 170)) + 0.125*( (dataset == 162) || (dataset == 171) || (dataset == 174) || (dataset == 177)))")
 //  latino->Draw("1 >> h", "baseW * effW * triggW * (                                                                                                                                                                        (ch1*ch2 ==-1) && trigger==1. && pt1>20 && pt2>20 && mll>70. && (nextra==0) * (bveto_mu && bveto_ip && nbjettche==0) && mjj>500 && ptll>45 && njet>=2 && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5 && detajj>2.5) * (mWW>130)*( 0.125*( (dataset == 160) || (dataset == 169) || (dataset == 176) || (dataset == 172)) - 0.250*( (dataset == 161) || (dataset == 175) || (dataset == 173) || (dataset == 170)) + 0.125*( (dataset == 162) || (dataset == 171) || (dataset == 174) || (dataset == 177)))")
- 
+//  Double_t  aa
+//  htemp->IntegralAndError(-1,-1,&aa)
  
 //  1.48437824100255966e-02
 //  3.55644124818523043e-04
@@ -18,9 +24,7 @@
 //  1.81118901818990707e-02
 //  4.00155001845930926e-04
  
- 
- 
- 
+  
  TH1F* h_powheg_norm = new TH1F ("powheg_norm","powheg",2, 0, 2); 
  TH1F* h_powheg = new TH1F ("powheg","powheg",2, 0, 2);
 
