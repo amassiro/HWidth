@@ -48,7 +48,7 @@
 
 
  
- TLegend * legend = new TLegend(0.83,0.93,0.95,0.20);
+ TLegend * legend = new TLegend(0.83,0.90,0.95,0.20);
  legend -> AddEntry(h_ggH, "ggH");
  legend -> AddEntry(h_qqH, "qqH");
  legend -> SetFillColor(kWhite);
@@ -56,6 +56,8 @@
  THStack* hs = new THStack("st","");
  hs->Add(h_qqH);
  hs->Add(h_ggH);
+
+ gStyle->SetPadRightMargin(0.20);
  
  TCanvas* cc = new TCanvas("cComposition","cComposition",1000,500);
 //  hs->Draw("C");
