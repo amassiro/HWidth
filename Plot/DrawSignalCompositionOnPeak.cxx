@@ -68,6 +68,7 @@
  hs->GetYaxis()->SetTitle("Expected events");
  legend->Draw();
  gPad->SetGrid();
+ cc->SaveAs("eventsOnPeak.png");
  
  THStack* hs_norm = new THStack("st_norm","");
  hs_norm->Add(h_qqH_norm);
@@ -81,9 +82,8 @@
  hs_norm->GetYaxis()->SetTitle("relative composition");
  legend->Draw();
  gPad->SetGrid();
+ cc_norm->SaveAs("normOnPeak.png");
  
-
-
 
 }
 

@@ -45,9 +45,9 @@
  h_ggH_norm->SetFillStyle(3003);
 
 
-
  
- TLegend * legend = new TLegend(0.83,0.93,0.95,0.20);
+ 
+ TLegend * legend = new TLegend(0.83,0.90,0.95,0.20);
  legend -> AddEntry(h_ggH, "ggH");
  legend -> AddEntry(h_qqH, "qqH");
  legend -> SetFillColor(kWhite);
@@ -56,8 +56,10 @@
  hs->Add(h_qqH);
  hs->Add(h_ggH);
  
+ gStyle->SetPadRightMargin(0.20);
+ 
  TCanvas* cc = new TCanvas("cComposition","cComposition",1000,500);
-//  hs->Draw("C");
+ //  hs->Draw("C");
  hs->Draw("histo");
  hs->GetXaxis()->SetTitle("number of jets");
  hs->GetXaxis()->SetRangeUser(110,600);
@@ -65,6 +67,7 @@
  hs->GetYaxis()->SetTitle("Expected events");
  legend->Draw();
  gPad->SetGrid();
+ cc->SaveAs("eventsOffPeak.png");
  
  THStack* hs_norm = new THStack("st_norm","");
  hs_norm->Add(h_qqH_norm);
@@ -78,9 +81,8 @@
  hs_norm->GetYaxis()->SetTitle("relative composition");
  legend->Draw();
  gPad->SetGrid();
+ cc_norm->SaveAs("normOffPeak.png");
  
-
-
 
 }
 
