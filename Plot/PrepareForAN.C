@@ -88,15 +88,17 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
  std::cout << " which = " << which << std::endl;
  
  
-//  TString folder = Form("sig/");
-//  TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
+ TString folder = Form("sig/");
+ TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
 
  TString folderBkg = Form("bkg/");
  TString cutNameBeforeBkg = Form("bkg/%shisto_",nameChannel.Data());
  
- TString folder = Form("init/");
- TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
+//  TString folder = Form("init/");
+//  TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
 
+ 
+ 
  std::cout << " nameChannel   = " << nameChannel.Data() << std::endl;
  std::cout << " cutNameBefore = " << cutNameBefore.Data() << std::endl;
  
