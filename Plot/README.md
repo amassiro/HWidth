@@ -69,6 +69,9 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(3,1,2\)
     
 
+Then move here to prepare the final plots:
+
+    /home/amassiro/Cern/Code/VBF/LatinoPlotTools/WW
     
 Run nuisances scan:
 

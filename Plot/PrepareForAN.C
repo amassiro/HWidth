@@ -64,8 +64,8 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 }
 
 
-
-void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
+//----                                                              doBlind = 0 -> show me data!
+void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) {
  
 //  int which = 0;  //---- mth:mll 0 jet
 //  int which = 2;  //---- mth:mll 1 jet
@@ -782,46 +782,49 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0) {
    //  int which = 6;  //---- mva 1 jet
    //  int which = 7;  //---- mva 0+1 jet
    
-   
-//    hs->setBlindBinSx(100);
-   hs->setBlindBinSx(9);
-   hs->setBlindBinDx(9);
-//    hs->setBlindBinDx(0);
-
-   if (which == 4) {
-    hs->setBlindBinSx(17*3-10);
-    hs->setBlindBinDx(17*1+5);
-   }
-
-   if (which == 6) {
-    hs->setBlindBinSx(15*2-10);
-    hs->setBlindBinDx(15*1-5);
-   }
-
-   if (which == 7) {
-//     hs->setBlindBinSx(0);
-//     hs->setBlindBinDx(0);
-    hs->setBlindBinSx(17*3-10);
-    hs->setBlindBinDx(17*1+5);
-   }
-   
-   if (which == 3) {
+   if (doBlind) {
+    //    hs->setBlindBinSx(100);
+    hs->setBlindBinSx(9);
+    hs->setBlindBinDx(9);
+    //    hs->setBlindBinDx(0);
+    
+    if (which == 4) {
+     hs->setBlindBinSx(17*3-10);
+     hs->setBlindBinDx(17*1+5);
+    }
+    
+    if (which == 6) {
+     hs->setBlindBinSx(15*2-10);
+     hs->setBlindBinDx(15*1-5);
+    }
+    
+    if (which == 7) {
+     //     hs->setBlindBinSx(0);
+     //     hs->setBlindBinDx(0);
+     hs->setBlindBinSx(17*3-10);
+     hs->setBlindBinDx(17*1+5);
+    }
+    
+    if (which == 3) {
      hs->setBlindBinSx(3);
      hs->setBlindBinDx(5);
-   }
-
-   if (which == 0) {
-    hs->setBlindBinSx(0);
-    hs->setBlindBinDx(0);
-//     hs->setBlindBinSx(11*3);
-//     hs->setBlindBinDx(11*2);
+    }
+    
+    if (which == 0) {
+     //     hs->setBlindBinSx(0);
+     //     hs->setBlindBinDx(0);
+     hs->setBlindBinSx(11*3);
+     hs->setBlindBinDx(11*2);
+    }
+    
+    
+    if (which == 2) {
+     hs->setBlindBinSx(11*2+4);
+     hs->setBlindBinDx(11*2+4);
+    }
+    
    }
    
-   
-   if (which == 2) {
-    hs->setBlindBinSx(11*2+4);
-    hs->setBlindBinDx(11*2+4);
-   }
    
    hs->setCutSx(-999,">");
    hs->setCutDx(-999,"<");
