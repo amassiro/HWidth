@@ -1157,7 +1157,10 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
    }
   }
   
-  
+  ///---- data band
+  TGraphAsymmErrors* gr_data = (TGraphAsymmErrors*) (hs->GetDataGR());
+  gr_data->SetName("gr_data");
+  gr_data->Write();
   
   ///---- error band ----
   finalErrorBand->Write();

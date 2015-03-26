@@ -3494,6 +3494,7 @@ class PlotVHqqHggH {
         TGraphAsymmErrors* GetDataGR() { 
 
          if (_isWeighted) {
+          //---- if it is weighted assume no "low" statustics, then ok usual error band sqrt(N) propagated with weights
           _gr_data = new TGraphAsymmErrors();
           
           for (int i = 0, n = _data->GetNbinsX(); i < n; ++i) {
