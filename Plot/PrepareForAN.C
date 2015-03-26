@@ -88,14 +88,14 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
  std::cout << " which = " << which << std::endl;
  
  
- TString folder = Form("sig/");
- TString cutNameBefore = Form("sig/%shisto_",nameChannel.Data());
+ TString folderSig = Form("sig/");
+ TString cutNameBeforeSig = Form("sig/%shisto_",nameChannel.Data());
 
  TString folderBkg = Form("bkg/");
  TString cutNameBeforeBkg = Form("bkg/%shisto_",nameChannel.Data());
  
-//  TString folder = Form("init/");
-//  TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
+ TString folder = Form("init/");
+ TString cutNameBefore = Form("init/%shisto_",nameChannel.Data());
 
  
  
@@ -587,7 +587,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(0.377);
    
-   name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
+//    name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
+   //----> take WW from fit, since it is data-driven in normalization!
+   name = Form("%sWW%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameBkg.push_back ("WW");
    vectColourBkg.push_back(851);
@@ -832,7 +834,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
    hs->setCutDx(-999,"<");
    
 //    name = Form("%s%smodel_errs",folder.Data(),nameChannel.Data()); 
-   name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data());  //----> background fit uncertainty -> removal of lnU effects 
+   name = Form("%s%smodel_errs",folderSig.Data(),nameChannel.Data());  //----> signal + background fit uncertainty -> removal of lnU effects 
+//    name = Form("%s%smodel_errs",folderBkg.Data(),nameChannel.Data());  //----> background fit uncertainty -> removal of lnU effects 
+   
    std::cout << " name = " << name.Data() << std::endl;  
    
    hs->set_ErrorBand( *(FilterBins(binsToSelect, (TGraphAsymmErrors*) f[iFile]->Get(name))) );  
@@ -1158,9 +1162,11 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
   }
   
   ///---- data band
-  TGraphAsymmErrors* gr_data = (TGraphAsymmErrors*) (hs->GetDataGR());
-  gr_data->SetName("gr_data");
-  gr_data->Write();
+  if (doWeight) {
+   TGraphAsymmErrors* gr_data = (TGraphAsymmErrors*) (hs->GetDataGR());
+   gr_data->SetName("gr_data");
+   gr_data->Write();
+  }
   
   ///---- error band ----
   finalErrorBand->Write();
