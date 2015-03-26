@@ -195,6 +195,7 @@ class PlotVHqqHggH {
         PlotVHqqHggH() { 
             _data = 0; 
             _gr_data = 0;
+            _gr_data_onlyErrors_updown = 0x0;
             _breakdown = false; 
             _nbins=-1;
             _low=-1;
@@ -259,10 +260,22 @@ class PlotVHqqHggH {
          _isWeighted = true;
          for (unsigned int iDat = 0; iDat<_vectTHData.size(); iDat++) {
           if (iDat == 0) {
-           _data          = (TH1*) _vectTHData.at(iDat)->Clone();
+           _data = (TH1*) _vectTHData.at(iDat)->Clone();
            _data -> Sumw2();
           }
           else {
+//            if (_gr_data_onlyErrors_updown == 0x0) {
+//             _gr_data_onlyErrors_updown = new TGraphAsymmErrors();
+//            }
+//            
+//            int nBin = _data -> GetNbinsX();
+//            for (int iBin=0; iBin<nBin; iBin++) {
+//             _gr_data_onlyErrors_updown->SetPoint(iBin,0,0);
+//             _gr_data_onlyErrors_updown->SetPointError(iBin,0,0,0,0);
+//             if (_vectTHData.at(iDat)->GetBinContent(iBin+1) == 0) {
+//              _vectTHData.at(iDat)->SetBinError(iBin+1, 1.14); //---- poisson for 0 observed events
+//             }
+//            }
            _data -> Add((TH1*) _vectTHData.at(iDat)->Clone());
           }
          }
@@ -632,6 +645,7 @@ class PlotVHqqHggH {
             for (unsigned int iDat = 0; iDat<(_vectTHData.size()/nCycle); iDat++) {
              double value = vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->GetBinContent(iBin+1);
              double error = vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->GetBinError(iBin+1);
+             if (error == 0) error = 1.14; //---- poisson for 0 observed events             
              vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->SetBinContent(iBin+1, value * weight);
              vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->SetBinError  (iBin+1, error * weight);
             }
@@ -720,6 +734,7 @@ class PlotVHqqHggH {
             for (unsigned int iDat = 0; iDat<(_vectTHData.size()/nCycle); iDat++) {
              double value = vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->GetBinContent(iBin+1);
              double error = vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->GetBinError(iBin+1);
+             if (error == 0) error = 1.14; //---- poisson for 0 observed events             
              vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->SetBinContent(iBin+1, value * weight);
              vectTHData.at( iDat + (iCycle*_vectTHData.size()/nCycle) )->SetBinError  (iBin+1, error * weight);
             }
@@ -3917,6 +3932,7 @@ class PlotVHqqHggH {
         std::vector<TH1*>       _vectTHData             ;
         TH1* _data;
         TGraphAsymmErrors* _gr_data;
+        TGraphAsymmErrors* _gr_data_onlyErrors_updown;
         
         
         
