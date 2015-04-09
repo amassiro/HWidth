@@ -29,8 +29,14 @@ double findCrossingOfScan1D(TGraph& graph, double value) {
 
 void DrawLimit(){
  
+ 
+ 
+//  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.toysFreq.root","READ");  -> not very nice
+ TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.noSyst.root","READ"); // -> reasonable good
+ 
+ 
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.root","READ");
- TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.bis.root","READ");
+//  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.bis.root","READ");
  //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.GammaAndRF.root","READ");
  TTree* limit = (TTree*) f->Get("limit");
  
@@ -51,17 +57,21 @@ void DrawLimit(){
  TString* name[300];
  TCanvas* ccToy = new TCanvas("ccToy","ccToy",600,600);
 //  ccToy->Divide(10,10);
- ccToy->Divide(20,20);
+//  ccToy->Divide(20,20);
+ ccToy->Divide(6,6);
  
  int iEvent=0;
  std::cout << " entries = " << limit->GetEntries() << std::endl;
- for (int iToy=0; iToy<300; iToy++) {
+ for (int iToy=0; iToy<30; iToy++) {
+//   for (int iToy=0; iToy<100; iToy++) {
+//   for (int iToy=0; iToy<300; iToy++) {
   name[iToy] = new TString();
   name[iToy] -> Form ("toy_%d",iToy);
   gr[iToy] = new TGraph;
   gr[iToy] -> SetName (name[iToy]->Data());
   int iPointOnGraph = 0;
-  for (int iPoint=0; iPoint<252; iPoint++) {
+  for (int iPoint=0; iPoint<242; iPoint++) {
+//    for (int iPoint=0; iPoint<252; iPoint++) {
    limit->GetEntry(iEvent);
    iEvent++;
    if (deltaNLL>=0 && deltaNLL<100) {

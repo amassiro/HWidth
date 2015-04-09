@@ -618,6 +618,15 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
    
+   name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   //     vectNameBkg.push_back (nameSignal.Data());
+   vectNameBkg.push_back ("WW");
+   vectColourBkg.push_back(8);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.000);
+   //    vectNormalizationBkg.push_back(0.719);  
+   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
    
   
@@ -641,7 +650,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     vectNameBkg.push_back ("qqH");
 //     vectNameBkg.push_back (nameSignalOn.Data());
     //    vectNameBkg.push_back ("H m_{H}=125 ");
-    vectColourBkg.push_back(6);
+    vectColourBkg.push_back(7);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
     //    vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
@@ -706,7 +715,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back (nameSignal.Data());
     vectNameBkg.push_back ("qqHoff");
-    vectColourBkg.push_back(2);
+    vectColourBkg.push_back(90);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000*sqrt(GammaOverGammaSM));
     //    vectNormalizationBkg.push_back(0.719);  
@@ -716,7 +725,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back (nameSignal.Data());
     vectNameBkg.push_back ("qqHoff");
-    vectColourBkg.push_back(2);
+    vectColourBkg.push_back(90);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
     //    vectNormalizationBkg.push_back(0.719);  
@@ -726,7 +735,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back (nameSignal.Data());
     vectNameBkg.push_back ("qqHoff");
-    vectColourBkg.push_back(2);
+    vectColourBkg.push_back(90);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(-1.0000*sqrt(GammaOverGammaSM));
     //    vectNormalizationBkg.push_back(0.719);  
@@ -738,7 +747,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back (nameSignal.Data());
     vectNameBkg.push_back ("qqHoff");
-    vectColourBkg.push_back(2);
+    vectColourBkg.push_back(90);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000*GammaOverGammaSM);
     //    vectNormalizationBkg.push_back(0.719);  
