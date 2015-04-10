@@ -46,6 +46,8 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(3,0,1\)
     r99t -l -q PrepareForAN.C+\(3,0,2\)
     
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.01\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.05\)
     r99t -l -q PrepareForAN.C+\(4,0,0,0,0.1\)
     r99t -l -q PrepareForAN.C+\(4,0,0,0,0.2\)
     r99t -l -q PrepareForAN.C+\(4,0,0,0,0.3\)
