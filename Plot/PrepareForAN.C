@@ -65,7 +65,7 @@ TGraphAsymmErrors* FilterBins(std::vector<int> binsToSelect, TGraphAsymmErrors* 
 
 
 //----                                                              doBlind = 0 -> show me data!
-void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) {
+void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, float GammaOverGammaSM = 30) {
  
 //  int which = 0;  //---- mth:mll 0 jet
 //  int which = 2;  //---- mth:mll 1 jet
@@ -324,6 +324,8 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
  int NX = NMAXX;
  int NY = NMAXY;
  
+//  int GammaOverGammaSM = 30;
+//  int GammaOverGammaSM = 1;
  
  
  for (int iFile = 0; iFile<1; iFile++) {
@@ -350,9 +352,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
    int WHEREAMI = 0;
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
       
-   int GammaOverGammaSM = 30;
-   //    int GammaOverGammaSM = 1;
-   TString nameSignal   = Form("H off %d #Gamma", GammaOverGammaSM);
+    TString nameSignal   = Form("H off %d #Gamma", int(GammaOverGammaSM));
    //    TString nameSignalOn = Form("H on x%d" , GammaOverGammaSM);
    TString nameSignalOn = Form("H on shell");
    
@@ -1183,7 +1183,10 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0) 
     
   outfile->Close();
  
-  
+  std::ostringstream stress2;
+  stress2 << "cp final_" << which << "_" << energy << "_" << doWeight << ".root final_" << which << "_" << energy << "_" << doWeight << "_" << GammaOverGammaSM << ".root";
+  std::string nameOutFile2(stress2.str());
+  gSystem->Exec(nameOutFile2.c_str());
   
   
   std::cout << " ~~~~~~~~~~~~~~~~~~~~~~~~~~ " << std::endl;
