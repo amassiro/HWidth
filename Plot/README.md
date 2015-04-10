@@ -46,6 +46,20 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(3,0,1\)
     r99t -l -q PrepareForAN.C+\(3,0,2\)
     
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.1\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.2\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.3\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.4\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,0.5\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,1\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,2\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,3\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,5\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,7\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,10\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,20\)
+    
+    
     r99t -l -q PrepareForAN.C+\(4,0,0\)
     r99t -l -q PrepareForAN.C+\(4,0,1\)
     r99t -l -q PrepareForAN.C+\(4,0,2\)
@@ -90,7 +104,10 @@ Plot:
     r00t DrawNjet2.cxx
        -> for central jet veto efficiency
 
-
+    r00t DrawOffShell.cxx
+       -> to check off-shell contribution vs Higgs width
+       
+       
 For limit scan:
     
     cd limits
