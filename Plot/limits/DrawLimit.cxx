@@ -32,7 +32,9 @@ void DrawLimit(){
  
  
 //  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.toysFreq.root","READ");  -> not very nice
- TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.noSyst.root","READ"); // -> reasonable good
+//  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.noSyst.root","READ"); // -> reasonable good
+ TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.toysFreq.new.root","READ"); // -> reasonable good
+ 
  
  
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.root","READ");
@@ -58,11 +60,13 @@ void DrawLimit(){
  TCanvas* ccToy = new TCanvas("ccToy","ccToy",600,600);
 //  ccToy->Divide(10,10);
 //  ccToy->Divide(20,20);
- ccToy->Divide(6,6);
+//  ccToy->Divide(6,6);
+ ccToy->Divide(8,8);
  
  int iEvent=0;
  std::cout << " entries = " << limit->GetEntries() << std::endl;
- for (int iToy=0; iToy<30; iToy++) {
+ for (int iToy=0; iToy<50; iToy++) {
+//  for (int iToy=0; iToy<30; iToy++) {
 //   for (int iToy=0; iToy<100; iToy++) {
 //   for (int iToy=0; iToy<300; iToy++) {
   name[iToy] = new TString();

@@ -589,13 +589,32 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    
 //    name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
    //----> take WW from fit, since it is data-driven in normalization!
-   name = Form("%sWW%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
+//    name = Form("%sWW%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
+//    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//    vectNameBkg.push_back ("WW");
+//    vectColourBkg.push_back(851);
+//    vectSystBkg.push_back(0.00);
+//    vectScaleBkg.push_back(1.0000);
+//    vectNormalizationBkg.push_back(2.256);
+
+   name = Form("%sWWlow%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameBkg.push_back ("WW");
    vectColourBkg.push_back(851);
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(2.256);
+   
+   name = Form("%sWWhigh%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
+   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+   vectNameBkg.push_back ("WW");
+   vectColourBkg.push_back(851);
+   vectSystBkg.push_back(0.00);
+   vectScaleBkg.push_back(1.0000);
+   vectNormalizationBkg.push_back(2.256);
+   
+   
+   
    
 //    name = Form("%sggWW%s",cutNameBefore.Data(),cutNameAfter.Data());
 //    if (f[iFile]->GetListOfKeys()->Contains(name)) {
