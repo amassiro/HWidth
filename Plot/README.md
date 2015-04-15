@@ -24,6 +24,13 @@ Copy and plot:
     r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0,0,1\)
     r00t Plot_AM_HWidth_unroll_Propaganda.C+\(0,1,1\)
      
+     
+      which, int energy = 0, int doWeight = 0
+    //---- WW control region
+    scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/0jetDF8TeVWWcontrolRegion/postFit/Hwidth-*-erro*.root   postFit-WW/
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(8,0,0\)
+      
+      
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot

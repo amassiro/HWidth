@@ -90,6 +90,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  else if (which == 5)     { nameChannel = Form ("of_0j/"); }
  else if (which == 6)     { nameChannel = Form ("of_1j/"); }
  else if (which == 7)     { nameChannel = Form ("of_01j/"); }
+ else if (which == 8)     { nameChannel = Form ("of_0j/"); } //---- WW control region
  
  std::cout << " which = " << which << std::endl;
  
@@ -112,7 +113,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  //                            cut_variable 
  TString cutNameAfter  = Form("");
  
- gROOT->LoadMacro("PlotVHqqHggH.C+");
+//  gROOT->LoadMacro("PlotVHqqHggH.C+");
  gInterpreter->ExecuteMacro("LatinoStyle2.C");
  
 //  TCanvas* c1 = new TCanvas("mll","mll",550,660);
@@ -131,6 +132,9 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
   else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
   else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
   else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+
+  else if (which == 8)   { f[0] = new TFile("postFit-WW/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  
  }
  else {
   if      (which == 0)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
@@ -343,7 +347,14 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     }
     
    }
-  
+   
+   //---- WW control region
+   if (which == 8) {
+    NMAXY = 6*17;  //---- variable bin
+    NMAXX = 1;
+   }
+   
+   
   }
   
  //  int which = 0;  //---- mth:mll 0 jet
@@ -632,13 +643,65 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    vectNormalizationBkg.push_back(0.377);
 //    }
    
-   name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
-   vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-   vectNameBkg.push_back ("WW");
-   vectColourBkg.push_back(851);
-   vectSystBkg.push_back(0.00);
-   vectScaleBkg.push_back(1.0000);
-   vectNormalizationBkg.push_back(2.256);
+   if (which<8) {
+    name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW");
+    vectColourBkg.push_back(851);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+   }
+   else {
+    name = Form("%sWW1%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW1");
+    vectColourBkg.push_back(851);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+
+    name = Form("%sWW2%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW2");
+    vectColourBkg.push_back(851+1);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+
+    name = Form("%sWW3%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW3");
+    vectColourBkg.push_back(851+2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+
+    name = Form("%sWW4%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW4");
+    vectColourBkg.push_back(851+3);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+
+    name = Form("%sWW5%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW5");
+    vectColourBkg.push_back(851+4);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+
+    name = Form("%sWW6%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WW6");
+    vectColourBkg.push_back(851+5);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+    
+   }
    
 //    name = Form("%sggWW%s",cutNameBefore.Data(),cutNameAfter.Data());
 //    if (f[iFile]->GetListOfKeys()->Contains(name)) {
