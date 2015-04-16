@@ -29,6 +29,14 @@ Copy and plot:
     //---- WW control region
     scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/0jetDF8TeVWWcontrolRegion/postFit/Hwidth-*-erro*.root   postFit-WW/
     r00t Plot_AM_HWidth_unroll_Propaganda.C+\(8,0,0\)
+
+    scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/0jetDF8TeVWWcontrolRegionDphill/postFit/Hwidth-*-erro*.root   postFit-WW-dphill/
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(9,0,0\)
+
+    scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/0jetDF8TeVWWcontrolRegionDphillHighMllRemoved/postFit/Hwidth-*-erro*.root   postFit-WW-dphill-lowmll/
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(10,0,0\)
+
+
       
       
 Where:
