@@ -91,6 +91,8 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  else if (which == 6)     { nameChannel = Form ("of_1j/"); }
  else if (which == 7)     { nameChannel = Form ("of_01j/"); }
  else if (which == 8)     { nameChannel = Form ("of_0j/"); } //---- WW control region
+ else if (which == 9)     { nameChannel = Form ("of_0j/"); } //---- WW control region
+ else if (which == 10)    { nameChannel = Form ("of_0j/"); } //---- WW control region
  
  std::cout << " which = " << which << std::endl;
  
@@ -134,6 +136,8 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
   else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
 
   else if (which == 8)   { f[0] = new TFile("postFit-WW/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 9)   { f[0] = new TFile("postFit-WW-dphill/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 10)  { f[0] = new TFile("postFit-WW-dphill-lowmll/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
   
  }
  else {
@@ -355,6 +359,10 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    NMAXY = 6*17;  //---- variable bin
    NMAXX = 1;
   }
+  if (which == 9) {
+   NMAXY = 100;  //---- variable bin
+   NMAXX = 1;
+  }
   
  //  int which = 0;  //---- mth:mll 0 jet
  //  int which = 2;  //---- mth:mll 1 jet
@@ -541,6 +549,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     vectScaleSig.push_back(1.0000);
     //    vectScaleSig.push_back(1.0000*sqrt(GammaOverGammaSM));
     //    vectNormalizationSig.push_back(0.719);  
+    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    }
    
    
@@ -640,6 +649,8 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(0.377);
+   std::cout << "I'm here: DYTT : " << WHEREAMI << std::endl; WHEREAMI++;
+   
 //    }
    
    if (which<8) {
@@ -650,6 +661,27 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
     vectNormalizationBkg.push_back(2.256);
+    std::cout << "I'm here: WW : " << WHEREAMI << std::endl; WHEREAMI++;
+   }
+   else if (which == 9 || which == 10) {
+    name = Form("%sWWlow%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WWlow");
+    vectColourBkg.push_back(851);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+    std::cout << "I'm here: WW : " << WHEREAMI << std::endl; WHEREAMI++;
+
+    name = Form("%sWWhigh%s",cutNameBefore.Data(),cutNameAfter.Data());
+    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+    vectNameBkg.push_back ("WWhigh");
+    vectColourBkg.push_back(851+2);
+    vectSystBkg.push_back(0.00);
+    vectScaleBkg.push_back(1.0000);
+    vectNormalizationBkg.push_back(2.256);
+    std::cout << "I'm here: WW : " << WHEREAMI << std::endl; WHEREAMI++;
+    
    }
    else {
     name = Form("%sWW1%s",cutNameBefore.Data(),cutNameAfter.Data());
@@ -926,7 +958,12 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    }
 
    
+   //---- WW control region
    if (which == 8) {    
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+   }
+   if (which == 9 || which == 10) {    
     hs->setBlindBinSx(0);
     hs->setBlindBinDx(0);
    }
