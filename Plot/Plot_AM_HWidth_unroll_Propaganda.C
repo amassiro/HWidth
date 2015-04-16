@@ -347,14 +347,13 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     }
     
    }
-   
-   //---- WW control region
-   if (which == 8) {
-    NMAXY = 6*17;  //---- variable bin
-    NMAXX = 1;
-   }
-   
-   
+     
+  }
+  
+  //---- WW control region
+  if (which == 8) {
+   NMAXY = 6*17;  //---- variable bin
+   NMAXX = 1;
   }
   
  //  int which = 0;  //---- mth:mll 0 jet
@@ -925,6 +924,15 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     hs->setBlindBinSx(11*2+4);
     hs->setBlindBinDx(11*2+4);
    }
+
+   
+   if (which == 8) {    
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+   }
+   
+   
+   
    
    hs->setCutSx(-999,">");
    hs->setCutDx(-999,"<");
