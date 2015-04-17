@@ -93,6 +93,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
  else if (which == 8)     { nameChannel = Form ("of_0j/"); } //---- WW control region
  else if (which == 9)     { nameChannel = Form ("of_0j/"); } //---- WW control region
  else if (which == 10)    { nameChannel = Form ("of_0j/"); } //---- WW control region
+ else if (which == 11)    { nameChannel = Form ("of_0j/"); } //---- after new weights are included
  
  std::cout << " which = " << which << std::endl;
  
@@ -139,6 +140,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
   else if (which == 9)   { f[0] = new TFile("postFit-WW-dphill/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
   else if (which == 10)  { f[0] = new TFile("postFit-WW-dphill-lowmll/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
   
+  else if (which == 11)  { f[0] = new TFile("postFit-HWW-withWeights/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
  }
  else {
   if      (which == 0)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
@@ -359,8 +361,13 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    NMAXY = 6*17;  //---- variable bin
    NMAXX = 1;
   }
-  if (which == 9) {
+  if (which == 9 || which == 10) {
    NMAXY = 100;  //---- variable bin
+   NMAXX = 1;
+  }
+  
+  if (which == 11) {
+   NMAXY = 6*(17);  //---- variable bin
    NMAXX = 1;
   }
   
@@ -653,7 +660,7 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
    
 //    }
    
-   if (which<8) {
+   if (which<8 || which == 11) {
     name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     vectNameBkg.push_back ("WW");
@@ -968,7 +975,10 @@ void Plot_AM_HWidth_unroll_Propaganda(int which, int energy = 0, int doWeight = 
     hs->setBlindBinDx(0);
    }
    
-   
+   if (which == 11) {    
+    hs->setBlindBinSx(0);
+    hs->setBlindBinDx(0);
+   }
    
    
    hs->setCutSx(-999,">");
