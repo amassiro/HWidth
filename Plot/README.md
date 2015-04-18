@@ -41,7 +41,11 @@ Copy and plot:
     r00t Plot_AM_HWidth_unroll_Propaganda.C+\(11,0,0\)
 
     
-      
+    scp amassiro@cmsneu.cern.ch:/home/amassiro/Latinos/Shape/playground/Hwidth/0jetDF8TeVWWfixed/postFit/Hwidth-*-erro*.root   postFit-HWW-wwfix/
+    r00t Plot_AM_HWidth_unroll_Propaganda.C+\(12,0,0\)
+
+    
+    
       
 Where:
 
