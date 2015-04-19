@@ -19,7 +19,16 @@ Draw:
            tests/Observed.higgsCombineTest.MultiDimFit.012j.root \
            drawCombined.cxx
        
-           
+       
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.0j.root  Draw3D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.1j.root  Draw3D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.2j.root  Draw3D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.0j.root  Draw3D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.1j.root  Draw3D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.2j.root  Draw3D.cxx
+       
+       
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits
