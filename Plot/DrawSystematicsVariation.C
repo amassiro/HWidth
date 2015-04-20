@@ -330,7 +330,8 @@ void DrawSystematicsVariation(int jetbin) {
 //  gInterpreter->ExecuteMacro("../Plot/LatinoStyle2.C");
  
   
- TString date = Form ("shapeUnc_26Jan");
+//  TString date = Form ("shapeUnc_26Jan");
+ TString date = Form ("shapeUnc_20Apr");
  
  int NMAXX = 1;
  int NMAXY = 1;  
@@ -362,6 +363,38 @@ void DrawSystematicsVariation(int jetbin) {
   NMAXX = 1;
   label = Form ("m_{ll} : m_{T}^{H}");
  }
+ 
+ 
+ 
+ if (jetbin == 3) {
+  //---- 0 jet @8 TeV - new weights
+  f0 = new TFile("postFit-HWW-withWeights/Hwidth-0j-of-error-data.root");
+  NameDC[0] = {"of_0j"};
+  NMAXY = 6*(17);  //---- variable bin
+  NMAXX = 1; 
+ }
+ if (jetbin == 4) {
+  //---- 1 jet @8 TeV - new weights
+  f0 = new TFile("postFit-HWW-withWeights/Hwidth-1j-of-error-data.root");
+  NameDC[0] = {"of_1j"};
+  NMAXY = 4*(15);  //---- variable bin
+  NMAXX = 1; 
+ }
+ if (jetbin == 5) {
+  //---- 2 jet @8 TeV - new weights
+  f0 = new TFile("postFit-HWW-withWeights/Hwidth-2j-of-error-data.root");
+  NameDC[0] = {"of_2j"};
+  NMAXY = 2*(5);  //---- variable bin
+  NMAXX = 1;
+  label = Form ("m_{ll} : m_{T}^{H}");
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
  std::vector<std::string> vNameDC (NameDC, NameDC + sizeof(NameDC) / sizeof(std::string) );
  

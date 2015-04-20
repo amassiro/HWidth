@@ -118,6 +118,10 @@ Run nuisances scan:
     r00t DrawSystematicsVariation.C+\(1\)
     r00t DrawSystematicsVariation.C+\(2\)    
     
+    r00t DrawSystematicsVariation.C+\(3\)
+    r00t DrawSystematicsVariation.C+\(4\)
+    r00t DrawSystematicsVariation.C+\(5\)    
+    
     
 Plot:
 

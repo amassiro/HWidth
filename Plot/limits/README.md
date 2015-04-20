@@ -28,7 +28,26 @@ Draw:
     r00t tests2/Observed.higgsCombineTest.MultiDimFit.1j.root  Draw3D.cxx
     r00t tests2/Observed.higgsCombineTest.MultiDimFit.2j.root  Draw3D.cxx
        
-       
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.0j.root  Draw2D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.1j.root  Draw2D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.2j.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.0j.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.1j.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.2j.root  Draw2D.cxx
+    
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.0j.rf.g.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.1j.rf.g.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.2j.rf.g.root  Draw2D.cxx
+    
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.0j.RandG.root  Draw2D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.1j.RandG.root  Draw2D.cxx
+    r00t tests2/Asimov.higgsCombineTest.MultiDimFit.2j.RandG.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.0j.RandG.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.1j.RandG.root  Draw2D.cxx
+    r00t tests2/Observed.higgsCombineTest.MultiDimFit.2j.RandG.root  Draw2D.cxx
+    
+    
+    
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits
