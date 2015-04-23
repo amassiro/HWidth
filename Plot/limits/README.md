@@ -48,6 +48,34 @@ Draw:
     
     
     
+copy:
+
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Asimov.higgsCombineTest.MultiDimFit.*j.Gonly.root    tests3/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Observed.higgsCombineTest.MultiDimFit.*j.Gonly.root  tests3/
+    
+run:
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.0j.Gonly.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.0j.Gonly.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.1j.Gonly.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.1j.Gonly.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.2j.Gonly.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.2j.Gonly.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.01j.Gonly.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.01j.Gonly.root \
+           drawExpObs.cxx
+           
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.012j.Gonly.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.012j.Gonly.root \
+           drawExpObs.cxx
+
+           
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits
