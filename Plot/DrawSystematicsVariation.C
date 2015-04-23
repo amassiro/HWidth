@@ -544,7 +544,7 @@ void DrawSystematicsVariation(int jetbin) {
        ChangeAxis(gr, vedges);
        
        gr->SetLineWidth(2);
-       gr->SetLineColor(vColor[iFolder]);
+       gr->SetLineColor(vColor[iFolder+1]);
        gr->SetFillColor(vColor[iFolder]);
        gr->SetFillStyle(3001);
        
@@ -554,7 +554,7 @@ void DrawSystematicsVariation(int jetbin) {
        
        histo->SetTitle("");
        histo->SetLineWidth(2);
-       histo->SetLineColor(vColor[iFolder]);
+       histo->SetLineColor(vColor[iFolder+1]);
        histo->Draw();
        histo->GetXaxis()->SetTitle(label.Data());
        histo->GetYaxis()->SetRangeUser(0,1.5*histo->GetMaximum());   
@@ -658,7 +658,7 @@ void DrawSystematicsVariation(int jetbin) {
        ChangeAxis(gr, vedges);
        
        gr->SetLineWidth(2);
-       gr->SetLineColor(vColor[iFolder]);
+       gr->SetLineColor(vColor[iFolder+1]);
        gr->SetFillColor(vColor[iFolder]);
        gr->SetFillStyle(vFillStyle[iFolder]);
        
@@ -742,7 +742,7 @@ void DrawSystematicsVariation(int jetbin) {
        
        histo->SetTitle("");
        histo->SetLineWidth(2);
-       histo->SetLineColor(vColor[iFolder]);
+       histo->SetLineColor(vColor[iFolder+1]);
        
        cc->cd();
        if (iFolder == 0) {
