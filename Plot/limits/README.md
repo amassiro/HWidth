@@ -52,6 +52,7 @@ copy:
 
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Asimov.higgsCombineTest.MultiDimFit.*j.Gonly.root    tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Observed.higgsCombineTest.MultiDimFit.*j.Gonly.root  tests3/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.root  tests3/
     
 run:
 
@@ -75,6 +76,30 @@ run:
            tests3/Observed.higgsCombineTest.MultiDimFit.012j.Gonly.root \
            drawExpObs.cxx
 
+
+           
+           
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.01j.StandardModel.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.01j.StandardModel.root \
+           drawExpObs.cxx
+           
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel.root \
+           drawExpObs.cxx
+           
+           
            
 Where:
 
