@@ -53,6 +53,8 @@ copy:
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Asimov.higgsCombineTest.MultiDimFit.*j.Gonly.root    tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Observed.higgsCombineTest.MultiDimFit.*j.Gonly.root  tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.root  tests3/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.MuScan.root  tests3/
+    
     
 run:
 
@@ -99,6 +101,30 @@ run:
            tests3/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel.root \
            drawExpObs.cxx
            
+
+
+           
+           
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel.MuScan.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel.MuScan.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel.MuScan.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel.MuScan.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel.MuScan.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel.MuScan.root \
+           drawExpObs.cxx
+
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.01j.StandardModel.MuScan.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.01j.StandardModel.MuScan.root \
+           drawExpObs.cxx
+           
+    r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel.MuScan.root \
+           tests3/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel.MuScan.root \
+           drawExpObs.cxx
+           
            
            
 Where:
@@ -106,4 +132,9 @@ Where:
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits
 
 
+
+    
+    
+    
+    
     
