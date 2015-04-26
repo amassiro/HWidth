@@ -120,16 +120,47 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
  bool doSignalInjection;
   
  
+//  if (energy == 0) {
+//   if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//   else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+//   
+//   if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//   else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+//  }
+//  else {
+//   if      (which == 0)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 1)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//   else if (which == 2)   { f[0] = new TFile("postFit7TeV/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 3)   { f[0] = new TFile("postFit7TeV/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+//   
+//   if      (which == 4)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 5)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+//   else if (which == 6)   { f[0] = new TFile("postFit7TeV/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+//   else if (which == 7)   { f[0] = new TFile("postFit7TeV/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+//  }
+//  
+//    
+   
+   
+   
+   
+   
+ 
+ 
  if (energy == 0) {
   if      (which == 0)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
   else if (which == 1)   { f[0] = new TFile("postFitSimple/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
   else if (which == 2)   { f[0] = new TFile("postFitSimple/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
-  else if (which == 3)   { f[0] = new TFile("postFit/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 3)   { f[0] = new TFile("postFit_USED_FOR_PAPER/Hwidth-2j-of-error-data.root");  doSignalInjection = false; }
   
-  if      (which == 4)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
-  else if (which == 5)   { f[0] = new TFile("postFit/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
-  else if (which == 6)   { f[0] = new TFile("postFit/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
-  else if (which == 7)   { f[0] = new TFile("postFit/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
+  if      (which == 4)   { f[0] = new TFile("postFit_USED_FOR_PAPER/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 5)   { f[0] = new TFile("postFit_USED_FOR_PAPER/Hwidth-0j-of-error-signalInjection.root");  doSignalInjection = true; }
+  else if (which == 6)   { f[0] = new TFile("postFit_USED_FOR_PAPER/Hwidth-1j-of-error-data.root");  doSignalInjection = false; }
+  else if (which == 7)   { f[0] = new TFile("postFit_USED_FOR_PAPER/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
  }
  else {
   if      (which == 0)   { f[0] = new TFile("postFit7TeV/Hwidth-0j-of-error-data.root");  doSignalInjection = false; }
@@ -143,7 +174,6 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
   else if (which == 7)   { f[0] = new TFile("postFit7TeV/Hwidth-01j-of-error-data.root");  doSignalInjection = false; }
  }
  
-   
  
  PlotVHqqHggH* hs = new PlotVHqqHggH();
  
@@ -547,8 +577,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(1.000);
    
+   if (energy == 0 && which != 3) { 
    name = Form("%sVgS%s",cutNameBefore.Data(),cutNameAfter.Data());
-   if (f[iFile]->GetListOfKeys()->Contains(name)) {
+//    if (f[iFile]->GetListOfKeys()->Contains(name)) {
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back ("V+#gamma/V+#gamma*");
 //     vectNameBkg.push_back ("Wgs");
@@ -557,7 +588,9 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
     vectNormalizationBkg.push_back(1.000);
+//    }
    }
+   
    
    name = Form("%sTop%s",cutNameBefore.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
@@ -590,34 +623,40 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
 //    name = Form("%sWW%s",cutNameBefore.Data(),cutNameAfter.Data());
    //----> take WW from fit, since it is data-driven in normalization!
    name = Form("%sWW%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
-   if (f[iFile]->GetListOfKeys()->Contains(name)) {    
+//    if (f[iFile]->GetListOfKeys()->Contains(name)) {   
+    std::cout << " >>> found: " << name.Data() << std::endl;
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     vectNameBkg.push_back ("WW");
     vectColourBkg.push_back(851);
     vectSystBkg.push_back(0.00);
     vectScaleBkg.push_back(1.0000);
     vectNormalizationBkg.push_back(2.256);
-   }
+//    }
    
-   name = Form("%sWWlow%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
-   if (f[iFile]->GetListOfKeys()->Contains(name)) {    
-    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back ("WW");
-    vectColourBkg.push_back(851);
-    vectSystBkg.push_back(0.00);
-    vectScaleBkg.push_back(1.0000);
-    vectNormalizationBkg.push_back(2.256);
-   }
-   
-   name = Form("%sWWhigh%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
-   if (f[iFile]->GetListOfKeys()->Contains(name)) {    
-    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
-    vectNameBkg.push_back ("WW");
-    vectColourBkg.push_back(851);
-    vectSystBkg.push_back(0.00);
-    vectScaleBkg.push_back(1.0000);
-    vectNormalizationBkg.push_back(2.256);
-   }
+//    name = Form("%sWWlow%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
+//    std::cout << " f[iFile]->GetListOfKeys() = ";
+// //    f[iFile]->GetListOfKeys()->Print();
+//    
+// //    if (f[iFile]->GetListOfKeys()->Contains(name)) {    
+//     std::cout << " >>> found: " << name.Data() << std::endl;
+//     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//     vectNameBkg.push_back ("WW");
+//     vectColourBkg.push_back(851);
+//     vectSystBkg.push_back(0.00);
+//     vectScaleBkg.push_back(1.0000);
+//     vectNormalizationBkg.push_back(2.256);
+// //    }
+//    
+//    name = Form("%sWWhigh%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
+// //    if (f[iFile]->GetListOfKeys()->Contains(name)) {    
+//     std::cout << " >>> found: " << name.Data() << std::endl;
+//     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
+//     vectNameBkg.push_back ("WW");
+//     vectColourBkg.push_back(851);
+//     vectSystBkg.push_back(0.00);
+//     vectScaleBkg.push_back(1.0000);
+//     vectNormalizationBkg.push_back(2.256);
+// //    }
    
    
    
@@ -639,7 +678,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    vectSystBkg.push_back(0.00);
    vectScaleBkg.push_back(1.0000);
    //    vectNormalizationBkg.push_back(0.719);  
-   std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
+   std::cout << "I'm here: " << WHEREAMI << " ggWW " << std::endl; WHEREAMI++;
    
    
    name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
