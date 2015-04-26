@@ -55,6 +55,7 @@ copy:
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.root  tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.MuScan.root  tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.fineGrid.root  tests3/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Toys.higgsCombineTest.MultiDimFit.0j.StandardModel.root ./
     
     
 run:

@@ -48,10 +48,12 @@ void DrawLimit(){
  float deltaNLL;
  float CMS_zz4l_GGsm;
  float RF;
+ int iToy;
  
  limit->SetBranchAddress("deltaNLL",&deltaNLL);
  limit->SetBranchAddress("CMS_zz4l_GGsm",&CMS_zz4l_GGsm);
 //  limit->SetBranchAddress("RF",&RF);
+ limit->SetBranchAddress("iToy",&iToy);
  
  
  TFile* newF = new TFile("test.root","RECREATE");
@@ -60,45 +62,65 @@ void DrawLimit(){
  
  TGraph* gr[300];
  TString* name[300];
+ int iPointOnGraph[300];
+ 
  TCanvas* ccToy = new TCanvas("ccToy","ccToy",600,600);
  ccToy->Divide(10,10);
 //  ccToy->Divide(20,20);
 //  ccToy->Divide(6,6);
 //  ccToy->Divide(8,8);
+ for (int nToy=0; nToy<105; nToy++) {
+  name[nToy] = new TString();
+  name[nToy] -> Form ("toy_%d",nToy);
+  gr[nToy] = new TGraph;
+  gr[nToy] -> SetName (name[nToy]->Data());
+  iPointOnGraph[nToy] = 0;
+ }
  
  int iEvent=0;
  std::cout << " entries = " << limit->GetEntries() << std::endl;
-//  for (int iToy=0; iToy<50; iToy++) {
-//  for (int iToy=0; iToy<30; iToy++) {
- for (int iToy=0; iToy<100; iToy++) {
-//   for (int iToy=0; iToy<300; iToy++) {
-  name[iToy] = new TString();
-  name[iToy] -> Form ("toy_%d",iToy);
-  gr[iToy] = new TGraph;
-  gr[iToy] -> SetName (name[iToy]->Data());
-  int iPointOnGraph = 0;
-  for (int iPoint=0; iPoint<242; iPoint++) {
-//    for (int iPoint=0; iPoint<252; iPoint++) {
-   limit->GetEntry(iEvent);
-   iEvent++;
-   if (deltaNLL>=0 && deltaNLL<100) {
-    gr[iToy]->SetPoint(iPointOnGraph,CMS_zz4l_GGsm,2*deltaNLL);
-    iPointOnGraph++;
-   }
+ 
+ for (int iEntry=0; iEntry < limit->GetEntries() ; iEntry++) {
+  limit->GetEntry(iEntry);   
+  //   std::cout << " iEntry = " << iEntry << std::endl;
+  
+  if (deltaNLL>=0 && deltaNLL<100) {
+   std::cout << " iToy = " << iToy << " iEntry = " << iEntry << std::endl;
+   gr[iToy-1]->SetPoint(iPointOnGraph[iToy-1],CMS_zz4l_GGsm,2*deltaNLL);
+   iPointOnGraph[iToy-1]++;
   }
+ }
+ 
+ TCanvas* ccall[300];
+
+ for (int nToy=0; nToy<100; nToy++) {
   
-  gr[iToy]->RemovePoint(0);
-  ccToy->cd(iToy+1);
-  gr[iToy]->Draw("AP");
+  name[nToy] = new TString();
+  name[nToy] -> Form ("cc_toy_%d",nToy);
+  ccall[nToy] = new TCanvas(name[nToy]->Data(),name[nToy]->Data(),400,400);
   
-  double value_x_1sigma = findCrossingOfScan1D(*gr[iToy], 1.00);
-//   std::cout << " value_x_1sigma = " << value_x_1sigma << std::endl;
-  if (value_x_1sigma != 0) OneSigma->Fill(value_x_1sigma);
-//   double value_x_2sigma = findCrossingOfScan1D(*gr[iToy], 3.84);
-  double value_x_2sigma = findCrossingOfScan1D(*gr[iToy], 2.00);
-  //   std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
-  if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
   
+  if (gr[nToy] != 0x0) {
+   gr[nToy]->RemovePoint(0);
+   ccToy->cd(nToy+1);
+   gr[nToy]->SetMarkerSize(0.5);
+   gr[nToy]->SetMarkerStyle(20);
+   
+   gr[nToy]->Draw("AP");
+   
+   ccall[nToy] -> cd ();
+   ccall[nToy] -> SetGrid();
+   gr[nToy]->Draw("AP");
+
+   
+   double value_x_1sigma = findCrossingOfScan1D(*gr[nToy], 1.00);
+   //   std::cout << " value_x_1sigma = " << value_x_1sigma << std::endl;
+   if (value_x_1sigma != 0) OneSigma->Fill(value_x_1sigma);
+   //   double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 3.84);
+   double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 2.00);
+   //   std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
+   if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
+  }
  }
  
  TCanvas* cc = new TCanvas("cc","cc",800,600);
