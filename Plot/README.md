@@ -83,7 +83,13 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(4,0,0,0,7\)
     r99t -l -q PrepareForAN.C+\(4,0,0,0,10\)
     r99t -l -q PrepareForAN.C+\(4,0,0,0,20\)
-    
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,30\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,40\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,50\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,60\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,100\)
+    r99t -l -q PrepareForAN.C+\(4,0,0,0,200\)
+
     
     r99t -l -q PrepareForAN.C+\(4,0,0\)
     r99t -l -q PrepareForAN.C+\(4,0,1\)

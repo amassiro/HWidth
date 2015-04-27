@@ -35,8 +35,9 @@ void DrawLimit(){
 //  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.noSyst.root","READ"); // -> reasonable good
 //  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.toysFreq.new.root","READ"); // -> reasonable good
  
- TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.StandardModel.root","READ"); // -> 0 jet final model
- 
+//  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.StandardModel.root","READ"); // -> 0 jet final model
+//  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.root","READ"); // -> 0+1+2 jet final model
+ TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root","READ"); // -> 0+1+2 jet final model
  
  
  
@@ -58,7 +59,8 @@ void DrawLimit(){
  
  TFile* newF = new TFile("test.root","RECREATE");
  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",20,0,40);
- TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",40,0,80);
+ TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",40,0,40);
+//  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",80,0,80);
  
  TGraph* gr[300];
  TString* name[300];
@@ -97,7 +99,7 @@ void DrawLimit(){
   
   name[nToy] = new TString();
   name[nToy] -> Form ("cc_toy_%d",nToy);
-  ccall[nToy] = new TCanvas(name[nToy]->Data(),name[nToy]->Data(),400,400);
+//   ccall[nToy] = new TCanvas(name[nToy]->Data(),name[nToy]->Data(),400,400);
   
   
   if (gr[nToy] != 0x0) {
@@ -108,16 +110,16 @@ void DrawLimit(){
    
    gr[nToy]->Draw("AP");
    
-   ccall[nToy] -> cd ();
-   ccall[nToy] -> SetGrid();
-   gr[nToy]->Draw("AP");
+//    ccall[nToy] -> cd ();
+//    ccall[nToy] -> SetGrid();
+//    gr[nToy]->Draw("AP");
 
    
    double value_x_1sigma = findCrossingOfScan1D(*gr[nToy], 1.00);
    //   std::cout << " value_x_1sigma = " << value_x_1sigma << std::endl;
    if (value_x_1sigma != 0) OneSigma->Fill(value_x_1sigma);
-   //   double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 3.84);
-   double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 2.00);
+     double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 3.84);
+//    double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 2.00);
    //   std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
    if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
   }
