@@ -45,7 +45,7 @@ void drawExpObsMu() {
  cc->SetRightMargin(0.05);
  cc->SetBottomMargin(0.12);
  cc->SetFrameBorderMode(0);
- TLatex * tex = new TLatex(0.94,0.92,"8 TeV");
+ TLatex * tex = new TLatex(0.94,0.92,"7+8 TeV");
  tex->SetNDC();
  tex->SetTextAlign(31);
  tex->SetTextFont(42);
@@ -56,7 +56,7 @@ void drawExpObsMu() {
  tex2->SetTextFont(61);
  tex2->SetTextSize(0.04);
  tex2->SetLineWidth(2);
- TLatex * tex3 = new TLatex(0.236,0.92,"L = 19.4 fb^{-1}  Preliminary");
+ TLatex * tex3 = new TLatex(0.236,0.92,"L = 4.9 + 19.4 fb^{-1}  Preliminary");
  tex3->SetNDC();
  tex3->SetTextFont(52);
  tex3->SetTextSize(0.035);

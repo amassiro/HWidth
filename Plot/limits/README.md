@@ -115,6 +115,11 @@ run:
 
 
 
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.MuScan.root forPaper/       
+    r99t   forPaper/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.MuScan.root \
+           forPaper/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.MuScan.root \
+           drawExpObsMu.cxx
+           
            
            
     r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel.MuScan.root \
