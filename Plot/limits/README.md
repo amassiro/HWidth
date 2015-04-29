@@ -114,6 +114,12 @@ run:
            drawExpObs.cxx
 
 
+           
+    r99t   forPaper/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.root \
+           forPaper/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.magicOptions.root \
+           drawExpObs.cxx
+       
+           
 
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.MuScan.root forPaper/       
     r99t   forPaper/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-7TeV-8TeV.MuScan.root \
@@ -142,6 +148,14 @@ run:
            tests3/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel.MuScan.root \
            drawExpObsMu.cxx
            
+
+           
+           
+    r99t  new*
+    TH1F* one = (TH1F*) _file0->Get("TwoSigma")
+    TH1F* two = (TH1F*) _file1->Get("TwoSigma")
+    one -> Add (two)
+    one->Draw()
            
            
 Where:

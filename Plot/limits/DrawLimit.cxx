@@ -41,7 +41,7 @@ void moveTGraph(TGraph* graph){
  
  //---- minimum of likelihood scan must bo 0
  if (minLikelihood != 0) {
-  std::cout << " minLikelihood = " << minLikelihood << std::endl;
+//   std::cout << " minLikelihood = " << minLikelihood << std::endl;
   for (int i=0; i<n; i++) {
    graph->SetPoint(i,x[i],y[i]-minLikelihood);
   }
@@ -55,6 +55,7 @@ void moveTGraph(TGraph* graph){
 
 void DrawLimit(){
  
+ TChain* limit = new TChain("limit");
  
  
 //  TFile* f = new TFile("higgsCombineTest.MultiDimFit.0j.toys.toysFreq.root","READ");  -> not very nice
@@ -63,14 +64,17 @@ void DrawLimit(){
  
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.StandardModel.root","READ"); // -> 0 jet final model
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.root","READ"); // -> 0+1+2 jet final model
- TFile* f = new TFile("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root","READ"); // -> 0+1+2 jet final model
+//  TFile* f = new TFile("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root","READ"); // -> 0+1+2 jet final model
+ 
+//  limit->Add("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root"); // -> 0+1+2 jet final model
+ limit->Add("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.bis.root"); // -> 0+1+2 jet final model
  
  
  
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.root","READ");
 //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.Gamma.bis.root","READ");
  //  TFile* f = new TFile("Toys.higgsCombineTest.MultiDimFit.0j.GammaAndRF.root","READ");
- TTree* limit = (TTree*) f->Get("limit");
+//  TTree* limit = (TTree*) f->Get("limit");
  
  float deltaNLL;
  float CMS_zz4l_GGsm;
@@ -85,7 +89,7 @@ void DrawLimit(){
  
  TFile* newF = new TFile("test.root","RECREATE");
  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",20,0,60);
- TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",15,0,60);
+ TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",20,0,60);
 //  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",80,0,80);
  
  TGraph* gr[300];
@@ -113,7 +117,7 @@ void DrawLimit(){
   //   std::cout << " iEntry = " << iEntry << std::endl;
   
   if (deltaNLL>=0 && deltaNLL<100) {
-   std::cout << " iToy = " << iToy << " iEntry = " << iEntry << std::endl;
+//    std::cout << " iToy = " << iToy << " iEntry = " << iEntry << std::endl;
    gr[iToy-1]->SetPoint(iPointOnGraph[iToy-1],CMS_zz4l_GGsm,2*deltaNLL);
    iPointOnGraph[iToy-1]++;
   }
@@ -148,7 +152,7 @@ void DrawLimit(){
    if (value_x_1sigma != 0) OneSigma->Fill(value_x_1sigma);
      double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 3.84);
 //    double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 2.00);
-     std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
+//      std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
    if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
   }
  }
@@ -159,5 +163,12 @@ void DrawLimit(){
  OneSigma->Draw();
  cc->cd(2);
  TwoSigma->Draw();
+ 
+ 
+//  TFile* outputfile = new TFile("new.root","RECREATE");
+ TFile* outputfile = new TFile("new2.root","RECREATE");
+ TwoSigma->Write();
+ 
+ 
  
 }
