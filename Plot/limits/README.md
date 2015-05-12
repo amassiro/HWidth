@@ -176,11 +176,69 @@ run:
     r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel-8TeV.MuScan.root \
            forARC11May/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel-8TeV.MuScan.root \
            drawExpObsMu.cxx\(2\)
-    
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.01j.StandardModel-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.01j.StandardModel-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
     r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-7-8TeV.MuScan.root \
            forARC11May/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-7-8TeV.MuScan.root \
            drawExpObsMu.cxx\(1\)
-    
+           
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+
+
+           
+    ---- HWW paper ----
+           
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+          
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.01j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.01j.StandardModel-PaperHWW-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)
+           
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel-PaperHWW-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)           
+           
+           
+           
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits
