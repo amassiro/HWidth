@@ -158,6 +158,29 @@ run:
     one->Draw()
            
            
+           
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardMod*.MuScan.root     forARC11May/       
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+          
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.0j.StandardModel-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.0j.StandardModel-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.1j.StandardModel-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.1j.StandardModel-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.2j.StandardModel-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.2j.StandardModel-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(2\)
+    
+    r99t   forARC11May/Asimov.higgsCombineTest.MultiDimFit.012j.StandardModel-7-8TeV.MuScan.root \
+           forARC11May/Observed.higgsCombineTest.MultiDimFit.012j.StandardModel-7-8TeV.MuScan.root \
+           drawExpObsMu.cxx\(1\)
+    
 Where:
 
     /home/amassiro/Cern/Code/VBF/qqHWW/AnalysisPackage_qqHWWlnulnu/test/HWidth/Plot/limits

@@ -1,7 +1,12 @@
 
 #include "tools.h"
  
-void drawExpObsMu() {
+//---- alsoSevenTeV
+//---- 1 = 7+8 TeV
+//---- 2 = 8   TeV
+//---- 3 = 7   TeV
+
+void drawExpObsMu(int alsoSevenTeV = 1) {
  
  TCanvas *cc = new TCanvas("cc","",180,52,550,550);
  
@@ -45,7 +50,14 @@ void drawExpObsMu() {
  cc->SetRightMargin(0.05);
  cc->SetBottomMargin(0.12);
  cc->SetFrameBorderMode(0);
- TLatex * tex = new TLatex(0.94,0.92,"7+8 TeV");
+ 
+ TLatex * tex;
+ if      (alsoSevenTeV==1) tex = new TLatex(0.94,0.92,"7+8 TeV");
+ else if (alsoSevenTeV==2) tex = new TLatex(0.94,0.92,"8 TeV");
+ else if (alsoSevenTeV==3) tex = new TLatex(0.94,0.92,"7 TeV");
+ 
+ 
+ 
  tex->SetNDC();
  tex->SetTextAlign(31);
  tex->SetTextFont(42);
@@ -56,7 +68,12 @@ void drawExpObsMu() {
  tex2->SetTextFont(61);
  tex2->SetTextSize(0.04);
  tex2->SetLineWidth(2);
- TLatex * tex3 = new TLatex(0.236,0.92,"L = 4.9 + 19.4 fb^{-1}  Preliminary");
+ TLatex * tex3;
+
+ if      (alsoSevenTeV==1) tex3 = new TLatex(0.236,0.92,"L = 4.9 + 19.4 fb^{-1}  Preliminary");
+ else if (alsoSevenTeV==2) tex3 = new TLatex(0.236,0.92,"L = 19.4 fb^{-1}  Preliminary");
+ else if (alsoSevenTeV==3) tex3 = new TLatex(0.236,0.92,"L = 4.9 fb^{-1}  Preliminary");
+ 
  tex3->SetNDC();
  tex3->SetTextFont(52);
  tex3->SetTextSize(0.035);
