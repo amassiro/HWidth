@@ -170,8 +170,11 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
  
  
 //  TFile* outputfile = new TFile("new.root","RECREATE");
- TFile* outputfile = new TFile("new2.root","RECREATE");
+ TFile* outputfile2 = new TFile("new2sigma.root","RECREATE");
  TwoSigma->Write();
+ 
+ TFile* outputfile1 = new TFile("new1sigma.root","RECREATE");
+ OneSigma->Write();
  
  
  

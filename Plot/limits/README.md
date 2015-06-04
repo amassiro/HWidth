@@ -67,7 +67,9 @@ run:
 
     --- toys ---
     r99t DrawLimit.cxx\(\"grid_7TeV-8TeV-toysScan.root\"\)
-
+    r99t DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
+    
+    r99t DrawLimitDeltaDistribution.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
     
     
     
