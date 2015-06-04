@@ -27,8 +27,9 @@ double findCrossingOfScan1D(TGraph& graph, double value) {
 
 
 
-void moveTGraph(TGraph* graph){
+double moveTGraph(TGraph* graph){
  double minLikelihood = 1000;
+ double minX = -99;
  double* x = graph->GetX();
  double* y = graph->GetY();
  int imin = 0;
@@ -36,6 +37,7 @@ void moveTGraph(TGraph* graph){
  for (int i=0; i<n; i++) {
   if (y[i] < minLikelihood) {
    minLikelihood = y[i];
+   minX = x[i];
   }
  }
  
@@ -46,6 +48,8 @@ void moveTGraph(TGraph* graph){
    graph->SetPoint(i,x[i],y[i]-minLikelihood);
   }
  }
+ 
+ return minX;
 }
 
 
@@ -94,7 +98,10 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
  TFile* newF = new TFile("test.root","RECREATE");
  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",20,0,60);
  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",20,0,60);
-//  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",80,0,80);
+
+ TH1F* DeltaAtDefault = new TH1F ("DeltaAtDefault","2#Delta likelihood at nominal point",100,0,5);
+ 
+ //  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",80,0,80);
  
  TGraph* gr[300];
  TString* name[300];
@@ -138,7 +145,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
   
   if (gr[nToy] != 0x0) {
    gr[nToy]->RemovePoint(0);
-   moveTGraph(gr[nToy]);
+   double minimumX = moveTGraph(gr[nToy]);
 
    ccToy->cd(nToy+1);
    gr[nToy]->SetMarkerSize(0.5);
@@ -158,6 +165,10 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
 //    double value_x_2sigma = findCrossingOfScan1D(*gr[nToy], 2.00);
 //      std::cout << " value_x_2sigma = " << value_x_2sigma << std::endl;
    if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
+   
+   
+   DeltaAtDefault -> Fill (gr[nToy]->Eval(1.0)) ;
+   
   }
  }
  
@@ -176,6 +187,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
  TFile* outputfile1 = new TFile("new1sigma.root","RECREATE");
  OneSigma->Write();
  
- 
+ TFile* outputfileDelta = new TFile("newDelta.root","RECREATE");
+ DeltaAtDefault->Write();
  
 }

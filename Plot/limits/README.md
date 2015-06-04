@@ -67,7 +67,32 @@ run:
 
     --- toys ---
     r99t DrawLimit.cxx\(\"grid_7TeV-8TeV-toysScan.root\"\)
+    
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
+    mv newDelta.root newDelta.1.root
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_1_1_t4d.root\"\)
+    mv newDelta.root newDelta.2.root
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_3_1_DpA.root\"\)
+    mv newDelta.root newDelta.3.root
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_6_1_L5b.root\"\)
+    mv newDelta.root newDelta.4.root
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_7_1_7cz.root\"\)
+    mv newDelta.root newDelta.5.root
+    
+    rm newDelta.root
+    hadd newDelta.root newDelta.*.root
+    
+    r99t newDelta.root
+    DeltaAtDefault->Draw()
+    DeltaAtDefault->Integral(-1,-1)
+    DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1)
+    DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1) / DeltaAtDefault->Integral(-1,-1)
+    sqrt(DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1)) / DeltaAtDefault->Integral(-1,-1)
+    
+    
+    
     r99t DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
+    
     
     r99t DrawLimitDeltaDistribution.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
     
