@@ -53,7 +53,7 @@ void moveTGraph(TGraph* graph){
 
 
 
-void DrawLimit(){
+void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
  
  TChain* limit = new TChain("limit");
  
@@ -67,7 +67,11 @@ void DrawLimit(){
 //  TFile* f = new TFile("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root","READ"); // -> 0+1+2 jet final model
  
 //  limit->Add("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.root"); // -> 0+1+2 jet final model
- limit->Add("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.bis.root"); // -> 0+1+2 jet final model
+//  limit->Add("forPaper/Toys.higgsCombineTest.MultiDimFit.012j.StandardModel.extendedRange.bis.root"); // -> 0+1+2 jet final model
+ 
+//  limit->Add("grid_7TeV-8TeV-toysScan.root"); // -> 0+1+2 jet 7+8 TeV 
+ limit->Add(inputFile.c_str()); // -> 0+1+2 jet 7+8 TeV 
+ 
  
  
  

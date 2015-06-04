@@ -56,9 +56,21 @@ copy:
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.MuScan.root  tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/*.higgsCombineTest.MultiDimFit.*j.StandardModel.fineGrid.root  tests3/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/Toys.higgsCombineTest.MultiDimFit.0j.StandardModel.root ./
-    
+
+    toys 0+1+2 jet 7+8 TeV
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/grid_7TeV-8TeV-toysScan.root ./
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan1_*.root  toys-0/
+
+
     
 run:
+
+    --- toys ---
+    r99t DrawLimit.cxx\(\"grid_7TeV-8TeV-toysScan.root\"\)
+
+    
+    
+    
 
     r99t   tests3/Asimov.higgsCombineTest.MultiDimFit.0j.Gonly.root \
            tests3/Observed.higgsCombineTest.MultiDimFit.0j.Gonly.root \
