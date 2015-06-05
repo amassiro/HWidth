@@ -66,6 +66,11 @@ copy:
 run:
 
     --- toys ---
+    Gamma = 1
+    Gamma = 5
+    Gamma = 10
+    Gamma = 20
+    
     r99t DrawLimit.cxx\(\"grid_7TeV-8TeV-toysScan.root\"\)
     
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
@@ -88,6 +93,86 @@ run:
     DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1)
     DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1) / DeltaAtDefault->Integral(-1,-1)
     sqrt(DeltaAtDefault->Integral( DeltaAtDefault->GetXaxis()->FindBin(3.84) ,-1)) / DeltaAtDefault->Integral(-1,-1)
+    
+    value and +/- error
+
+    r99t DrawDelta.cxx\(\"newDelta.root\"\)
+    
+    
+    
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan2_*.root  toys-5/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan3_*.root  toys-10/
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan4_*.root  toys-20/
+
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\",5\)
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\",10\)
+    r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\",20\)
+
+
+    
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_10_1_xMJ.root\",5\)
+    mv newDelta.root newDelta_5.1.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_2_1_ygG.root\",5\)
+    mv newDelta.root newDelta_5.2.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_5_1_4zM.root\",5\)
+    mv newDelta.root newDelta_5.3.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_9_1_MHY.root\",5\)
+    mv newDelta.root newDelta_5.4.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_1_1_WzN.root\",5\)
+    mv newDelta.root newDelta_5.5.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_3_1_kAZ.root\",5\)
+    mv newDelta.root newDelta_5.6.root
+    r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_8_1_e5M.root\",5\)
+    mv newDelta.root newDelta_5.7.root
+    
+    hadd newDelta_5.root  newDelta_5.*.root
+    r99t DrawDelta.cxx\(\"newDelta_5.root\"\)
+
+    
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_1_1_sCW.root\",10\)  
+    mv newDelta.root newDelta_10.1.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_3_1_U40.root\",10\)  
+    mv newDelta.root newDelta_10.2.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_6_1_VLL.root\",10\)  
+    mv newDelta.root newDelta_10.3.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_8_1_7Uf.root\",10\)
+    mv newDelta.root newDelta_10.4.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_2_1_Pi3.root\",10\)  
+    mv newDelta.root newDelta_10.5.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_4_1_Nif.root\",10\)  
+    mv newDelta.root newDelta_10.6.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_7_1_pdx.root\",10\)  
+    mv newDelta.root newDelta_10.7.root
+    r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_9_1_5ws.root\",10\)
+    mv newDelta.root newDelta_10.8.root
+    
+    hadd newDelta_10.root  newDelta_10.*.root
+    r99t DrawDelta.cxx\(\"newDelta_10.root\"\)
+
+    
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_10_1_YX3.root\",20\) 
+    mv newDelta.root newDelta_20.1.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_2_1_Gf5.root\",20\)  
+    mv newDelta.root newDelta_20.2.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_4_1_1Xa.root\",20\)  
+    mv newDelta.root newDelta_20.3.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_6_1_NpA.root\",20\)  
+    mv newDelta.root newDelta_20.4.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_9_1_dUf.root\",20\)
+    mv newDelta.root newDelta_20.5.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_1_1_AG1.root\",20\)   
+    mv newDelta.root newDelta_20.6.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_3_1_gBg.root\",20\)  
+    mv newDelta.root newDelta_20.7.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_5_1_SHQ.root\",20\)  
+    mv newDelta.root newDelta_20.8.root
+    r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",20\)
+    mv newDelta.root newDelta_20.9.root
+    
+    hadd newDelta_20.root  newDelta_20.*.root
+    r99t DrawDelta.cxx\(\"newDelta_20.root\"\)
+    
+    
     
     
     

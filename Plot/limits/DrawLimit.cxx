@@ -57,7 +57,7 @@ double moveTGraph(TGraph* graph){
 
 
 
-void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
+void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0){
  
  TChain* limit = new TChain("limit");
  
@@ -167,7 +167,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root"){
    if (value_x_2sigma != 0) TwoSigma->Fill(value_x_2sigma);
    
    
-   DeltaAtDefault -> Fill (gr[nToy]->Eval(1.0)) ;
+   DeltaAtDefault -> Fill (gr[nToy]->Eval(defaultValue)) ;
    
   }
  }
