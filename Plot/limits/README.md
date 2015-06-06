@@ -65,7 +65,7 @@ copy:
     
 run:
 
-    --- toys ---
+    --- toys for coverage test ---
     Gamma = 1
     Gamma = 5
     Gamma = 10
@@ -174,7 +174,7 @@ run:
     
     
     
-    
+    --- plots ---
     
     r99t DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
     
