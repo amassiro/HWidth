@@ -178,16 +178,42 @@ run:
     
     --- coverage test 2 ----
     
-    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",15\)
-    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_5_1_SHQ.root\",15\)
-
+    
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_10_1_32J.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_1_1_t4d.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_3_1_DpA.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_6_1_L5b.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_7_1_7cz.root\",15\)
  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_10_1_xMJ.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_2_1_ygG.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_5_1_4zM.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_9_1_MHY.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_1_1_WzN.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_3_1_kAZ.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_8_1_e5M.root\",15\)
     
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_1_1_sCW.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_3_1_U40.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_6_1_VLL.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_8_1_7Uf.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_2_1_Pi3.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_4_1_Nif.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_7_1_pdx.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_9_1_5ws.root\",15\)
+
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_10_1_YX3.root\",15\) 
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_2_1_Gf5.root\",15\)  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_4_1_1Xa.root\",15\)  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_6_1_NpA.root\",15\)  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_9_1_dUf.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_1_1_AG1.root\",15\)   
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_3_1_gBg.root\",15\)  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_5_1_SHQ.root\",15\)  
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",15\)
+
+
+
     --- plots ---
     
     r99t DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
