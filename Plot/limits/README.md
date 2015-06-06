@@ -125,6 +125,7 @@ run:
     r99t -q -b DrawLimit.cxx\(\"toys-5/gridScan2_8_1_e5M.root\",5\)
     mv newDelta.root newDelta_5.7.root
     
+    rm newDelta_5.root
     hadd newDelta_5.root  newDelta_5.*.root
     r99t DrawDelta.cxx\(\"newDelta_5.root\"\)
 
@@ -146,6 +147,7 @@ run:
     r99t -q -b DrawLimit.cxx\(\"toys-10/gridScan3_9_1_5ws.root\",10\)
     mv newDelta.root newDelta_10.8.root
     
+    rm  newDelta_10.root
     hadd newDelta_10.root  newDelta_10.*.root
     r99t DrawDelta.cxx\(\"newDelta_10.root\"\)
 
@@ -169,10 +171,22 @@ run:
     r99t -q -b DrawLimit.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",20\)
     mv newDelta.root newDelta_20.9.root
     
+    rm newDelta_20.root
     hadd newDelta_20.root  newDelta_20.*.root
     r99t DrawDelta.cxx\(\"newDelta_20.root\"\)
     
     
+    --- coverage test 2 ----
+    
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_5_1_SHQ.root\",15\)
+
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_10_1_32J.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_1_1_t4d.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_3_1_DpA.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_6_1_L5b.root\",15\)
+    r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_7_1_7cz.root\",15\)
+ 
     
     --- plots ---
     

@@ -136,14 +136,14 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  
  TCanvas* ccall[300];
 
- for (int nToy=0; nToy<50; nToy++) {
+ for (int nToy=0; nToy<105; nToy++) {
   
   name[nToy] = new TString();
   name[nToy] -> Form ("cc_toy_%d",nToy);
 //   ccall[nToy] = new TCanvas(name[nToy]->Data(),name[nToy]->Data(),400,400);
   
   
-  if (gr[nToy] != 0x0) {
+  if (gr[nToy] != 0x0 && gr[nToy]->GetN() >= 1 ) {
    gr[nToy]->RemovePoint(0);
    double minimumX = moveTGraph(gr[nToy]);
 
