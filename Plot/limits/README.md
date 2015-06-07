@@ -184,6 +184,8 @@ run:
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_3_1_DpA.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_6_1_L5b.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-0/gridScan1_7_1_7cz.root\",15\)
+
+    1 - 1.*(4+3+3+7+4) / (100*5) = 96%
  
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_10_1_xMJ.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_2_1_ygG.root\",15\)
@@ -192,6 +194,8 @@ run:
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_1_1_WzN.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_3_1_kAZ.root\",15\)
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-5/gridScan2_8_1_e5M.root\",15\)
+    
+    1.* (81 + 85 + 82 + 86 + 87 + 87 + 88) / (100 * 7) ~ 85%
     
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_1_1_sCW.root\",15\) 
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_3_1_U40.root\",15\) 
@@ -202,6 +206,8 @@ run:
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_7_1_pdx.root\",15\) 
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-10/gridScan3_9_1_5ws.root\",15\)
 
+    1.* (63 + 59 + 63 + 56 + 62 + 55 + 63 + 63) / (100 * 8) ~ 61%
+    
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_10_1_YX3.root\",15\) 
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_2_1_Gf5.root\",15\)  
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_4_1_1Xa.root\",15\)  
@@ -212,7 +218,9 @@ run:
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_5_1_SHQ.root\",15\)  
     r99t -q -b DrawLimitCoverage.cxx\(\"toys-20/gridScan4_7_1_gYc.root\",15\)
 
-
+    1.* (22 + 10 + 12 + 7 +14 + 11 + 9 + 19) / (100 * 8) ~ 13%
+    
+    
 
     --- plots ---
     
