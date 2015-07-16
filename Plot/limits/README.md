@@ -75,17 +75,27 @@ run:
     
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_10_1_32J.root\"\)
     mv newDelta.root newDelta.1.root
+    mv new2sigma.root new2sigma.1.root
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_1_1_t4d.root\"\)
     mv newDelta.root newDelta.2.root
+    mv new2sigma.root new2sigma.2.root
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_3_1_DpA.root\"\)
     mv newDelta.root newDelta.3.root
+    mv new2sigma.root new2sigma.3.root
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_6_1_L5b.root\"\)
     mv newDelta.root newDelta.4.root
+    mv new2sigma.root new2sigma.4.root
     r99t -q -b DrawLimit.cxx\(\"toys-0/gridScan1_7_1_7cz.root\"\)
     mv newDelta.root newDelta.5.root
+    mv new2sigma.root new2sigma.5.root
+    
     
     rm newDelta.root
     hadd newDelta.root newDelta.*.root
+    
+    rm new2sigma.root
+    hadd new2sigma.root new2sigma.*.root
+    
     
     r99t newDelta.root
     DeltaAtDefault->Draw()
@@ -99,7 +109,18 @@ run:
     r99t DrawDelta.cxx\(\"newDelta.root\"\)
     
     
-    
+    r99t new2sigma.root
+    TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
+    TwoSigma->Draw();
+    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",20,0,60*4.15);
+    for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
+    TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
+    TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->DrawNormalized();
+
+ 
+ 
+ 
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan2_*.root  toys-5/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan3_*.root  toys-10/
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/CMSSW_6_1_1/src/LimitCombine/gridScan4_*.root  toys-20/
