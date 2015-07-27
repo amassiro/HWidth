@@ -65,6 +65,14 @@ copy:
     
 run:
 
+    scp amassiro@lxplus:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/SpecialForHWidth/CMSSW_6_1_1/src/LimitCombine/hwidth_hww_HiggsWidthLT_scan_*.root  hwwalone/
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_10_1_Q8C*.root\",1,105\)
+    mv newDelta.root newDelta.1.root
+    mv new2sigma.root new2sigma.1.root
+
+    
+    
     --- toys for coverage test ---
     Gamma = 1
     Gamma = 5

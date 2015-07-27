@@ -57,7 +57,7 @@ double moveTGraph(TGraph* graph){
 
 
 
-void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0){
+void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0, int ntoys = 105){
  
  TChain* limit = new TChain("limit");
  
@@ -112,7 +112,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
 //  ccToy->Divide(20,20);
 //  ccToy->Divide(6,6);
 //  ccToy->Divide(8,8);
- for (int nToy=0; nToy<105; nToy++) {
+ for (int nToy=0; nToy<ntoys; nToy++) {
   name[nToy] = new TString();
   name[nToy] -> Form ("toy_%d",nToy);
   gr[nToy] = new TGraph;
@@ -127,8 +127,9 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
   limit->GetEntry(iEntry);   
   //   std::cout << " iEntry = " << iEntry << std::endl;
   
-  if (deltaNLL>=0 && deltaNLL<100) {
-//    std::cout << " iToy = " << iToy << " iEntry = " << iEntry << std::endl;
+  if (deltaNLL<100) {
+//    if (deltaNLL>=0 && deltaNLL<100) {
+   std::cout << " iToy = " << iToy << " iEntry = " << iEntry << " iPointOnGraph[" << iToy-1 << "] = " << iPointOnGraph[iToy-1] << std::endl;
    gr[iToy-1]->SetPoint(iPointOnGraph[iToy-1],CMS_zz4l_GGsm,2*deltaNLL);
    iPointOnGraph[iToy-1]++;
   }
@@ -136,7 +137,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  
  TCanvas* ccall[300];
 
- for (int nToy=0; nToy<105; nToy++) {
+ for (int nToy=0; nToy<ntoys; nToy++) {
   
   name[nToy] = new TString();
   name[nToy] -> Form ("cc_toy_%d",nToy);
@@ -144,6 +145,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
   
   
   if (gr[nToy] != 0x0 && gr[nToy]->GetN() >= 1 ) {
+   std::cout << " gr[" << nToy << "]->GetN() = " << gr[nToy]->GetN() << std::endl;
    gr[nToy]->RemovePoint(0);
    double minimumX = moveTGraph(gr[nToy]);
 
