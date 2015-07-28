@@ -129,7 +129,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
   
   if (deltaNLL<100) {
 //    if (deltaNLL>=0 && deltaNLL<100) {
-   std::cout << " iToy = " << iToy << " iEntry = " << iEntry << " iPointOnGraph[" << iToy-1 << "] = " << iPointOnGraph[iToy-1] << std::endl;
+//    std::cout << " iToy = " << iToy << " iEntry = " << iEntry << " iPointOnGraph[" << iToy-1 << "] = " << iPointOnGraph[iToy-1] << std::endl;
    gr[iToy-1]->SetPoint(iPointOnGraph[iToy-1],CMS_zz4l_GGsm,2*deltaNLL);
    iPointOnGraph[iToy-1]++;
   }
@@ -145,7 +145,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
   
   
   if (gr[nToy] != 0x0 && gr[nToy]->GetN() >= 1 ) {
-   std::cout << " gr[" << nToy << "]->GetN() = " << gr[nToy]->GetN() << std::endl;
+//    std::cout << " gr[" << nToy << "]->GetN() = " << gr[nToy]->GetN() << std::endl;
    gr[nToy]->RemovePoint(0);
    double minimumX = moveTGraph(gr[nToy]);
 

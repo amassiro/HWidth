@@ -67,9 +67,46 @@ run:
 
     scp amassiro@lxplus:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/SpecialForHWidth/CMSSW_6_1_1/src/LimitCombine/hwidth_hww_HiggsWidthLT_scan_*.root  hwwalone/
 
-    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_10_1_Q8C*.root\",1,105\)
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_10_1_BRs.root\",1,105\)
     mv newDelta.root newDelta.1.root
     mv new2sigma.root new2sigma.1.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_3_1_ARo.root\",1,105\)
+    mv newDelta.root newDelta.2.root
+    mv new2sigma.root new2sigma.2.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_6_1_jPE.root\",1,105\)
+    mv newDelta.root newDelta.3.root
+    mv new2sigma.root new2sigma.3.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_9_1_n5s.root\",1,105\)
+    mv newDelta.root newDelta.4.root
+    mv new2sigma.root new2sigma.4.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_1_1_zAz.root\",1,105\)
+    mv newDelta.root newDelta.5.root
+    mv new2sigma.root new2sigma.5.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_4_1_gY2.root\",1,105\)
+    mv newDelta.root newDelta.6.root
+    mv new2sigma.root new2sigma.6.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_7_1_Ywd.root\",1,105\)
+    mv newDelta.root newDelta.7.root
+    mv new2sigma.root new2sigma.7.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_2_1_ABs.root\",1,105\)
+    mv newDelta.root newDelta.8.root
+    mv new2sigma.root new2sigma.8.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_5_1_P6S.root\",1,105\)
+    mv newDelta.root newDelta.9.root
+    mv new2sigma.root new2sigma.9.root
+
+    r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_8_1_vgl.root\",1,105\)
+    mv newDelta.root newDelta.10.root
+    mv new2sigma.root new2sigma.10.root
+
 
     
     
