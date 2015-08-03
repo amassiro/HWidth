@@ -65,6 +65,16 @@ copy:
     
 run:
 
+    scp amassiro@lxplus:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/*.root test_all/
+    /afs/cern.ch/user/a/amassiro/work/Latinos/Limit/SpecialForHWidth/CMSSW_6_1_1/src/LimitCombine/hwidth_hww_HiggsWidthLT_scan_*.root  hwwalone/
+
+    r99t -q -b DrawLimit.cxx\(\"test_all/higgsCombine_hwidth_all_lt_HiggsWidthLT_HWidthLTExp_WidthFloatMu_Range_0_60_Points60_MultiDimFit.mH125.6.root\",1,105\)
+    mv newDelta.root newDelta.1.root
+    mv new2sigma.root new2sigma.1.root
+
+    
+    
+    
     scp amassiro@lxplus:/afs/cern.ch/user/a/amassiro/work/Latinos/Limit/SpecialForHWidth/CMSSW_6_1_1/src/LimitCombine/hwidth_hww_HiggsWidthLT_scan_*.root  hwwalone/
 
     r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_10_1_BRs.root\",1,105\)
@@ -106,6 +116,25 @@ run:
     r99t -q -b DrawLimit.cxx\(\"hwwalone/hwidth_hww_HiggsWidthLT_scan_8_1_vgl.root\",1,105\)
     mv newDelta.root newDelta.10.root
     mv new2sigma.root new2sigma.10.root
+
+    rm newDelta.root
+    hadd newDelta.root newDelta.*.root
+
+    
+    rm new2sigma.root
+    hadd new2sigma.root new2sigma.*.root
+    
+    r99t new2sigma.root
+    TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
+    TwoSigma->Draw();
+    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",20,0,60*4.15);
+    for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
+    TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
+    TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->DrawNormalized();
+    
+    
+    value and +/- error
 
 
     
