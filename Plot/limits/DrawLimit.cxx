@@ -57,7 +57,7 @@ double moveTGraph(TGraph* graph){
 
 
 
-void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0, int ntoys = 105){
+void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0, int ntoys = 105, std::string deltasFolder = ""){
  
  TChain* limit = new TChain("limit");
  
@@ -108,7 +108,8 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  int iPointOnGraph[300];
  
  TCanvas* ccToy = new TCanvas("ccToy","ccToy",600,600);
- ccToy->Divide(10,10);
+ std::cout << " ntoys = " << ntoys << std::endl;
+ ccToy->Divide(sqrt(ntoys)+1,sqrt(ntoys)+1);
 //  ccToy->Divide(20,20);
 //  ccToy->Divide(6,6);
 //  ccToy->Divide(8,8);
@@ -130,6 +131,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
   if (deltaNLL<100) {
 //    if (deltaNLL>=0 && deltaNLL<100) {
 //    std::cout << " iToy = " << iToy << " iEntry = " << iEntry << " iPointOnGraph[" << iToy-1 << "] = " << iPointOnGraph[iToy-1] << std::endl;
+   iToy = abs(iToy);
    gr[iToy-1]->SetPoint(iPointOnGraph[iToy-1],CMS_zz4l_GGsm,2*deltaNLL);
    iPointOnGraph[iToy-1]++;
   }
@@ -191,5 +193,18 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  
  TFile* outputfileDelta = new TFile("newDelta.root","RECREATE");
  DeltaAtDefault->Write();
+ 
+ 
+ if (deltasFolder != "") {
+  TFile* outputfile2bis = new TFile((deltasFolder + "/sigma2_" + inputFile.c_str()).c_str(),"RECREATE");
+  TwoSigma->Write();
+  
+  TFile* outputfile1bis = new TFile((deltasFolder + "/sigma1_" + inputFile.c_str()).c_str(),"RECREATE");  
+  OneSigma->Write();
+  
+  TFile* outputfileDeltabis = new TFile((deltasFolder + "/delta_" + inputFile.c_str()).c_str(),"RECREATE");
+  DeltaAtDefault->Write();
+  
+ }
  
 }

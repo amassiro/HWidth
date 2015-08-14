@@ -139,6 +139,37 @@ run:
 
     
     
+    
+    
+    
+final:
+
+    
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/hwidth_all_lt/*.root test_hww_hzz/
+    
+    r99t -q -b DrawLimit.cxx\(\"test_hww_hzz/higgsCombine_hwidth_all_lt_HiggsWidthLT_HWidthLTExp_WidthFloatMu_Points60_FullRange.job512.MultiDimFit.mH125.6.123456512.root\",1,1\)
+    mv newDelta.root newDelta.1.root
+    mv new2sigma.root new2sigma.1.root
+
+    ls  test_hww_hzz/higgsCombine_*.root |  awk '{print "r99t -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltas\\\"\\\)"  }'
+    ls  test_hww_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltas\\\"\\\)"  }'
+    
+    
+    hadd deltas/2sigma.root deltas/sigma2_test_hww_hzz/*.root
+    
+    r00t deltas/2sigma.root
+    TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
+    TwoSigma->Draw();
+    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",20,0,60*4.15);
+    for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
+    TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
+    TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->DrawNormalized();
+
+    
+    
+    
+    
     --- toys for coverage test ---
     Gamma = 1
     Gamma = 5
