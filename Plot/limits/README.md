@@ -183,8 +183,8 @@ final:
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_hzz_V2/*.root test_hzz/
     ls  test_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\"\\\)"  }'
 
-    rm deltas/2sigma.root
-    hadd deltas/2sigma.root deltas/sigma2_test_hww_hzz/*.root
+    rm deltashzz/2sigma.root
+    hadd deltashzz/2sigma.root deltashzz/sigma2_test_hzz/*.root
     
     r00t deltashzz/2sigma.root
     TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
