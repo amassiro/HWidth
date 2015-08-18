@@ -189,12 +189,12 @@ final:
     r00t deltashzz/2sigma.root
     TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
     TwoSigma->Draw();
-    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",20,0,60*4.15);
+    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",12,0,51*4.15);
     for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
     TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
     TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
     TwoSigmaMeV->DrawNormalized();
-
+ 
     
     
     

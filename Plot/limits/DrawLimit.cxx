@@ -98,8 +98,14 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  TFile* newF = new TFile("test.root","RECREATE");
 //  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",20,0,60);
 //  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",20,0,60);
+
+ //---- combined
  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,20);
  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,20);
+
+ //---- zz alone 
+//  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,51);
+//  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,51);
  
  TH1F* DeltaAtDefault = new TH1F ("DeltaAtDefault","2#Delta likelihood at nominal point",100,0,5);
  
