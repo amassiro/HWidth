@@ -158,6 +158,7 @@ final:
     
     rm deltas/2sigma.root
     hadd deltas/2sigma.root deltas/sigma2_test_hww_hzz/*.root
+    hadd deltas/2sigma.root deltas/sigma2_final_hwwhzz/*.root
     
     r00t deltas/2sigma.root
     TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
@@ -178,14 +179,25 @@ final:
     TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
     TwoSigmaMeV->DrawNormalized();
     
+    
+    
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_all_3000_Toys.tar.gz final_hzz/
+    ls  final_hwwhzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltas\\\"\\\)"  }'
+
+    
     // hzz alone
     
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_hzz_V2/*.root test_hzz/
     ls  test_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\"\\\)"  }'
+    
+    scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_hzz_3000_Toys.tar.gz final_hzz/
+    ls  final_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\"\\\)"  }'
 
+    
     rm deltashzz/2sigma.root
     hadd deltashzz/2sigma.root deltashzz/sigma2_test_hzz/*.root
-    
+    hadd deltashzz/2sigma.root deltashzz/sigma2_final_hzz/*.root
+
     r00t deltashzz/2sigma.root
     TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
     TwoSigma->Draw();
