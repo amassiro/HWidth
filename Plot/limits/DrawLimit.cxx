@@ -57,7 +57,7 @@ double moveTGraph(TGraph* graph){
 
 
 
-void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0, int ntoys = 105, std::string deltasFolder = ""){
+void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double defaultValue = 1.0, int ntoys = 105, std::string deltasFolder = "", int whichIs = 1){
  
  TChain* limit = new TChain("limit");
  
@@ -99,13 +99,27 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
 //  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",20,0,60);
 //  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",20,0,60);
 
+ TH1F* OneSigma;
+ TH1F* TwoSigma;
+ 
  //---- combined
- TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,20);
- TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,20);
-
+ if (whichIs == 1) {
+  OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,20);
+  TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,20);
+ }
+ 
  //---- zz alone 
-//  TH1F* OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,51);
-//  TH1F* TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,51);
+ if (whichIs == 2) {
+  OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,51);
+  TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,51);
+ }
+ 
+ //---- ww alone 
+ if (whichIs == 3) {
+  OneSigma = new TH1F ("OneSigma","1 #sigma",12,0,26/4.15*12);
+  TwoSigma = new TH1F ("TwoSigma","2 #sigma",12,0,26/4.15*12);
+ }
+ 
  
  TH1F* DeltaAtDefault = new TH1F ("DeltaAtDefault","2#Delta likelihood at nominal point",100,0,5);
  

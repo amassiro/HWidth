@@ -177,12 +177,13 @@ final:
     for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
     TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
     TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->SetFillColor(kBlue);
     TwoSigmaMeV->DrawNormalized();
-    
     
     
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_all_3000_Toys.tar.gz final_hzz/
     ls  final_hwwhzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltas\\\"\\\)"  }'
+    ls  final_hwwhzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltas\\\",1\\\)"  }' | /bin/sh
 
     
     // hzz alone
@@ -191,7 +192,7 @@ final:
     ls  test_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\"\\\)"  }'
     
     scp amassiro@lxplus.cern.ch:/afs/cern.ch/user/k/kbutanov/public/ForAndrea/toy_pValue/HiggsWidthLT_hzz_3000_Toys.tar.gz final_hzz/
-    ls  final_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\"\\\)"  }'
+    ls  final_hzz/higgsCombine_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,1,\\\"deltashzz\\\",2\\\)"  }' | /bin/sh
 
     
     rm deltashzz/2sigma.root
@@ -205,8 +206,30 @@ final:
     for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
     TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
     TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->SetFillColor(kBlue);
     TwoSigmaMeV->DrawNormalized();
- 
+
+    
+    // hww alone
+    
+    
+    
+    ls  hwwalone/hwidth_*.root |  awk '{print "root -l -q -b DrawLimit.cxx\\\(\\\""$1"\\\",1,105,\\\"deltashww\\\",2\\\)"  }' | /bin/sh
+
+    
+    rm deltashww/2sigma.root
+    hadd deltashww/2sigma.root deltashww/sigma2_hwwalone/*.root
+
+    r00t deltashww/2sigma.root
+    TH1F* TwoSigma = (TH1F*) _file0->Get("TwoSigma");
+    TwoSigma->Draw();
+    TH1F* TwoSigmaMeV = new TH1F("TwoSigmaMeV","TwoSigmaMeV",12,0,26*12);
+    for (int iBin=0; iBin< TwoSigma->GetNbinsX(); iBin++) { TwoSigmaMeV -> SetBinContent(iBin+1,TwoSigma->GetBinContent(iBin+1)); }
+    TwoSigmaMeV->GetYaxis()->SetTitle("Normalized");
+    TwoSigmaMeV->GetXaxis()->SetTitle("MeV");
+    TwoSigmaMeV->SetFillColor(kBlue);
+    TwoSigmaMeV->DrawNormalized();
+
     
     
     
