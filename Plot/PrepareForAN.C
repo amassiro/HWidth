@@ -539,7 +539,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    
    ///==== background (begin)  ====  
 
-   name = Form("%sVV%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sVV%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameBkg.push_back ("WZ/ZZ/VVV");
    vectNameBkg.push_back ("VVandVVV");
@@ -550,7 +550,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    std::cout << "I'm here: " << WHEREAMI << std::endl; WHEREAMI++;
    
    if (energy == 0) { //---- only 8 TeV
-    name = Form("%sVVV%s",cutNameBefore.Data(),cutNameAfter.Data());
+    name = Form("%sVVV%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
     //    vectNameBkg.push_back ("WZ/ZZ/VVV");
     vectNameBkg.push_back ("VVandVVV");
@@ -561,7 +561,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    }
 
    
-   name = Form("%sWJet%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sWJet%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameBkg.push_back ("W+jets");
    vectColourBkg.push_back(921);
@@ -569,7 +569,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    vectScaleBkg.push_back(1.0000);
    vectNormalizationBkg.push_back(0.667);
    
-   name = Form("%sVg%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sVg%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameBkg.push_back ("V+#gamma/V+#gamma*");
    vectNameBkg.push_back ("Vg");
@@ -579,7 +579,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    vectNormalizationBkg.push_back(1.000);
    
    if (energy == 0 && which != 3) { 
-   name = Form("%sVgS%s",cutNameBefore.Data(),cutNameAfter.Data());
+    name = Form("%sVgS%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
 //    if (f[iFile]->GetListOfKeys()->Contains(name)) {
     vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //     vectNameBkg.push_back ("V+#gamma/V+#gamma*");
@@ -593,7 +593,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    }
    
    
-   name = Form("%sTop%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sTop%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameBkg.push_back ("Top");
    vectNameBkg.push_back ("top");
@@ -612,7 +612,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
 //     vectScaleBkg.push_back(1.0000);
 //     vectNormalizationBkg.push_back(0.377);
 //    }
-   name = Form("%sDYTT%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sDYTT%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
 //    vectNameBkg.push_back ("DYTT");
    vectNameBkg.push_back ("DY+jets");
@@ -672,7 +672,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
 //    }
    
    
-   name = Form("%sggH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sggH_b%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    vectNameBkg.push_back ("ggWW");
    vectColourBkg.push_back(8);
@@ -682,7 +682,7 @@ void PrepareForAN(int which, int energy = 0, int doWeight = 0, int doBlind = 0, 
    std::cout << "I'm here: " << WHEREAMI << " ggWW " << std::endl; WHEREAMI++;
    
    
-   name = Form("%sqqH_b%s",cutNameBefore.Data(),cutNameAfter.Data());
+   name = Form("%sqqH_b%s",cutNameBeforeSig.Data(),cutNameAfter.Data());
    vectTHBkg.push_back ( FilterBins(binsToSelect, (TH1F*) f[iFile]->Get(name)) );
    //     vectNameBkg.push_back (nameSignal.Data());
    vectNameBkg.push_back ("WW");
