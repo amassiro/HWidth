@@ -1,6 +1,6 @@
 
 
-void Draw() {
+void Draw1j() {
  
  TChain* latino = new TChain ("latino");
  latino->Add("latinogg2vv_Hw25_CotHead_8TeV.root"); 
@@ -8,8 +8,8 @@ void Draw() {
  
  TFile* fileWeight = new TFile ("scaleFactors.root");
  
- TH1F* h0up = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitHighErr_0");
- TH1F* h0do = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitLowErr_0");
+ TH1F* h0up = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitHighErr_1");
+ TH1F* h0do = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitLowErr_1");
  
 //  TF1* funUp = new TF1("funUp", "[0] + [1]/x",120,1500);
 //  TF1* funDo = new TF1("funDo", "[0] + [1]/x",120,1500);
@@ -19,7 +19,7 @@ void Draw() {
 
  TF1* funUp = new TF1("funUp", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x",120,1500);
  TF1* funDo = new TF1("funDo", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x",120,1500);
- TF1* fNominal = new TF1("fNominal", "1.0753-48.9352/x",120,1500);
+ TF1* fNominal = new TF1("fNominal", "0.8457+67.5294/x",120,1500);
  
  funUp->SetLineColor(kBlue);
  funDo->SetLineColor(kRed);
@@ -65,7 +65,7 @@ void Draw() {
                       &&  nbjettche==0");
  
  
- cut = Form ("(%s) && njet==0 && ( (mll<70 && pt2<40 && ptll>45) || (mll>=70 && pt2>20 && pt1>20)  )   &&    (mll>=70)", cut.Data());
+ cut = Form ("(%s) && njet==1 && ( (mll<70 && pt2<40 && ptll>45) || (mll>=70 && pt2>20 && pt1>20)  )   &&    (mll>=70)", cut.Data());
  
  
  
@@ -77,12 +77,12 @@ void Draw() {
  TH1F* up      = new TH1F("up","",NBINS, edges);
  TH1F* down    = new TH1F("down","",NBINS, edges);
  
- nominal->Sumw2();
- 
  TString toDraw;
  TString toCut;
  
- toDraw = Form ("(%s)*(1.0753-48.9352/mWW) >> nominal", variable.Data());
+ nominal->Sumw2();
+ 
+ toDraw = Form ("(%s)*(0.8457+67.5294/mWW) >> nominal", variable.Data());
  toCut = Form ("%s", cut.Data());
  latino->Draw(toDraw.Data(), cut.Data());
  
@@ -97,7 +97,6 @@ void Draw() {
  float integral    = nominal->Integral();
  float integral_up = up->Integral();
  float integral_do = down->Integral();
- std::cout << " integral_up = " << integral_up << std::endl;
  
  nominal->Scale (1./integral);
  up  ->Scale (1./integral_up);

@@ -6,3 +6,5 @@ Variable:
 Plot:
 
     r99t Draw.cxx
+    r99t Draw1j.cxx 
+    r99t Draw2j.cxx    
