@@ -3,11 +3,14 @@
 void Draw1j() {
  
  TChain* latino = new TChain ("latino");
- latino->Add("latinogg2vv_Hw25_CotHead_8TeV.root"); 
- latino->Add("latinogg2vv_Hw25_CotTail_8TeV.root");
+//  latino->Add("latinogg2vv_Hw25_CotHead_8TeV.root"); 
+//  latino->Add("latinogg2vv_Hw25_CotTail_8TeV.root");
+ latino->Add("latinogg2vv_Hw1_SigShoulder_8TeV.root"); 
+ latino->Add("latinogg2vv_Hw1_SigTail_8TeV.root");
  
- //  TFile* fileWeight = new TFile ("scaleFactors.root");
- TFile* fileWeight = new TFile ("scaleFactors_invFirstOrd.root");
+//  TFile* fileWeight = new TFile ("scaleFactors.root");
+//  TFile* fileWeight = new TFile ("scaleFactors_invFirstOrd.root");
+ TFile* fileWeight = new TFile ("scaleFactors_invFirstOrd_Norm.root");
  
  TH1F* h0up = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitHighErr_1");
  TH1F* h0do = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitLowErr_1");
@@ -18,8 +21,8 @@ void Draw1j() {
 //  TF1* funUp = new TF1("funUp", "pol10",120,1500);
 //  TF1* funDo = new TF1("funDo", "pol10",120,1500);
 
- TF1* funUp = new TF1("funUp", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,1500);
- TF1* funDo = new TF1("funDo", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,1500);
+ TF1* funUp = new TF1("funUp", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,7500);
+ TF1* funDo = new TF1("funDo", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,7500);
  TF1* fNominal = new TF1("fNominal", "0.8457+67.5294/x",120,1500);
  
  funUp->SetLineColor(kBlue);
@@ -55,7 +58,7 @@ void Draw1j() {
  
  TCanvas* ccDistro = new TCanvas ("ccDistro","",800,600);
  
- TString variable = Form ("HwidthMVAbkg+0.9*(HwidthMVAbkg>1)");
+ TString variable = Form ("HwidthMVAbkg");
  TString cut = Form ("    trigger==1. \
                       &&  ((ch1*ch2)<0 && pt1>20 && pt2>10) \
                       &&  zveto==1 \
@@ -85,8 +88,8 @@ void Draw1j() {
  
  nominal->Sumw2();
  
- toDraw = Form ("(%s)*(0.8457+67.5294/mWW) >> nominal", variable.Data());
- toCut = Form ("%s", cut.Data());
+ toDraw = Form ("(%s) >> nominal", variable.Data());
+ toCut = Form ("(%s)*(0.8457+67.5294/mWW)", cut.Data());
  latino->Draw(toDraw.Data(), toCut.Data());
  
  toDraw = Form ("(%s) >> up", variable.Data());
