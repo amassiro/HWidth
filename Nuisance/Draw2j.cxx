@@ -6,7 +6,8 @@ void Draw2j() {
  latino->Add("latinogg2vv_Hw25_CotHead_8TeV.root"); 
  latino->Add("latinogg2vv_Hw25_CotTail_8TeV.root");
  
- TFile* fileWeight = new TFile ("scaleFactors.root");
+//  TFile* fileWeight = new TFile ("scaleFactors.root");
+ TFile* fileWeight = new TFile ("scaleFactors_invFirstOrd.root");
  
  TH1F* h0up = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitHighErr_2");
  TH1F* h0do = (TH1F*) fileWeight->Get("h1_powheg_gg2vv_fitLowErr_2");
@@ -17,8 +18,8 @@ void Draw2j() {
 //  TF1* funUp = new TF1("funUp", "pol10",120,1500);
 //  TF1* funDo = new TF1("funDo", "pol10",120,1500);
 
- TF1* funUp = new TF1("funUp", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x",120,1500);
- TF1* funDo = new TF1("funDo", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x",120,1500);
+ TF1* funUp = new TF1("funUp", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,1500);
+ TF1* funDo = new TF1("funDo", "[0] + [1] * x + [2] * x * x + [3] * x * x * x + [4] * x * x * x * x + [5] / x",120,1500);
  TF1* fNominal = new TF1("fNominal", "0.7777+161.9353/x",120,1500);
  
  funUp->SetLineColor(kBlue);
@@ -34,20 +35,22 @@ void Draw2j() {
  funDo->Draw("same");
  fNominal->Draw("same");
  
- TString funDoString = Form ("%f + %f * mWW + %f * mWW * mWW + %f * mWW * mWW * mWW + %f * mWW * mWW * mWW * mWW", 
+ TString funDoString = Form ("%f + %f * mWW + %f * mWW * mWW + %f * mWW * mWW * mWW + %f * mWW * mWW * mWW * mWW + %f / mWW", 
                              funDo->GetParameter(0),
                              funDo->GetParameter(1),
                              funDo->GetParameter(2),
                              funDo->GetParameter(3),
-                             funDo->GetParameter(4)                             
+                             funDo->GetParameter(4),                             
+                             funDo->GetParameter(5)     
  );
  
- TString funUpString = Form ("%f + %f * mWW + %f * mWW * mWW + %f * mWW * mWW * mWW + %f * mWW * mWW * mWW * mWW", 
+ TString funUpString = Form ("%f + %f * mWW + %f * mWW * mWW + %f * mWW * mWW * mWW + %f * mWW * mWW * mWW * mWW + %f / mWW", 
                              funUp->GetParameter(0),
                              funUp->GetParameter(1),
                              funUp->GetParameter(2),
                              funUp->GetParameter(3),
-                             funUp->GetParameter(4)                             
+                             funUp->GetParameter(4),                             
+                             funUp->GetParameter(5)                             
  );
  
  TCanvas* ccDistro = new TCanvas ("ccDistro","",800,600);
@@ -65,8 +68,8 @@ void Draw2j() {
                       &&  nbjettche==0");
  
  
- cut = Form ("(%s) && njet==2 && ( ptll>45 && (njet>=2 && njet<=3 && (jetpt3<=30 || !(jetpt3 > 30 && (  (jeteta1-jeteta3 > 0 && jeteta2-jeteta3 < 0) || (jeteta2-jeteta3 > 0 && jeteta1-jeteta3 < 0)))))   && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5      && detajj>2.5     && mjj>500 && ' + \
- '  (   (mll<70 && pt2<40) || (mll>=70 && pt2>20 && pt1>20)  )  )  \
+ cut = Form ("(%s) && njet==2 && ( ptll>45 && (njet>=2 && njet<=3 && (jetpt3<=30 || !(jetpt3 > 30 && (  (jeteta1-jeteta3 > 0 && jeteta2-jeteta3 < 0) || (jeteta2-jeteta3 > 0 && jeteta1-jeteta3 < 0)))))   && abs(eta1 - (jeteta1+jeteta2)/2)/detajj < 0.5 && abs(eta2 - (jeteta1+jeteta2)/2)/detajj < 0.5      && detajj>2.5     && mjj>500 && \
+                     (   (mll<70 && pt2<40) || (mll>=70 && pt2>20 && pt1>20)  )  )  \
                &&    (mll>=70)", cut.Data());
  
  
@@ -86,15 +89,15 @@ void Draw2j() {
  
  toDraw = Form ("(%s)*(0.7777+161.9353/mWW) >> nominal", variable.Data());
  toCut = Form ("%s", cut.Data());
- latino->Draw(toDraw.Data(), cut.Data());
+ latino->Draw(toDraw.Data(), toCut.Data());
  
  toDraw = Form ("(%s) >> up", variable.Data());
  toCut = Form ("(%s)*(%s)", cut.Data(),funUpString.Data());
- latino->Draw(toDraw.Data(), cut.Data());
+ latino->Draw(toDraw.Data(), toCut.Data());
  
  toDraw = Form ("(%s) >> down", variable.Data());
  toCut = Form ("(%s)*(%s)", cut.Data(),funDoString.Data());
- latino->Draw(toDraw.Data(), cut.Data());
+ latino->Draw(toDraw.Data(), toCut.Data());
  
  float integral    = nominal->Integral();
  float integral_up = up->Integral();
