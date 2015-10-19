@@ -220,6 +220,7 @@ void DrawLimit(std::string inputFile = "grid_7TeV-8TeV-toysScan.root", double de
  if (deltasFolder != "") {
   TFile* outputfile2bis = new TFile((deltasFolder + "/sigma2_" + inputFile.c_str()).c_str(),"RECREATE");
   TwoSigma->Write();
+  ccToy->Write();
   
   TFile* outputfile1bis = new TFile((deltasFolder + "/sigma1_" + inputFile.c_str()).c_str(),"RECREATE");  
   OneSigma->Write();
