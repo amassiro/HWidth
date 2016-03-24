@@ -55,6 +55,11 @@ Where:
 
 Prepare for AN: 
  
+ test:
+ 
+     r99t -l PrepareForAN.C+\(3,0,0,0,30\)
+
+     
 8 TeV:
 
     r99t -l -q PrepareForAN.C+\(0,0,0\)
@@ -64,7 +69,7 @@ Prepare for AN:
     r99t -l -q PrepareForAN.C+\(2,0,0\)
     r99t -l -q PrepareForAN.C+\(2,0,1\)
     r99t -l -q PrepareForAN.C+\(2,0,2\)
-    
+        
     r99t -l -q PrepareForAN.C+\(3,0,0\)
     r99t -l -q PrepareForAN.C+\(3,0,1\)
     r99t -l -q PrepareForAN.C+\(3,0,2\)
